@@ -1,2 +1,3 @@
 # AGRIFLOW
-Digitalisation de la gestion de la coopérative  Projet « AgriCoop Connect »
+
+Digitalisation de la gestion de la coopérative Projet « AgriCoop Connect »
