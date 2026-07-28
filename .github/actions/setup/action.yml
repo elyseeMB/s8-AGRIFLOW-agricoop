@@ -24,15 +24,7 @@ runs:
       uses: 'actions/setup-node@v7'
       with:
         node-version: ${{ inputs.node-version }}
-        cache: 'npm'
-    - if: inputs.node == 'true'
-      shell: bash
-      run: npm ci
     - if: inputs.python == 'true'
       uses: 'actions/setup-python@v7'
       with:
         python-version: ${{ inputs.python-version }}
-        cache: 'pip'
-    - if: inputs.python == 'true'
-      shell: bash
-      run: pip install -r requirements.txt

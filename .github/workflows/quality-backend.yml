@@ -17,5 +17,7 @@ jobs:
         with:
           node: 'false'
           python: 'true'
+      - name: Install Black
+        run: pip install black==26.1.0
       - name: Check
         run: black --check .
