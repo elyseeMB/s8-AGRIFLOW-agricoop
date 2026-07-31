@@ -16,6 +16,7 @@ Puis testez dans le navigateur :
    (POST) http://localhost:5000/api/login
 ========================================================================
 """
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import controllers
@@ -37,20 +38,28 @@ app.config["PROPAGATE_EXCEPTIONS"] = False
 @app.errorhandler(Exception)
 def gerer_erreur(erreur):
     import traceback
+
     traceback.print_exc()  # trace complète toujours visible dans le terminal
-    return jsonify({
-        "erreur": "Cette route a échoué car une fonction de logic.py n'est "
-                   "pas encore implémentée (ou contient une erreur). "
-                   "Regardez le terminal où tourne 'python app.py' pour le "
-                   "détail exact (traceback Python).",
-        "detail_technique": str(erreur),
-    }), 500
+    return (
+        jsonify(
+            {
+                "erreur": "Cette route a échoué car une fonction de logic.py n'est "
+                "pas encore implémentée (ou contient une erreur). "
+                "Regardez le terminal où tourne 'python app.py' pour le "
+                "détail exact (traceback Python).",
+                "detail_technique": str(erreur),
+            }
+        ),
+        500,
+    )
 
 
 @app.route("/")
 def home():
-    return {"message": "API AgriCoop Connect — Coopérative COMAKI. Voir /api/dashboard, /api/membres, "
-                        "/api/livraisons, /api/paiements, /api/ventes-stock, /api/statistiques"}
+    return {
+        "message": "API AgriCoop Connect — Coopérative COMAKI. Voir /api/dashboard, /api/membres, "
+        "/api/livraisons, /api/paiements, /api/ventes-stock, /api/statistiques"
+    }
 
 
 # ---------- Module 1 : Tableau de bord -----------------------------------
@@ -149,7 +158,11 @@ def utilisateurs():
 @app.route("/api/verifier-acces", methods=["POST"])
 def verifier_acces():
     payload = request.get_json(force=True)
-    return jsonify(controllers.verifier_acces_controller(payload.get("role"), payload.get("action")))
+    return jsonify(
+        controllers.verifier_acces_controller(
+            payload.get("role"), payload.get("action")
+        )
+    )
 
 
 if __name__ == "__main__":

@@ -15,8 +15,8 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          node: 'false'
-          python: 'true'
+          node: "false"
+          python: "true"
       - name: Install Black
         run: pip install black==26.1.0
       - name: Check

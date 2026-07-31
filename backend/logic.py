@@ -53,7 +53,12 @@ PRIX_VENTE_KG = {
 # une opération précise de l'application. Si l'action demandée n'apparaît
 # pas dans la liste du rôle, l'accès doit être refusé .
 ACTIONS_PAR_ROLE = {
-    "Secrétaire": ["gerer_comptes", "gerer_membres", "tableau_de_bord", "consulter_rapport_partenaire"],
+    "Secrétaire": [
+        "gerer_comptes",
+        "gerer_membres",
+        "tableau_de_bord",
+        "consulter_rapport_partenaire",
+    ],
     "Président": ["enregistrer_vente", "tableau_de_bord", "generer_rapport_partenaire"],
     "Trésorière": ["enregistrer_paiement", "tableau_de_bord"],
     "Responsable dépôt": ["enregistrer_livraison", "tableau_de_bord"],
@@ -64,6 +69,7 @@ ACTIONS_PAR_ROLE = {
 # ========================================================================
 # ZONE A — Tableau de bord & Statistiques
 # ========================================================================
+
 
 def calculer_indicateurs_globaux(livraisons, ventes, paiements):
     """
@@ -103,8 +109,7 @@ def calculer_indicateurs_globaux(livraisons, ventes, paiements):
     total_vendu = sum(v["quantite"] for v in ventes)
     stock_total = total_livre - total_vendu
     valeur_livraisons = sum(
-        l["quantite"] * PRIX_ACHAT_KG.get(l["culture"], 0)
-        for l in livraisons
+        l["quantite"] * PRIX_ACHAT_KG.get(l["culture"], 0) for l in livraisons
     )
     total_paiements = sum(p["montant"] for p in paiements)
     return {
@@ -162,7 +167,7 @@ def classer_membres_par_production(livraisons):
             {"membre_id": 1, "quantite": 100},
             {"membre_id": 2, "quantite": 50},
             {"membre_id": 1, "quantite": 30},
-            
+
         ]
         -> le membre 1 a livré 100 + 30 = 130 au total
         -> le membre 2 a livré 50 au total
@@ -273,8 +278,10 @@ def generer_indicateurs_rapport_bailleur(livraisons, ventes, paiements):
     membres_actifs = {livraison["membre_id"] for livraison in livraisons}
     membres_payes = {paiement["membre_id"] for paiement in paiements}
     nb_membres_actifs = len(membres_actifs)
-    taux = 0 if not nb_membres_actifs else round(
-        len(membres_actifs & membres_payes) / nb_membres_actifs * 100
+    taux = (
+        0
+        if not nb_membres_actifs
+        else round(len(membres_actifs & membres_payes) / nb_membres_actifs * 100)
     )
     return {
         "volume_total_periode": sum(l["quantite"] for l in livraisons),
@@ -319,6 +326,7 @@ def identifier_top_acheteur(ventes, acheteurs):
 # ========================================================================
 # ZONE B — Membres & Livraisons
 # ========================================================================
+
 
 def calculer_solde_membre(membre_id, livraisons, paiements):
     """
@@ -590,6 +598,7 @@ def valider_nouveau_membre(donnees):
 # ZONE C — Ventes, Stock & Paiements
 # ========================================================================
 
+
 def calculer_stock_disponible(livraisons, ventes):
     """
     Calcule la quantité disponible à la vente, par culture.
@@ -753,15 +762,14 @@ def calculer_moyenne_prix_vente(ventes, culture):
     if not ventes_culture:
         return 0
     total_quantite = sum(vente["quantite"] for vente in ventes_culture)
-    total_valeur = sum(
-        vente["quantite"] * vente["prix_kg"] for vente in ventes_culture
-    )
+    total_valeur = sum(vente["quantite"] * vente["prix_kg"] for vente in ventes_culture)
     return round(total_valeur / total_quantite)
 
 
 # ========================================================================
 # ZONE D — Authentification (nouveau module)
 # ========================================================================
+
 
 def authentifier_utilisateur(nom_utilisateur, mot_de_passe, utilisateurs):
     """
