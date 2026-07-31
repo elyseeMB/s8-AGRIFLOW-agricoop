@@ -1,0 +1,26 @@
+/* Colors */
+.palette__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-lg);
+}
+
+.palette__info {
+  font-size: var(--text-sm);
+}
+
+.palette__def {
+  font-size: var(--text-xs);
+}
+
+.palette__block {
+  height: 90px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--ds-accent);
+}
+
+.palette__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-xs);
+}
