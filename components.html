@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components - Agriflow</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__nav">
+        <ul class="header__list">
+          <li class="header__item">
+            <a class="header__link" href="#colors">Couleurs</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#typography">Typographie</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#badges">Badges</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#buttons">Buttons</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="ds__main">
+      <h1>Components</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae facilis, aperiam totam
+        cupiditate velit rem sequi natus quisquam obcaecati tempora doloremque molestias alias id
+        odit nam distinctio, sed mollitia nobis!
+      </p>
+      <section class="ds" id="colors">
+        <h2 class="palette__title">Palette de couleurs</h2>
+        <h3>Main color</h3>
+
+        <div class="palette__grid">
+          <!-- Accent -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-accent)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-accent</h3>
+              <p class="palette__def">hsl(122.61deg 42.33% 31.96%)</p>
+            </div>
+          </div>
+          <!-- Accent hover -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-accent-hover)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-accent-hover</h3>
+              <p class="palette__def">hsl(129.35deg 69.37% 43.53%)</p>
+            </div>
+          </div>
+          <!-- Accent light -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-accent-light)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-accent-light</h3>
+              <p class="palette__def">hsl(116.67deg 39.13% 90.98%)</p>
+            </div>
+          </div>
+          <!-- Background sidebar -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-bg-sidebar)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-bg-sidebar</h3>
+              <p class="palette__def">hsl(121.74deg 42.86% 31.57%)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- State Color -->
+        <h3>Status</h3>
+        <div class="palette__grid">
+          <!-- Accent -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-success)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-success</h3>
+              <p class="palette__def">hsl(132.52deg 66.51% 40.98%)</p>
+            </div>
+          </div>
+          <!-- Accent hover -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-danger)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-danger</h3>
+              <p class="palette__def">hsl(357.88deg 72.03% 46.27%)</p>
+            </div>
+          </div>
+          <!-- Accent light -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-danger-light)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-danger-light</h3>
+              <p class="palette__def">hsl(3.4deg 89.83% 88.43%)</p>
+            </div>
+          </div>
+          <!-- Background sidebar -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--ds-warning)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-warning</h3>
+              <p class="palette__def">hsl(37.33deg 85.77% 50.39%)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backgroud -->
+        <h3>Status</h3>
+        <div class="palette__grid">
+          <!-- Backgroud -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--backgroud)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--ds-backgroud</h3>
+              <p class="palette__def">hsl(225deg 16.67% 95.29%)</p>
+            </div>
+          </div>
+
+          <!-- Background Surface -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--surface)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--surface</h3>
+              <p class="palette__def">hsl(0, 0%, 100%)</p>
+            </div>
+          </div>
+
+          <!-- Background Foreground -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--foreground)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--foreground</h3>
+              <p class="palette__def">hsl(0deg 0% 26.27%)</p>
+            </div>
+          </div>
+
+          <!-- Background Muted -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--muted)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--muted</h3>
+              <p class="palette__def">hsl(220deg 9.68% 93.92%)</p>
+            </div>
+          </div>
+          <!-- Background Border -->
+          <div class="palette__item">
+            <div class="palette__block" style="background-color: var(--border)"></div>
+            <div class="palette__info">
+              <h3 class="palette__name">--border</h3>
+              <p class="palette__def">hsl(0, 0%, 69%)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="ds" id="typography">
+        <h2 class="typography__title">Typography</h2>
+        <h3>Size</h3>
+        <div class="typography__wrapper">
+          <span style="font-size: var(--text-4xl)">var(--text-4xl)</span>
+          <span style="font-size: var(--text-3xl)">var(--text-3xl)</span>
+          <span style="font-size: var(--text-xl)">var(--text-xl)</span>
+          <span style="font-size: var(--text-lg)">var(--text-lg)</span>
+          <span style="font-size: var(--text-md)">var(--text-md)</span>
+          <span style="font-size: var(--text-sm)">var(--text-sm)</span>
+          <span style="font-size: var(--text-xs)">var(--text-xs)</span>
+        </div>
+      </section>
+
+      <!-- Badges -->
+      <section class="ds" id="badges">
+        <h2>Badges</h2>
+        <div class="Badges__wrapper">
+          <span class="badge badge__sucess">validé</span>
+          <span class="badge badge__info">Actif</span>
+          <span class="badge badge__warning">En attente</span>
+          <span class="badge badge__danger">Annulé</span>
+          <span class="badge">default</span>
+        </div>
+      </section>
+
+      <section class="ds" id="buttons">
+        <h2>Buttons</h2>
+        <div class="Buttons__wrapper">
+          <button class="btn btn__primary">Primaire</button>
+          <button class="btn btn__success">Valider</button>
+          <button class="btn btn__info">Info</button>
+          <button class="btn btn__warning">Attention</button>
+          <button class="btn btn__danger">Supprimer</button>
+          <button class="btn btn__outline">Outline</button>
+          <button class="btn" disabled>Désactivé</button>
+        </div>
+
+        <div class="Buttons__wrapper">
+          <button class="btn btn-large btn__primary">Primaire</button>
+          <button class="btn btn-large btn__success">Valider</button>
+          <button class="btn btn-large btn__info">Info</button>
+          <button class="btn btn-large btn__warning">Attention</button>
+          <button class="btn btn-large btn__danger">Supprimer</button>
+          <button class="btn btn-large" disabled>Désactivé</button>
+        </div>
+
+        <div class="Buttons__wrapper">
+          <button class="btn btn-small btn__primary">Primaire</button>
+          <button class="btn btn-small btn__success">Valider</button>
+          <button class="btn btn-small btn__info">Info</button>
+          <button class="btn btn-small btn__warning">Attention</button>
+          <button class="btn btn-small btn__danger">Supprimer</button>
+          <button class="btn btn-small" disabled>Désactivé</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
