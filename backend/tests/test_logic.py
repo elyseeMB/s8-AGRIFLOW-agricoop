@@ -13,16 +13,17 @@ Vous n'avez pas besoin de comprendre ce fichier. Il vérifie juste que vos
 fonctions renvoient les bons résultats.
 ========================================================================
 """
+
 import sys
 import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import logic
 
-
 # ========================================================================
 # ZONE A
 # ========================================================================
+
 
 def test_indicateurs_globaux_nb_livraisons():
     livraisons = [
@@ -51,7 +52,9 @@ def test_indicateurs_globaux_stock_total_sans_dependre_dune_autre_fonction():
 
 
 def test_indicateurs_globaux_montant_du():
-    livraisons = [{"membre_id": 1, "culture": "Manioc", "quantite": 100}]  # 100*150 = 15000
+    livraisons = [
+        {"membre_id": 1, "culture": "Manioc", "quantite": 100}
+    ]  # 100*150 = 15000
     paiements = [{"membre_id": 1, "montant": 5000}]
     resultat = logic.calculer_indicateurs_globaux(livraisons, [], paiements)
     assert resultat["montant_du_total"] == 10000
@@ -126,6 +129,7 @@ def test_top_acheteur_liste_vide():
 # ZONE B
 # ========================================================================
 
+
 def test_solde_membre_jeu_de_donnees_standard():
     livraisons = [
         {"membre_id": 1, "culture": "Manioc", "quantite": 120},
@@ -189,7 +193,10 @@ def test_historique_paiements_membre_aucun():
 
 
 def test_rechercher_membre_similaire_trouve_malgre_casse_et_espaces():
-    membres = [{"id": 1, "nom": "Jean Mabiala"}, {"id": 2, "nom": "Alphonsine Nkounkou"}]
+    membres = [
+        {"id": 1, "nom": "Jean Mabiala"},
+        {"id": 2, "nom": "Alphonsine Nkounkou"},
+    ]
     resultat = logic.rechercher_membre_similaire("  jean   MABIALA ", membres)
     assert resultat is not None
     assert resultat["id"] == 1
@@ -209,13 +216,19 @@ def test_valider_nouveau_membre_champs_manquants():
 
 
 def test_valider_nouveau_membre_complet():
-    donnees = {"nom": "Koumba", "prenom": "Marie", "village": "Séo", "contact": "064111222"}
+    donnees = {
+        "nom": "Koumba",
+        "prenom": "Marie",
+        "village": "Séo",
+        "contact": "064111222",
+    }
     assert logic.valider_nouveau_membre(donnees) == []
 
 
 # ========================================================================
 # ZONE C
 # ========================================================================
+
 
 def test_stock_disponible_toutes_cultures_presentes():
     livraisons = [{"culture": "Manioc", "quantite": 100}]
@@ -284,12 +297,20 @@ def test_calculer_moyenne_prix_vente_culture_absente():
 # ZONE D
 # ========================================================================
 
+
 def test_authentifier_utilisateur_identifiants_corrects():
     utilisateurs = [
-        {"nom_utilisateur": "smalonga", "mot_de_passe": "Secretaire2026",
-         "role": "Secrétaire", "nom_complet": "Sandra Malonga", "membre_id": 4}
+        {
+            "nom_utilisateur": "smalonga",
+            "mot_de_passe": "Secretaire2026",
+            "role": "Secrétaire",
+            "nom_complet": "Sandra Malonga",
+            "membre_id": 4,
+        }
     ]
-    resultat = logic.authentifier_utilisateur("smalonga", "Secretaire2026", utilisateurs)
+    resultat = logic.authentifier_utilisateur(
+        "smalonga", "Secretaire2026", utilisateurs
+    )
     assert resultat is not None
     assert resultat["role"] == "Secrétaire"
     assert "mot_de_passe" not in resultat
@@ -297,10 +318,17 @@ def test_authentifier_utilisateur_identifiants_corrects():
 
 def test_authentifier_utilisateur_mot_de_passe_incorrect():
     utilisateurs = [
-        {"nom_utilisateur": "smalonga", "mot_de_passe": "Secretaire2026",
-         "role": "Secrétaire", "nom_complet": "Sandra Malonga", "membre_id": 4}
+        {
+            "nom_utilisateur": "smalonga",
+            "mot_de_passe": "Secretaire2026",
+            "role": "Secrétaire",
+            "nom_complet": "Sandra Malonga",
+            "membre_id": 4,
+        }
     ]
-    assert logic.authentifier_utilisateur("smalonga", "mauvais_mdp", utilisateurs) is None
+    assert (
+        logic.authentifier_utilisateur("smalonga", "mauvais_mdp", utilisateurs) is None
+    )
 
 
 def test_authentifier_utilisateur_inconnu():
