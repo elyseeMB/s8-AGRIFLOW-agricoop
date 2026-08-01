@@ -42,7 +42,7 @@ function validerFormulaireLogin(donnees) {
    Exemple    : compterJoursActifs({"2026-07-08": 135, "2026-07-09": 60}, 100) -> 1
    Astuce     : Object.values(livraisonsParJour) donne un tableau des quantités. */
 function compterJoursActifs(livraisonsParJour, seuil) {
-  // TODO : à compléter
+  return Object.values(livraisonsParJour).filter((quantite) => quantite > seuil).length;
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter]
@@ -92,7 +92,15 @@ function validerFormulaireNouveauMembre(donnees) {
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
 function validerFormulaireLivraison(donnees) {
-  // TODO : à compléter
+  const membreId = Number(donnees.membre_id);
+  const culture = String(donnees.culture || "").trim();
+  const quantite = Number(donnees.quantite);
+
+  if (!membreId) return false;
+  if (!culture) return false;
+  if (!Number.isFinite(quantite) || quantite <= 0) return false;
+
+  return true;
 }
 
 /* [Dev FS3 — Livraisons — niveau S8 : tableau .sort]
@@ -103,7 +111,7 @@ function validerFormulaireLivraison(donnees) {
    Astuce    : au format "AAAA-MM-JJ", comparer les chaînes fonctionne
                directement (ordre alphabétique = ordre chronologique). */
 function trierLivraisonsParDate(livraisons) {
-  // TODO : à compléter
+  return [...livraisons].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /* [Dev FS4 — Paiements — niveau S7 : conditions imbriquées]
@@ -122,10 +130,16 @@ function validerFormulairePaiement(donnees) {
     return false;
   }
 
+  const membreId = Number(donnees.membre_id);
   const montant = Number(donnees.montant);
+  const modePaiement = String(donnees.mode_paiement || "").trim();
   const modesAutorises = ["Espèces", "Mobile Money"];
 
-  return Number.isFinite(montant) && montant > 0 && modesAutorises.includes(donnees.mode_paiement);
+  if (!membreId) return false;
+  if (!Number.isFinite(montant) || montant <= 0) return false;
+  if (!modesAutorises.includes(modePaiement)) return false;
+
+  return true;
 }
 
 /* [Dev FS4 — Paiements — niveau S7/S8 : boucle + accumulateur]
@@ -135,7 +149,7 @@ function validerFormulairePaiement(donnees) {
    Retourne  : un nombre (la somme de tous les montants).
    Exemple   : calculerTotalPaiements([{montant:5000},{montant:3000}]) -> 8000 */
 function calculerTotalPaiements(paiements) {
-  return paiements.reduce((total, paiement) => total + Number(paiement.montant), 0);
+  return paiements.reduce((total, paiement) => total + Number(paiement.montant || 0), 0);
 }
 
 /* [Dev FS5 — Ventes & Stock — niveau S7/S8 : condition sur un nombre]
