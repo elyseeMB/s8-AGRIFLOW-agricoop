@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Components - Agriflow</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="frontend/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +27,9 @@
           </li>
           <li class="header__item">
             <a class="header__link" href="#buttons">Buttons</a>
+          </li>
+          <li class="header__item">
+            <a class="header__link" href="#alerts">Alerts</a>
           </li>
         </ul>
       </nav>
@@ -218,6 +221,273 @@
           <button class="btn btn-small btn__warning">Attention</button>
           <button class="btn btn-small btn__danger">Supprimer</button>
           <button class="btn btn-small" disabled>Désactivé</button>
+        </div>
+      </section>
+
+      <section class="ds" id="alerts">
+        <h2>Alerts</h2>
+        <div class="Alerts__wrapper">
+          <div class="alert alert__success">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Succès</p>
+              <p class="alert__description">Votre modification a bien été enregistrée.</p>
+            </div>
+            <button class="alert__close" aria-label="Fermer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="alert alert__info">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Information</p>
+              <p class="alert__description">Une nouvelle mise à jour est disponible.</p>
+            </div>
+            <button class="alert__close" aria-label="Fermer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="alert alert__warning">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Attention</p>
+              <p class="alert__description">Certains champs nécessitent votre vérification.</p>
+            </div>
+            <button class="alert__close" aria-label="Fermer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="alert alert__danger">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Erreur</p>
+              <p class="alert__description">Une erreur est survenue lors de la suppression.</p>
+            </div>
+            <button class="alert__close" aria-label="Fermer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="Alerts__wrapper">
+          <div class="alert alert-large alert__success">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Succès</p>
+              <p class="alert__description">Votre modification a bien été enregistrée.</p>
+            </div>
+          </div>
+
+          <div class="alert alert-large alert__danger">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Erreur</p>
+              <p class="alert__description">Une erreur est survenue lors de la suppression.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="Alerts__wrapper">
+          <div class="alert alert-small alert__info">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Information</p>
+              <p class="alert__description">Une nouvelle mise à jour est disponible.</p>
+            </div>
+          </div>
+
+          <div class="alert alert-small alert__warning">
+            <span class="alert__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </span>
+            <div class="alert__content">
+              <p class="alert__title">Attention</p>
+              <p class="alert__description">Certains champs nécessitent votre vérification.</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
