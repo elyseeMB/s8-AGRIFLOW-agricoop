@@ -1,0 +1,30 @@
+name: "Setup"
+description: "Set up Node.js and/or Python"
+inputs:
+  node:
+    description: "Set up and install"
+    required: false
+    default: "true"
+  node-version:
+    description: "Node.js Version to use"
+    required: false
+    default: "24"
+  python:
+    description: "set up and install"
+    required: false
+    default: "true"
+  python-version:
+    description: "Python version to use"
+    required: false
+    default: "3.12"
+runs:
+  using: "composite"
+  steps:
+    - if: inputs.node == 'true'
+      uses: "actions/setup-node@v7"
+      with:
+        node-version: ${{ inputs.node-version }}
+    - if: inputs.python == 'true'
+      uses: "actions/setup-python@v7"
+      with:
+        python-version: ${{ inputs.python-version }}
