@@ -435,12 +435,5 @@
       "membre_id": 2
     }
   ],
-  "villages": [
-    "Kintélé-Centre",
-    "Mikalou",
-    "Ngamakosso",
-    "Séo",
-    "Ngoyo",
-    "Ikié"
-  ]
+  "villages": ["Kintélé-Centre", "Mikalou", "Ngamakosso", "Séo", "Ngoyo", "Ikié"]
 }

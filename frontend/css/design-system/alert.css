@@ -1,0 +1,6 @@
+.Alerts__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-block-end: var(--space-lg);
+}

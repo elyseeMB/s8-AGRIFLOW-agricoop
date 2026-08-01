@@ -8,6 +8,7 @@ renverront automatiquement les bons résultats pour les 8 modules
 d'AgriCoop Connect.
 ========================================================================
 """
+
 import json
 import os
 import logic
@@ -32,7 +33,9 @@ def _charger_donnees():
 # ---------- Module 1 : Tableau de bord ---------------------------------
 def dashboard_controller():
     d = _charger_donnees()
-    indicateurs = logic.calculer_indicateurs_globaux(d["livraisons"], d["ventes"], d["paiements"])
+    indicateurs = logic.calculer_indicateurs_globaux(
+        d["livraisons"], d["ventes"], d["paiements"]
+    )
     livraisons_par_jour = logic.calculer_livraisons_par_jour_semaine(d["livraisons"])
     return {
         "indicateurs": indicateurs,
@@ -47,14 +50,16 @@ def membres_controller():
     for m in d["membres"]:
         solde = logic.calculer_solde_membre(m["id"], d["livraisons"], d["paiements"])
         statut = "À jour" if solde <= 0 else "En retard"
-        resultat.append({
-            "id": m["id"],
-            "nom": m["nom"],
-            "village": m.get("village"),
-            "contact": m.get("contact"),
-            "solde": solde,
-            "statut_cotisation": statut,
-        })
+        resultat.append(
+            {
+                "id": m["id"],
+                "nom": m["nom"],
+                "village": m.get("village"),
+                "contact": m.get("contact"),
+                "solde": solde,
+                "statut_cotisation": statut,
+            }
+        )
     inactifs = logic.detecter_membres_inactifs(d["membres"], d["livraisons"])
     return {"membres": resultat, "membres_inactifs": inactifs}
 
@@ -93,7 +98,9 @@ def membre_detail_controller(membre_id):
         return None
     solde = logic.calculer_solde_membre(membre_id, d["livraisons"], d["paiements"])
     historique_livraisons = [l for l in d["livraisons"] if l["membre_id"] == membre_id]
-    historique_paiements = logic.calculer_historique_paiements_membre(membre_id, d["paiements"])
+    historique_paiements = logic.calculer_historique_paiements_membre(
+        membre_id, d["paiements"]
+    )
     return {
         "membre": membre,
         "solde": solde,
@@ -131,7 +138,9 @@ def enregistrer_livraison_controller(nouvelle_livraison):
     }
     d["livraisons"].append(livraison_complete)
 
-    solde = logic.calculer_solde_membre(nouvelle_livraison["membre_id"], d["livraisons"], d["paiements"])
+    solde = logic.calculer_solde_membre(
+        nouvelle_livraison["membre_id"], d["livraisons"], d["paiements"]
+    )
     return {"succes": True, "livraison": livraison_complete, "solde": solde}
 
 
@@ -171,9 +180,16 @@ def enregistrer_paiement_controller(nouveau_paiement):
     membre = next((m for m in d["membres"] if m["id"] == membre_id), None)
     membre_nom = membre["nom"] if membre else "Inconnu"
     recu = logic.generer_recu(membre_nom, paiement_complet["montant"])
-    nouveau_solde = logic.calculer_solde_membre(membre_id, d["livraisons"], d["paiements"])
+    nouveau_solde = logic.calculer_solde_membre(
+        membre_id, d["livraisons"], d["paiements"]
+    )
 
-    return {"succes": True, "paiement": paiement_complet, "recu": recu, "nouveau_solde": nouveau_solde}
+    return {
+        "succes": True,
+        "paiement": paiement_complet,
+        "recu": recu,
+        "nouveau_solde": nouveau_solde,
+    }
 
 
 # ---------- Module 5 : Ventes & Stock ------------------------------------
@@ -187,15 +203,22 @@ def ventes_stock_controller():
         copie["acheteur_nom"] = acheteurs_par_id.get(v["acheteur_id"], "Inconnu")
         copie["marge"] = logic.calculer_marge_vente(v)
         ventes_enrichies.append(copie)
-    return {"stock_disponible": stock, "ventes": ventes_enrichies, "acheteurs": d["acheteurs"]}
+    return {
+        "stock_disponible": stock,
+        "ventes": ventes_enrichies,
+        "acheteurs": d["acheteurs"],
+    }
 
 
 def enregistrer_vente_controller(nouvelle_vente):
     d = _charger_donnees()
     stock = logic.calculer_stock_disponible(d["livraisons"], d["ventes"])
     if not logic.verifier_stock_avant_vente(nouvelle_vente, stock):
-        return {"succes": False, "erreur": "Stock insuffisant pour cette vente.",
-                "stock_disponible": stock}
+        return {
+            "succes": False,
+            "erreur": "Stock insuffisant pour cette vente.",
+            "stock_disponible": stock,
+        }
 
     nouvel_id = max((v["id"] for v in d["ventes"]), default=0) + 1
     vente_complete = {
@@ -234,7 +257,9 @@ def statistiques_controller():
 
 def rapport_bailleur_controller():
     d = _charger_donnees()
-    return logic.generer_indicateurs_rapport_bailleur(d["livraisons"], d["ventes"], d["paiements"])
+    return logic.generer_indicateurs_rapport_bailleur(
+        d["livraisons"], d["ventes"], d["paiements"]
+    )
 
 
 # ---------- Module 7 : Authentification & Comptes (NOUVEAU) --------------
@@ -268,8 +293,15 @@ def utilisateurs_controller():
 def creer_utilisateur_controller(donnees):
     d = _charger_donnees()
     nom_utilisateur = donnees.get("nom_utilisateur", "").strip()
-    if not nom_utilisateur or not donnees.get("mot_de_passe") or not donnees.get("role"):
-        return {"succes": False, "erreur": "Nom d'utilisateur, mot de passe et rôle sont obligatoires."}
+    if (
+        not nom_utilisateur
+        or not donnees.get("mot_de_passe")
+        or not donnees.get("role")
+    ):
+        return {
+            "succes": False,
+            "erreur": "Nom d'utilisateur, mot de passe et rôle sont obligatoires.",
+        }
 
     if any(u["nom_utilisateur"] == nom_utilisateur for u in d["utilisateurs"]):
         return {"succes": False, "erreur": "Ce nom d'utilisateur existe déjà."}
@@ -289,7 +321,9 @@ def creer_utilisateur_controller(donnees):
     d["utilisateurs"].append(nouvel_utilisateur)
     return {
         "succes": True,
-        "utilisateur": {k: v for k, v in nouvel_utilisateur.items() if k != "mot_de_passe"},
+        "utilisateur": {
+            k: v for k, v in nouvel_utilisateur.items() if k != "mot_de_passe"
+        },
     }
 
 
