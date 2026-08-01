@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriCoop Connect — Gestion des paiements</title>
+  <link rel="stylesheet" href="Paiements.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="frontend/dashboard/dashboard.html"><span class="brand-mark" aria-hidden="true">✿</span><span>AgriCoop <strong>Connect</strong></span></a>
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <a href="frontend/dashboard/dashboard.html"><span aria-hidden="true">▦</span> Tableau de bord</a>
+        <a href="frontend/membres/membres.html"><span aria-hidden="true">♧</span> Membres</a>
+        <a href="frontend/livraisons/livraisons.html"><span aria-hidden="true">▱</span> Livraisons</a>
+        <a class="active" href="Paiements.html"><span aria-hidden="true">▤</span> Paiements</a>
+        <a href="frontend/ventes/ventes.html"><span aria-hidden="true">🛒</span> Ventes &amp; Stock</a>
+        <a href="frontend/statistiques/statistiques.html"><span aria-hidden="true">▥</span> Rapports</a>
+        <a href="frontend/comptes/comptes.html"><span aria-hidden="true">⚙</span> Paramètres</a>
+      </nav>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <h1>Gestion des paiements</h1>
+        <div class="topbar-actions">
+          <button class="button button-primary" id="btn-nouveau-paiement" type="button">＋ Nouveau paiement</button>
+          <span id="avatar-utilisateur" class="avatar" title="Utilisateur connecté">--</span>
+          <span id="utilisateur-connecte" class="user-session">Non connecté(e)</span>
+          <button id="btn-deconnexion" class="icon-button" type="button" aria-label="Déconnexion">⌄</button>
+        </div>
+      </header>
+      <main class="page-content">
+        <div id="message-global" class="message" role="alert" hidden></div>
+        <section class="top-grid">
+          <article class="section-block member-section">
+            <h2><span class="step">1</span> Informations du membre</h2>
+            <div class="member-card"><div id="member-avatar" class="member-avatar">--</div><div><h3 id="member-name">Sélectionnez un membre</h3><p id="member-contact">Ph: —</p><p id="member-village">Village: —</p><p id="member-adhesion">Date de jointure: —</p></div></div>
+            <div class="mini-cards"><div class="mini-card"><span>Total gagné</span><strong id="member-total-earned">—</strong><b aria-hidden="true">♙</b></div><div class="mini-card"><span>Total déjà payé</span><strong id="member-total-paid">—</strong><b aria-hidden="true">●</b></div></div>
+            <div class="balance-card"><span>Solde restant à payer</span><strong id="member-balance">—</strong></div>
+          </article>
+          <article class="section-block form-section">
+            <h2><span class="step">2</span> Formulaire d’enregistrement d’un paiement</h2>
+            <form id="form-paiement" class="payment-form" novalidate>
+              <label for="p-membre">Sélection du membre</label><select id="p-membre" required><option value="">-- Choisir un membre --</option></select>
+              <label for="p-montant">Montant à verser</label><div class="input-unit"><input id="p-montant" type="number" min="1" step="1" placeholder="Montant" required><span>FCFA</span></div>
+              <label for="p-date">Date du paiement</label><input id="p-date" type="date" required aria-describedby="date-help"><small id="date-help" class="field-help">La date ne peut pas être dans le futur.</small>
+              <fieldset><legend>Mode de paiement</legend><div class="payment-modes"><label><input type="radio" name="mode-paiement" value="Espèces" checked><span class="payment-choice"><svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5h18v9H3z"/><path d="M7 12h.01M17 12h.01M9 10.5h6v3H9z"/></svg><span>Espèces</span></span></label><label><input type="radio" name="mode-paiement" value="Mobile Money"><span class="payment-choice"><svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M10 5h4M10 18.5h4"/></svg><span>Mobile Money</span></span></label></div></fieldset>
+              <div id="message-erreur-paiement" class="message error" role="alert" hidden></div><div id="message-succes-paiement" class="message success" role="status" hidden></div>
+              <button class="button button-submit" id="btn-enregistrer" type="submit">Enregistrer le paiement</button>
+            </form>
+          </article>
+          <article class="section-block control-section"><h2><span class="step">3</span> Contrôle automatique</h2><div class="control-card"><p>Montant dû <b aria-hidden="true">ⓘ</b></p><strong id="montant-du">—</strong><p>Montant déjà payé</p><strong id="montant-deja-paye">—</strong><p>Montant maximum autorisé</p><strong id="montant-maximum">—</strong></div><div id="alerte-paiement" class="alert-box" role="alert" hidden></div></article>
+          <article class="section-block receipt-section"><h2><span class="step">4</span> Génération du reçu</h2><div class="receipt"><p>Numéro: <span id="recu-reference">—</span></p><hr><strong id="recu-membre">Sélectionnez un membre</strong><p>Montant à verser <span id="recu-montant">—</span></p><p>Date du paiement <span id="recu-date">—</span></p><p>Mode de paiement &nbsp; <span id="recu-mode">—</span></p><span class="stamp">DIGITAL</span></div><button class="button button-submit" id="btn-imprimer" type="button">Imprimer</button><button class="button button-outline" id="btn-pdf" type="button">Télécharger PDF</button></article>
+        </section>
+        <section class="section-block history-section"><div class="section-title-row"><h2><span class="step">5</span> Historique des paiements</h2><div class="filters" role="group" aria-label="Filtrer l’historique"><button type="button" data-filter="today">Aujourd’hui</button><button type="button" data-filter="week">Cette semaine</button><button type="button" data-filter="month">Ce mois</button><button class="active" type="button" data-filter="all">Tous</button></div></div><div class="table-wrapper"><table><thead><tr><th>Référence</th><th>Date</th><th>Membre</th><th>Montant</th><th>Mode de paiement</th><th>Agent responsable</th><th>Statut</th><th>Action</th></tr></thead><tbody id="liste-paiements"><tr><td colspan="8">Chargement de l’historique...</td></tr></tbody></table></div></section>
+        <section class="section-block summary-section"><h2><span class="step">6</span> Résumé financier</h2><div class="summary-grid"><div><span>Total versé ce mois</span><strong id="summary-month">—</strong></div><div><span>Nombre de paiements</span><strong id="summary-count">—</strong></div><div><span>Total versé paiement</span><strong id="summary-total">—</strong></div><div><span>Solde global restant à payer</span><strong id="summary-balance">—</strong></div><div><span>Paiements effectués aujourd’hui</span><strong id="summary-today">—</strong></div></div></section>
+      </main>
+    </div>
+  </div>
+  <script src="Paiements.js"></script>
+</body>
+</html>
