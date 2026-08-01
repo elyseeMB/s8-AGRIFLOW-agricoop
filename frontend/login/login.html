@@ -17,16 +17,132 @@
        *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
        ===================================================================== -->
     <main>
-      <form id="form-login">
-        <input type="text" id="l-nom-utilisateur" placeholder="Nom d'utilisateur" />
-        <input type="password" id="l-mot-de-passe" placeholder="Mot de passe" />
-        <button type="submit">Se connecter</button>
-      </form>
+      <section class="login">
+        <div class="wrapper__content">
+          <div class="wrapper__content-top">
+            <span class="wrapper__logo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 20h10" />
+                <path d="M10 20c0-4 2-6 2-10" />
+                <path d="M9.5 9.4a3.5 3.5 0 1 1 5 -5c1.5 1.5 1 3 1 5" />
+                <path d="M14.5 9.4a3.5 3.5 0 1 0 -5 -5c-1.5 1.5 -1 3 -1 5" />
+              </svg>
+            </span>
+            <h1>AgriCoop</h1>
+          </div>
+          <div class="wrapper__content-bottom">
+            <span>Gestion de la coopérative</span>
+            <span>COMAKI - Kintélé</span>
+          </div>
+        </div>
 
-      <div id="message-erreur-login" hidden></div>
+        <div class="wrapper__form">
+          <div id="message-erreur-login" class="alert alert__danger" hidden>
+            <span class="alert__icon" id="icone-erreur-login"></span>
+            <p class="alert__description" id="texte-erreur-login"></p>
+          </div>
 
-      <!-- AIDE — TODO (Dev FS1) : rappel optionnel que les comptes sont créés
-         par la Secrétaire (pas d'auto-inscription) -->
+          <div class="wrapper__content-info">
+            <h2>Connexion</h2>
+            <p>Connectez-vous à votre compte AgriCoop</p>
+          </div>
+
+          <form class="form" id="form-login">
+            <div class="input-group">
+              <label for="l-nom-utilisateur" class="input-group__label">Nom d'utilisateur</label>
+              <div class="input-group__field">
+                <span class="input-group__icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="l-nom-utilisateur"
+                  placeholder="Nom d'utilisateur"
+                  autocomplete="username"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="l-mot-de-passe" class="input-group__label">Mot de passe</label>
+              <div class="input-group__field">
+                <span class="input-group__icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                </span>
+                <input
+                  class="form__input"
+                  type="password"
+                  id="l-mot-de-passe"
+                  placeholder="Mot de passe"
+                />
+                <button
+                  type="button"
+                  class="input-group__toggle"
+                  id="toggle-mot-de-passe"
+                  aria-label="Afficher le mot de passe"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <button class="btn btn-large btn__success" type="submit">Se connecter</button>
+          </form>
+
+          <span class="form-divider">OU</span>
+          <p class="form-legacy">© COMAKI 2026 - Tous droits réservés</p>
+        </div>
+      </section>
     </main>
 
     <!-- NE PAS MODIFIER — scripts de connexion au backend -->
