@@ -30,8 +30,16 @@
      - mot_de_passe ne doit pas être vide
    Retourne : true si tout est valide, false sinon.
    Astuce   : "  ".trim() donne une chaîne vide "". */
+/**
+ * @param {{ nom_utilisateur: string, mot_de_passe: string }} donnees
+ */
 function validerFormulaireLogin(donnees) {
-  // TODO : à compléter
+  const { nom_utilisateur, mot_de_passe } = donnees;
+  const isValid = nom_utilisateur.trim() !== "" && mot_de_passe.trim() !== "";
+  if (!isValid) {
+    return;
+  }
+  return isValid;
 }
 
 /* [Dev FS1 — Tableau de bord — niveau S7 : boucle + condition]
