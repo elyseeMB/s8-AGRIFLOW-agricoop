@@ -85,7 +85,9 @@ body {
   text-decoration: none;
   font-size: var(--text-sm);
   opacity: 0.85;
-  transition: background var(--tr-light), opacity var(--tr-light);
+  transition:
+    background var(--tr-light),
+    opacity var(--tr-light);
 }
 
 .nav-item:hover,
@@ -221,10 +223,18 @@ body {
   color: #fff;
 }
 
-.stat-icon.green { background: var(--ds-accent); }
-.stat-icon.blue { background: var(--ds-info); }
-.stat-icon.orange { background: var(--ds-warning); }
-.stat-icon.purple { background: hsl(262deg 52% 47%); }
+.stat-icon.green {
+  background: var(--ds-accent);
+}
+.stat-icon.blue {
+  background: var(--ds-info);
+}
+.stat-icon.orange {
+  background: var(--ds-warning);
+}
+.stat-icon.purple {
+  background: hsl(262deg 52% 47%);
+}
 
 .stat-content {
   display: flex;
@@ -266,7 +276,9 @@ body {
   background: var(--surface);
   border: none;
   border-radius: var(--rounded-xl);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(16, 99, 41, 0.06);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(16, 99, 41, 0.06);
   padding: var(--space-md);
 }
 
@@ -326,8 +338,13 @@ body {
   margin-bottom: var(--space-2xs);
 }
 
-.required { color: var(--ds-danger); }
-.optional { color: var(--ds-disable-text); font-weight: 400; }
+.required {
+  color: var(--ds-danger);
+}
+.optional {
+  color: var(--ds-disable-text);
+  font-weight: 400;
+}
 
 .input-wrapper {
   position: relative;
@@ -421,7 +438,9 @@ body {
   gap: var(--space-2xs);
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(52, 168, 83, 0.35);
-  transition: background var(--tr-light), box-shadow var(--tr-light);
+  transition:
+    background var(--tr-light),
+    box-shadow var(--tr-light);
 }
 
 .btn-submit:hover {
@@ -720,10 +739,6 @@ tbody tr:last-of-type td {
    DESKTOP — à partir de 1024px
    ========================================================================== */
 @media (min-width: 1024px) {
-  body {
-    flex-direction: row;
-  }
-
   /* Sidebar redevient verticale et fixe */
   .sidebar {
     width: 260px;
@@ -843,115 +858,4 @@ tbody tr:last-of-type td {
   .main-content {
     padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
   }
-}
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
-/* Tools */
-@import "./tools/reset.css";
-@import "./tools/typography.css";
-@import "./tools/layout.css";
-
-/* Layouts */
-
-/* Pages */
-@import "../comptes/comptes.css";
-@import "../dashboard/dashboard.css";
-@import "../livraisons/livraisons.css";
-@import "../paiements/paiements.css";
-@import "../statistiques/statistiques.css";
-@import "../ventes/ventes.css";
-@import "../membres/membres.css";
-@import "../login/login.css";
-
-/* Components */
-@import "./components/Badge.css";
-@import "./components/btn.css";
-
-/* Module - design-system */
-@import "./design-system/root.css";
-@import "./design-system/palettes.css";
-@import "./design-system/typography.css";
-@import "./design-system/navigation.css";
-
-:root {
-  /* typography */
-  --font-sans: "inter";
-  --text-base: 16px;
-  --leading-1: 1;
-  --tr-light: 200ms;
-
-  /* Main - Colors */
-  --ds-accent: hsl(122.61deg 42.33% 31.96%);
-  --ds-accent-light: hsl(116.67deg 39.13% 90.98%);
-  --ds-accent-hover: hsl(129.35deg 69.37% 43.53%);
-  /* Status - Colors */
-  --ds-success: hsl(132.52deg 66.51% 40.98%);
-  --ds-danger: hsl(357.88deg 72.03% 46.27%);
-  --ds-danger-light: hsl(3.4deg 89.83% 88.43%);
-  --ds-warning: hsl(37.33deg 85.77% 50.39%);
-  --ds-warning-light: hsla(37, 100%, 92%, 0.724);
-  --ds-info: hsla(212, 86%, 50%, 0.717);
-  --ds-info-light: hsla(212, 100%, 93%, 0.717);
-  --ds-disable: hsl(0, 0%, 92%);
-  --ds-disable-text: hsla(0, 0%, 66%, 0.717);
-
-  /* Background */
-  --backgroud: hsl(225deg 16.67% 95.29%);
-  --surface: hsl(0, 0%, 100%);
-  --foreground: hsl(0, 0%, 5%);
-  --muted: hsl(220deg 9.68% 93.92%);
-  --border: hsl(0, 0%, 88%);
-
-  /* Border */
-  --border-w-1: 1.5px;
-  --ds-border-accent: hsl(116.47deg 9.94% 66.47%);
-
-  /* Sidebar */
-  --ds-bg-sidebar: hsl(121.74deg 42.86% 31.57%);
-
-  /* Space */
-  --ratio: 1.25;
-  --space-base: 0.5rem;
-  --space-3xs: calc(var(--space-base) / pow(var(--ratio), 6));
-  --space-2xs: calc(var(--space-base) / pow(var(--ratio), 3));
-  --space-xs: calc(var(--space-base) / pow(var(--ratio), 2));
-  --space-sm: calc(var(--space-base) / pow(var(--ratio), 1));
-  --space-md: calc(var(--space-base) * pow(var(--ratio), 1));
-  --space-lg: calc(var(--space-base) * pow(var(--ratio), 2));
-  --space-xl: calc(var(--space-base) * pow(var(--ratio), 3));
-  --space-2xl: calc(var(--space-base) * pow(var(--ratio), 4));
-  --space-3xl: calc(var(--space-base) * pow(var(--ratio), 5));
-
-  /* text */
-  --text-xs: calc(var(--text-base) / pow(var(--ratio), 2));
-  --text-sm: calc(var(--text-base) / pow(var(--ratio), 1));
-  --text-md: calc(var(--text-base) * pow(var(--ratio), 1));
-  --text-lg: calc(var(--text-base) * pow(var(--ratio), 2));
-  --text-xl: calc(var(--text-base) * pow(var(--ratio), 3));
-  --text-2xl: calc(var(--text-base) * pow(var(--ratio), 4));
-  --text-3xl: calc(var(--text-base) * pow(var(--ratio), 5));
-  --text-4xl: calc(var(--text-base) * pow(var(--ratio), 6));
-
-  /* rounded */
-  --rounded-ratio: 1.12;
-  --rounded-base: 0.4rem;
-  --rounded-full: 9999px;
-  --rounded-xs: calc(var(--rounded-base) / pow(var(--rounded-ratio), 2));
-  --rounded-sm: calc(var(--rounded-base) / pow(var(--rounded-ratio), 1));
-  --rounded-md: calc(var(--rounded-base) * pow(var(--rounded-ratio), 1));
-  --rounded-lg: calc(var(--rounded-base) * pow(var(--rounded-ratio), 2));
-  --rounded-xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 3));
-  --rounded-2xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 4));
-  --rounded-3xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 5));
-  --rounded-4xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 6));
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  font-family: var(--font-sans), sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
