@@ -60,7 +60,7 @@ function compterJoursActifs(livraisonsParJour, seuil) {
    Retourne   : un nouveau tableau ne contenant que les membres dont
                 .statut_cotisation est égal au statut demandé. */
 function filtrerMembresParStatut(membres, statut) {
-  // TODO : à compléter
+  return membres.filter(m => m.statut_cotisation ===statut)
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter + méthode de chaîne]
@@ -71,7 +71,9 @@ function filtrerMembresParStatut(membres, statut) {
                 tous les membres tels quels.
    Astuce     : "Jean Mabiala".toLowerCase().includes("jean") -> true */
 function rechercherMembreParNom(membres, texte) {
-  // TODO : à compléter
+  if (!texte.trim()) return membres;
+  const recherche = texte.toLowerCase();
+  return membres.filter(m => m.nom.toLowerCase().includes(recherche));
 }
 
 /* [Dev FS2 — Membres — niveau S7 : conditions simples — NOUVEAU]
@@ -86,7 +88,12 @@ function rechercherMembreParNom(membres, texte) {
               -> {valide: false, erreurs: ["Le prénom est obligatoire.",
                                             "Le contact est obligatoire."]} */
 function validerFormulaireNouveauMembre(donnees) {
-  // TODO : à compléter
+  const erreurs = [];
+  if (!donnees.prenom.trim()) erreurs.push("Le prénom est obligatoire.");
+  if (!donnees.nom.trim()) erreurs.push("Le nom est obligatoire.");
+  if (!donnees.village.trim()) erreurs.push("Le village est obligatoire.");
+  if (!donnees.contact.trim()) erreurs.push("Le contact est obligatoire.");
+  return { valide: erreurs.length === 0, erreurs };
 }
 
 /* [Dev FS3 — Livraisons — niveau S7 : conditions imbriquées]
