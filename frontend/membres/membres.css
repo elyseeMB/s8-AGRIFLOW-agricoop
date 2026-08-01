@@ -32,9 +32,6 @@ body {
   background: var(--gris-fond);
   color: #1f2a24;
 }
-
-/* ---------- Sidebar ---------- */
-
 .sidebar {
   width: 240px;
   flex-shrink: 0;
@@ -54,9 +51,8 @@ body {
   font-weight: 700;
 }
 
-.brand-icon::before {
-  content: "";
-  font-size: 1.3rem;
+.brand-name {
+  font-size: var(--text-4xl);
 }
 
 .sidebar-nav {
@@ -92,7 +88,6 @@ body {
   text-align: center;
 }
 
-/* ---------- Contenu principal ---------- */
 
 main {
   flex: 1;
@@ -132,8 +127,6 @@ main {
   font-weight: 600;
   color: var(--vert-fonce);
 }
-
-/* ---------- Barre de filtres ---------- */
 
 .filters-bar {
   background: var(--blanc);
@@ -194,8 +187,6 @@ main {
   color: var(--gris-texte);
   pointer-events: none;
 }
-
-/* ---------- Liste des membres ---------- */
 
 .membres-section {
   background: var(--blanc);
@@ -258,8 +249,6 @@ main {
   color: var(--gris-texte);
   font-style: italic;
 }
-
-/* ---------- Formulaire nouveau membre ---------- */
 
 .new-member-panel {
   background: var(--blanc);
@@ -335,8 +324,6 @@ main {
   color: #1e7a3c;
   border: 1px solid #bfe3c9;
 }
-
-/* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
   body {
