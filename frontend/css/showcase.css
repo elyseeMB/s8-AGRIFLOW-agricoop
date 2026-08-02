@@ -1,0 +1,5 @@
+@import "./design-system/root.css";
+@import "./design-system/palettes.css";
+@import "./design-system/typography.css";
+@import "./design-system/navigation.css";
+@import "./design-system/alert.css";

@@ -1,0 +1,102 @@
+/* ============================================================
+   DASHBOARD — Styles spécifiques à la page Tableau de bord
+   Vient compléter card.css / chart.css (composants globaux).
+   ============================================================ */
+
+/* ---------- CARTES INDICATEURS (icône colorée par carte) ---------- */
+
+#carte-stock .stat-icon {
+  background: var(--ds-accent);
+}
+
+#carte-montant-du .stat-icon {
+  background: var(--ds-info);
+}
+
+#carte-membres .stat-icon {
+  background: var(--ds-purple);
+}
+
+#carte-livraisons .stat-icon {
+  background: var(--ds-warning);
+}
+
+/* Si main.js injecte juste du texte brut (pas de .stat-icon/.stat-content),
+   ce fallback garde un rendu propre en attendant la structure complète */
+.stat-card:empty::before {
+  content: "Chargement…";
+  color: var(--ds-muted-text);
+  font-size: var(--text-sm);
+  font-style: italic;
+}
+
+/* ---------- JOURS À FORTE ACTIVITÉ ---------- */
+
+#jours-actifs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+#jours-actifs strong {
+  font-size: var(--text-2xl);
+  color: var(--ds-accent);
+}
+
+#jours-actifs span {
+  font-size: var(--text-sm);
+  color: var(--ds-accent);
+}
+
+/* ---------- GRAPHIQUE SEMAINE ---------- */
+
+#graphique-semaine {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  height: 180px;
+  padding-top: var(--space-md);
+  border-top: var(--border-w-1) solid var(--border);
+}
+
+#graphique-semaine .barre {
+  flex: 1 1 0;
+  min-width: 24px;
+  max-width: 48px;
+  background: var(--ds-accent);
+  border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+  position: relative;
+  transition: background var(--tr-light);
+}
+
+#graphique-semaine .barre:hover {
+  background: var(--ds-accent-hover);
+}
+
+/* Étiquette du jour sous chaque barre (si main.js ajoute un span/data-day) */
+#graphique-semaine .barre::after {
+  content: attr(data-jour);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--space-2xs);
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+  white-space: nowrap;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  #graphique-semaine {
+    height: 140px;
+  }
+
+  #jours-actifs {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+  }
+}

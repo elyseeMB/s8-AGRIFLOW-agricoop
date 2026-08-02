@@ -7,47 +7,243 @@
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <!-- =====================================================================
-       NAVIGATION — TODO (Dev FS1)
-       Construire un menu de navigation vers les 8 pages du site.
-       Structure attendue : <nav> avec liens vers les autres modules.
-       Doit inclure un menu burger pour mobile.
-       ===================================================================== -->
-
-    <main>
+    <div class="layout">
       <!-- =====================================================================
-         CARTES INDICATEURS — TODO (Dev FS1)
-         Construire 4 cartes affichant les indicateurs clés du tableau de bord.
-         Structure attendue : conteneur avec 4 éléments (stock, montant dû,
-         membres actifs, livraisons du mois).
-         Layout : Flexbox ou Grid, responsive (1 colonne mobile, 2-4 desktop).
-
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         NAVIGATION — TODO (Dev FS1)
+         Construire un menu de navigation vers les 8 pages du site.
+         Doit inclure un menu burger pour mobile.
          ===================================================================== -->
-      <div id="dashboard-cartes">
-        <div id="carte-stock"></div>
-        <div id="carte-montant-du"></div>
-        <div id="carte-membres"></div>
-        <div id="carte-livraisons"></div>
-      </div>
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"
+              ></path>
+              <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <strong>AgriCoop</strong>
+            <span>Connect</span>
+          </div>
+        </div>
 
-      <!-- =====================================================================
-         JOURS À FORTE ACTIVITÉ — TODO (Dev FS1)
-         Afficher le nombre de jours dépassant le seuil de 80 kg.
+        <nav class="navigation">
+          <a href="../dashboard/dashboard.html" class="nav-item active">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+              </svg>
+            </span>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="../membres/membres.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span>Membres</span>
+          </a>
+          <a href="../livraisons/livraisons.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+                ></path>
+                <path d="M12 22V12"></path>
+                <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                <path d="m7.5 4.27 9 5.15"></path>
+              </svg>
+            </span>
+            <span>Livraisons</span>
+          </a>
+          <a href="../paiements/paiements.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
+                ></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+              </svg>
+            </span>
+            <span>Paiements</span>
+          </a>
+          <a href="../ventes/ventes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"></path>
+                <path
+                  d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"
+                ></path>
+                <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"></path>
+              </svg>
+            </span>
+            <span>Ventes &amp; Stock</span>
+          </a>
+          <a href="../statistiques/statistiques.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+                <path d="M18 17V9"></path>
+                <path d="M13 17V5"></path>
+                <path d="M8 17v-3"></path>
+              </svg>
+            </span>
+            <span>Statistiques</span>
+          </a>
+          <a href="../comptes/comptes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span>Comptes</span>
+          </a>
+        </nav>
+      </aside>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-      <div id="jours-actifs"></div>
+      <main class="layout__main">
+        <header class="topbar">
+          <div class="topbar-main">
+            <h1>Tableau de bord</h1>
+          </div>
+          <div class="breadcrumb">
+            <span>Accueil</span>
+            <span>/</span>
+            <strong>Tableau de bord</strong>
+          </div>
+        </header>
 
-      <!-- =====================================================================
-         GRAPHIQUE SEMAINE — TODO (Dev FS1)
-         Conteneur pour un graphique en barres (barres générées par main.js).
-         Le dev doit styliser les barres via CSS (.barre).
+        <!-- =====================================================================
+           CARTES INDICATEURS — TODO (Dev FS1)
+           *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+           ===================================================================== -->
+        <div id="dashboard-cartes" class="quick-stats">
+          <div id="carte-stock" class="stat-card"></div>
+          <div id="carte-montant-du" class="stat-card"></div>
+          <div id="carte-membres" class="stat-card"></div>
+          <div id="carte-livraisons" class="stat-card"></div>
+        </div>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-      <div id="graphique-semaine"></div>
-    </main>
+        <!-- =====================================================================
+           JOURS À FORTE ACTIVITÉ — TODO (Dev FS1)
+           *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
+           ===================================================================== -->
+        <div id="jours-actifs" class="total-card"></div>
+
+        <!-- =====================================================================
+           GRAPHIQUE SEMAINE — TODO (Dev FS1)
+           *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
+           ===================================================================== -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="section-label">CETTE SEMAINE</div>
+              <h3>Livraisons par jour</h3>
+            </div>
+          </div>
+          <div id="graphique-semaine" class="chart-bars"></div>
+        </div>
+      </main>
+    </div>
 
     <!-- NE PAS MODIFIER — scripts de connexion au backend -->
     <script src="../functions.js"></script>

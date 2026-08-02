@@ -12,526 +12,671 @@
   </head>
     <script src="../functions.js"></script>
   <body>
-    <section class="livraisons-section">
-      <!-- ================================================================
-         SIDEBAR
-         ================================================================ -->
+    <div class="layout">
       <aside class="sidebar">
-        <!-- LOGO -->
         <div class="brand">
-          <div class="brand-logo">🌱</div>
-
+          <div class="brand-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"
+              ></path>
+              <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+          </div>
           <div class="brand-text">
             <strong>AgriCoop</strong>
             <span>Connect</span>
           </div>
         </div>
 
-        <!-- PROFIL -->
-        <div class="sidebar-profile">
-          <div class="profile-avatar">A</div>
-
-          <div class="profile-info">
-            <strong>Administrateur</strong>
-            <span>Gestionnaire</span>
-          </div>
-        </div>
-
-        <!-- NAVIGATION -->
         <nav class="navigation">
-          <p class="nav-title">PRINCIPAL</p>
-
-          <a href="../index.html" class="nav-item">
-            <span class="nav-icon">▦</span>
+          <a href="../dashboard/dashboard.html" class="nav-item active">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+              </svg>
+            </span>
             <span>Tableau de bord</span>
           </a>
-
-          <a href="#" class="nav-item">
-            <span class="nav-icon">♙</span>
+          <a href="../membres/membres.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </span>
             <span>Membres</span>
-
-            <span class="nav-badge"> 42 </span>
           </a>
-
-          <a href="#" class="nav-item active" aria-current="page">
-            <span class="nav-icon">▣</span>
+          <a href="../livraisons/livraisons.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+                ></path>
+                <path d="M12 22V12"></path>
+                <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                <path d="m7.5 4.27 9 5.15"></path>
+              </svg>
+            </span>
             <span>Livraisons</span>
           </a>
-
-          <p class="nav-title">GESTION</p>
-
-          <a href="#" class="nav-item">
-            <span class="nav-icon">▤</span>
+          <a href="../paiements/paiements.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
+                ></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+              </svg>
+            </span>
             <span>Paiements</span>
           </a>
-
-          <a href="#" class="nav-item">
-            <span class="nav-icon">▥</span>
+          <a href="../ventes/ventes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"></path>
+                <path
+                  d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"
+                ></path>
+                <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"></path>
+              </svg>
+            </span>
             <span>Ventes &amp; Stock</span>
           </a>
-
-          <a href="#" class="nav-item">
-            <span class="nav-icon">▧</span>
-            <span>Rapports</span>
+          <a href="../statistiques/statistiques.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+                <path d="M18 17V9"></path>
+                <path d="M13 17V5"></path>
+                <path d="M8 17v-3"></path>
+              </svg>
+            </span>
+            <span>Statistiques</span>
           </a>
-
-          <p class="nav-title">SYSTÈME</p>
-
-          <a href="#" class="nav-item">
-            <span class="nav-icon">⚙</span>
-            <span>Paramètres</span>
+          <a href="../comptes/comptes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span>Comptes</span>
           </a>
         </nav>
-
-        <!-- AIDE -->
-        <div class="sidebar-help">
-          <div class="help-icon">?</div>
-
-          <div>
-            <strong>Besoin d'aide ?</strong>
-            <p>Consultez le centre d'aide.</p>
-          </div>
-        </div>
       </aside>
 
-      <!-- ================================================================
-         CONTENU PRINCIPAL
-         ================================================================ -->
-      <main class="main-content">
-        <!-- ================================================================
-           HEADER
-           ================================================================ -->
+      <main class="layout__main">
         <header class="topbar">
-          <div class="page-title">
-            <div class="breadcrumb">
-              <span>Accueil</span>
-              <span>/</span>
-              <strong>Livraisons</strong>
-            </div>
-
+          <div class="topbar-main">
             <h1>Gestion des livraisons</h1>
-
-            <p>Enregistrez, suivez et gérez les livraisons des membres.</p>
-          </div>
-
-          <div class="topbar-actions">
-            <button type="button" class="notification-button" aria-label="Notifications">
-              🔔
-              <span class="notification-dot"></span>
-            </button>
-
-            <div class="current-date">
-              <span>DATE</span>
-
-              <strong> 24 Avril 2024 </strong>
+            <div class="topbar-actions">
+              <div class="topbar-profile">
+                <div class="topbar-avatar">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="topbar-profile-info">
+                  <strong>Administrateur</strong>
+                  <span>Secrétaire</span>
+                </div>
+              </div>
             </div>
           </div>
         </header>
 
-        <!-- ================================================================
+        <section class="livraisons-section">
+          <!-- ================================================================
+         SIDEBAR
+         ================================================================ -->
+
+          <!-- ================================================================
+         CONTENU PRINCIPAL
+         ================================================================ -->
+          <main class="">
+            <!-- ================================================================
+           HEADER
+           ================================================================ -->
+            <header class="topbar">
+              <div class="page-title">
+                <div class="breadcrumb">
+                  <span>Accueil</span>
+                  <span>/</span>
+                  <strong>Livraisons</strong>
+                </div>
+
+                <h1>Gestion des livraisons</h1>
+
+                <p>Enregistrez, suivez et gérez les livraisons des membres.</p>
+              </div>
+
+              <div class="topbar-actions">
+                <button type="button" class="notification-button" aria-label="Notifications">
+                  🔔
+                  <span class="notification-dot"></span>
+                </button>
+
+                <div class="current-date">
+                  <span>DATE</span>
+
+                  <strong> 24 Avril 2024 </strong>
+                </div>
+              </div>
+            </header>
+
+            <!-- ================================================================
            CONTENU
            ================================================================ -->
-        <section class="delivery-section">
-          <!-- ============================================================
+            <section class="delivery-section">
+              <!-- ============================================================
              STATISTIQUES RAPIDES
              ============================================================ -->
-          <div class="quick-stats">
-            <!-- STAT 1 -->
-            <article class="stat-card">
-              <div class="stat-icon green">📦</div>
+              <div class="quick-stats">
+                <!-- STAT 1 -->
+                <article class="stat-card">
+                  <div class="stat-icon green">📦</div>
 
-              <div class="stat-content">
-                <span> Livraisons ce mois </span>
+                  <div class="stat-content">
+                    <span> Livraisons ce mois </span>
 
-                <strong> 128 </strong>
+                    <strong> 128 </strong>
 
-                <small class="positive"> ↑ 12,5% depuis le mois dernier </small>
+                    <small class="positive"> ↑ 12,5% depuis le mois dernier </small>
+                  </div>
+                </article>
+
+                <!-- STAT 2 -->
+                <article class="stat-card">
+                  <div class="stat-icon blue">⚖</div>
+
+                  <div class="stat-content">
+                    <span> Quantité livrée </span>
+
+                    <strong> 18 250 kg </strong>
+
+                    <small class="positive"> ↑ 8,4% cette semaine </small>
+                  </div>
+                </article>
+
+                <!-- STAT 3 -->
+                <article class="stat-card">
+                  <div class="stat-icon orange">FCFA</div>
+
+                  <div class="stat-content">
+                    <span> Montant généré </span>
+
+                    <strong> 6 462 500 FCFA </strong>
+
+                    <small class="positive"> ↑ 5,7% ce mois </small>
+                  </div>
+                </article>
+
+                <!-- STAT 4 -->
+                <article class="stat-card">
+                  <div class="stat-icon purple">♙</div>
+
+                  <div class="stat-content">
+                    <span> Membres actifs </span>
+
+                    <strong> 42 </strong>
+
+                    <small> Membres enregistrés </small>
+                  </div>
+                </article>
               </div>
-            </article>
 
-            <!-- STAT 2 -->
-            <article class="stat-card">
-              <div class="stat-icon blue">⚖</div>
-
-              <div class="stat-content">
-                <span> Quantité livrée </span>
-
-                <strong> 18 250 kg </strong>
-
-                <small class="positive"> ↑ 8,4% cette semaine </small>
-              </div>
-            </article>
-
-            <!-- STAT 3 -->
-            <article class="stat-card">
-              <div class="stat-icon orange">FCFA</div>
-
-              <div class="stat-content">
-                <span> Montant généré </span>
-
-                <strong> 6 462 500 FCFA </strong>
-
-                <small class="positive"> ↑ 5,7% ce mois </small>
-              </div>
-            </article>
-
-            <!-- STAT 4 -->
-            <article class="stat-card">
-              <div class="stat-icon purple">♙</div>
-
-              <div class="stat-content">
-                <span> Membres actifs </span>
-
-                <strong> 42 </strong>
-
-                <small> Membres enregistrés </small>
-              </div>
-            </article>
-          </div>
-
-          <!-- ============================================================
+              <!-- ============================================================
              FORMULAIRE + STOCK
              ============================================================ -->
-          <div class="delivery-grid">
-            <!-- ==========================================================
+              <div class="delivery-grid">
+                <!-- ==========================================================
                FORMULAIRE DE LIVRAISON
                ========================================================== -->
-            <section class="card delivery-form-card">
-              <!-- HEADER -->
-              <div class="card-header">
-                <div>
-                  <div class="section-label">NOUVELLE OPÉRATION</div>
+                <section class="card delivery-form-card">
+                  <!-- HEADER -->
+                  <div class="card-header">
+                    <div>
+                      <div class="section-label">NOUVELLE OPÉRATION</div>
 
-                  <h2>Enregistrer une livraison</h2>
+                      <h2>Enregistrer une livraison</h2>
 
-                  <p>Renseignez les informations concernant la livraison.</p>
-                </div>
+                      <p>Renseignez les informations concernant la livraison.</p>
+                    </div>
 
-                <div class="operation-number">
-                  <span>Référence</span>
+                    <div class="operation-number">
+                      <span>Référence</span>
 
-                  <strong> LIV-2024-0048 </strong>
-                </div>
-              </div>
-
-              <!-- FORMULAIRE -->
-              <form id="form-livraison">
-                <!-- MEMBRE -->
-                <div class="form-group">
-                  <label for="f-membre">
-                    Membre
-                    <span class="required">*</span>
-                  </label>
-
-                  <div class="input-wrapper">
-                    <span class="input-icon"> ♙ </span>
-
-                    <select id="f-membre">
-                      <option value="">-- Choisir un membre --</option>
-                    </select>
+                      <strong> LIV-2024-0048 </strong>
+                    </div>
                   </div>
 
-                  <small class="field-help">
-                    Sélectionnez le membre qui effectue la livraison.
-                  </small>
-                </div>
+                  <!-- FORMULAIRE -->
+                  <form id="form-livraison">
+                    <!-- MEMBRE -->
+                    <div class="form-group">
+                      <label for="f-membre">
+                        Membre
+                        <span class="required">*</span>
+                      </label>
 
-                <!-- CULTURE -->
-                <div class="form-group">
-                  <label for="f-culture">
-                    Culture / Produit
-                    <span class="required">*</span>
-                  </label>
+                      <div class="input-wrapper">
+                        <span class="input-icon"> ♙ </span>
 
-                  <div class="input-wrapper">
-                    <span class="input-icon"> 🌱 </span>
+                        <select id="f-membre">
+                          <option value="">-- Choisir un membre --</option>
+                        </select>
+                      </div>
 
-                    <select id="f-culture">
-                      <option value="">-- Choisir une culture --</option>
+                      <small class="field-help">
+                        Sélectionnez le membre qui effectue la livraison.
+                      </small>
+                    </div>
 
-                      <option value="Manioc">Manioc</option>
+                    <!-- CULTURE -->
+                    <div class="form-group">
+                      <label for="f-culture">
+                        Culture / Produit
+                        <span class="required">*</span>
+                      </label>
 
-                      <option value="Maïs">Maïs</option>
+                      <div class="input-wrapper">
+                        <span class="input-icon"> 🌱 </span>
 
-                      <option value="Arachide">Arachide</option>
-                    </select>
-                  </div>
-                </div>
+                        <select id="f-culture">
+                          <option value="">-- Choisir une culture --</option>
 
-                <!-- QUANTITÉ -->
-                <div class="form-group">
-                  <label for="f-quantite">
-                    Quantité livrée
-                    <span class="required">*</span>
-                  </label>
+                          <option value="Manioc">Manioc</option>
 
-                  <div class="input-wrapper">
-                    <span class="input-icon"> ⚖ </span>
+                          <option value="Maïs">Maïs</option>
 
-                    <input type="number" id="f-quantite" min="1" placeholder="Ex : 500" />
+                          <option value="Arachide">Arachide</option>
+                        </select>
+                      </div>
+                    </div>
 
-                    <span class="input-unit"> kg </span>
-                  </div>
+                    <!-- QUANTITÉ -->
+                    <div class="form-group">
+                      <label for="f-quantite">
+                        Quantité livrée
+                        <span class="required">*</span>
+                      </label>
 
-                  <small class="field-help"> La quantité doit être supérieure à 0 kg. </small>
-                </div>
+                      <div class="input-wrapper">
+                        <span class="input-icon"> ⚖ </span>
 
-                <!-- DATE -->
-                <div class="form-group">
-                  <label for="date-livraison">
-                    Date de livraison
-                    <span class="required">*</span>
-                  </label>
+                        <input type="number" id="f-quantite" min="1" placeholder="Ex : 500" />
 
-                  <div class="input-wrapper">
-                    <span class="input-icon"> 📅 </span>
+                        <span class="input-unit"> kg </span>
+                      </div>
 
-                    <input type="date" id="date-livraison" value="2024-04-24" />
-                  </div>
-                </div>
+                      <small class="field-help"> La quantité doit être supérieure à 0 kg. </small>
+                    </div>
 
-                <!-- PRIX -->
-                <div class="form-group">
-                  <label for="prix-kg"> Prix au kilogramme </label>
+                    <!-- DATE -->
+                    <div class="form-group">
+                      <label for="date-livraison">
+                        Date de livraison
+                        <span class="required">*</span>
+                      </label>
 
-                  <div class="input-wrapper">
-                    <span class="input-icon"> FCFA </span>
+                      <div class="input-wrapper">
+                        <span class="input-icon"> 📅 </span>
 
-                    <input type="number" id="prix-kg" min="0" placeholder="Ex : 500" />
+                        <input type="date" id="date-livraison" value="2024-04-24" />
+                      </div>
+                    </div>
 
-                    <span class="input-unit"> FCFA / kg </span>
-                  </div>
-                </div>
+                    <!-- PRIX -->
+                    <div class="form-group">
+                      <label for="prix-kg"> Prix au kilogramme </label>
 
-                <!-- REMARQUE -->
-                <div class="form-group">
-                  <label for="remarque-livraison">
-                    Remarque
+                      <div class="input-wrapper">
+                        <span class="input-icon"> FCFA </span>
 
-                    <span class="optional"> (optionnel) </span>
-                  </label>
+                        <input type="number" id="prix-kg" min="0" placeholder="Ex : 500" />
 
-                  <textarea
-                    id="remarque-livraison"
-                    rows="3"
-                    placeholder="Ajouter une remarque concernant cette livraison..."
-                  ></textarea>
-                </div>
+                        <span class="input-unit"> FCFA / kg </span>
+                      </div>
+                    </div>
 
-                <!-- RÉSUMÉ DE L'OPÉRATION -->
-                <div class="operation-summary">
-                  <div>
-                    <span> Quantité </span>
+                    <!-- REMARQUE -->
+                    <div class="form-group">
+                      <label for="remarque-livraison">
+                        Remarque
 
-                    <strong> 0 kg </strong>
-                  </div>
+                        <span class="optional"> (optionnel) </span>
+                      </label>
 
-                  <div>
-                    <span> Prix unitaire </span>
+                      <textarea
+                        id="remarque-livraison"
+                        rows="3"
+                        placeholder="Ajouter une remarque concernant cette livraison..."
+                      ></textarea>
+                    </div>
 
-                    <strong> 0 FCFA </strong>
-                  </div>
+                    <!-- RÉSUMÉ DE L'OPÉRATION -->
+                    <div class="operation-summary">
+                      <div>
+                        <span> Quantité </span>
 
-                  <div class="total">
-                    <span> Montant total </span>
+                        <strong> 0 kg </strong>
+                      </div>
 
-                    <strong> 0 FCFA </strong>
-                  </div>
-                </div>
+                      <div>
+                        <span> Prix unitaire </span>
 
-                <!-- BOUTON -->
-                <button type="submit" class="btn-submit">
-                  <span> ✓ </span>
+                        <strong> 0 FCFA </strong>
+                      </div>
 
-                  Enregistrer la livraison
-                </button>
-              </form>
+                      <div class="total">
+                        <span> Montant total </span>
 
-              <!-- ========================================================
+                        <strong> 0 FCFA </strong>
+                      </div>
+                    </div>
+
+                    <!-- BOUTON -->
+                    <button type="submit" class="btn btn__primary btn-submit">
+                      <span> ✓ </span>
+
+                      Enregistrer la livraison
+                    </button>
+                  </form>
+
+                  <!-- ========================================================
                  MESSAGES — UTILISÉS PAR MAIN.JS
                  ======================================================== -->
 
-              <div id="message-erreur-livraison" class="message message-error" hidden></div>
+                  <div id="message-erreur-livraison" class="message message-error" hidden></div>
 
-              <div id="message-succes-livraison" class="message message-success" hidden></div>
-            </section>
+                  <div id="message-succes-livraison" class="message message-success" hidden></div>
+                </section>
 
-            <!-- ==========================================================
+                <!-- ==========================================================
                STOCK
                ========================================================== -->
-            <aside class="stock-card">
-              <div class="stock-header">
-                <div>
-                  <span class="section-label"> INVENTAIRE </span>
+                <aside class="stock-card">
+                  <div class="stock-header">
+                    <div>
+                      <span class="section-label"> INVENTAIRE </span>
 
-                  <h2>État du stock</h2>
-                </div>
+                      <h2>État du stock</h2>
+                    </div>
 
-                <span class="stock-header-icon"> 📦 </span>
-              </div>
-
-              <div class="stock-total">
-                <span> Valeur totale du stock </span>
-
-                <strong> 3 080 kg </strong>
-
-                <small> Stock disponible </small>
-              </div>
-
-              <!-- MANIOC -->
-              <div class="stock-item">
-                <div class="product-info">
-                  <div class="product-icon manioc">🌱</div>
-
-                  <div>
-                    <strong> Manioc </strong>
-
-                    <small> Racines &amp; tubercules </small>
+                    <span class="stock-header-icon"> 📦 </span>
                   </div>
-                </div>
 
-                <div class="stock-quantity">
-                  <strong> 1 350 </strong>
+                  <div class="stock-total">
+                    <span> Valeur totale du stock </span>
 
-                  <span> kg </span>
-                </div>
-              </div>
+                    <strong> 3 080 kg </strong>
 
-              <!-- MAÏS -->
-              <div class="stock-item">
-                <div class="product-info">
-                  <div class="product-icon mais">🌽</div>
-
-                  <div>
-                    <strong> Maïs </strong>
-
-                    <small> Céréales </small>
+                    <small> Stock disponible </small>
                   </div>
-                </div>
 
-                <div class="stock-quantity">
-                  <strong> 1 420 </strong>
+                  <!-- MANIOC -->
+                  <div class="stock-item">
+                    <div class="product-info">
+                      <div class="product-icon manioc">🌱</div>
 
-                  <span> kg </span>
-                </div>
-              </div>
+                      <div>
+                        <strong> Manioc </strong>
 
-              <!-- ARACHIDE -->
-              <div class="stock-item">
-                <div class="product-info">
-                  <div class="product-icon arachide">🥜</div>
+                        <small> Racines &amp; tubercules </small>
+                      </div>
+                    </div>
 
-                  <div>
-                    <strong> Arachide </strong>
+                    <div class="stock-quantity">
+                      <strong> 1 350 </strong>
 
-                    <small> Oléagineux </small>
+                      <span> kg </span>
+                    </div>
                   </div>
-                </div>
 
-                <div class="stock-quantity">
-                  <strong> 310 </strong>
+                  <!-- MAÏS -->
+                  <div class="stock-item">
+                    <div class="product-info">
+                      <div class="product-icon mais">🌽</div>
 
-                  <span> kg </span>
-                </div>
+                      <div>
+                        <strong> Maïs </strong>
+
+                        <small> Céréales </small>
+                      </div>
+                    </div>
+
+                    <div class="stock-quantity">
+                      <strong> 1 420 </strong>
+
+                      <span> kg </span>
+                    </div>
+                  </div>
+
+                  <!-- ARACHIDE -->
+                  <div class="stock-item">
+                    <div class="product-info">
+                      <div class="product-icon arachide">🥜</div>
+
+                      <div>
+                        <strong> Arachide </strong>
+
+                        <small> Oléagineux </small>
+                      </div>
+                    </div>
+
+                    <div class="stock-quantity">
+                      <strong> 310 </strong>
+
+                      <span> kg </span>
+                    </div>
+                  </div>
+
+                  <button type="button" class="stock-button">Voir le stock complet →</button>
+                </aside>
               </div>
 
-              <button type="button" class="stock-button">Voir le stock complet →</button>
-            </aside>
-          </div>
-
-          <!-- ============================================================
+              <!-- ============================================================
              HISTORIQUE
              ============================================================ -->
-          <section class="history-card">
-            <div class="history-header">
-              <div>
-                <div class="section-label">HISTORIQUE</div>
+              <section class="history-card">
+                <div class="history-header">
+                  <div>
+                    <div class="section-label">HISTORIQUE</div>
 
-                <h2>Dernières livraisons</h2>
+                    <h2>Dernières livraisons</h2>
 
-                <p>Consultez les dernières opérations enregistrées.</p>
-              </div>
+                    <p>Consultez les dernières opérations enregistrées.</p>
+                  </div>
 
-              <!-- ID CONSERVÉ POUR MAIN.JS -->
-              <button id="btn-trier-livraisons" class="btn-sort" type="button">
-                ↕ Trier par date
-              </button>
-            </div>
+                  <!-- ID CONSERVÉ POUR MAIN.JS -->
+                  <button id="btn-trier-livraisons" class="btn-sort" type="button">
+                    ↕ Trier par date
+                  </button>
+                </div>
 
-            <!-- FILTRES VISUELS -->
-            <div class="table-filters">
-              <div class="search-box">
-                <span> 🔍 </span>
+                <!-- FILTRES VISUELS -->
+                <div class="table-filters">
+                  <div class="search-box">
+                    <span> 🔍 </span>
 
-                <input
-                  type="search"
-                  placeholder="Rechercher une livraison..."
-                  aria-label="Rechercher une livraison"
-                />
-              </div>
+                    <input
+                      type="search"
+                      placeholder="Rechercher une livraison..."
+                      aria-label="Rechercher une livraison"
+                    />
+                  </div>
 
-              <select class="filter-select" aria-label="Filtrer par culture">
-                <option>Toutes les cultures</option>
+                  <select class="filter-select" aria-label="Filtrer par culture">
+                    <option>Toutes les cultures</option>
 
-                <option>Manioc</option>
+                    <option>Manioc</option>
 
-                <option>Maïs</option>
+                    <option>Maïs</option>
 
-                <option>Arachide</option>
-              </select>
+                    <option>Arachide</option>
+                  </select>
 
-              <select class="filter-select" aria-label="Filtrer par statut">
-                <option>Tous les statuts</option>
+                  <select class="filter-select" aria-label="Filtrer par statut">
+                    <option>Tous les statuts</option>
 
-                <option>Validée</option>
+                    <option>Validée</option>
 
-                <option>En attente</option>
-              </select>
-            </div>
+                    <option>En attente</option>
+                  </select>
+                </div>
 
-            <!-- TABLEAU -->
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
+                <!-- TABLEAU -->
+                <div class="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
 
-                    <th>Membre</th>
+                        <th>Membre</th>
 
-                    <th>Culture</th>
+                        <th>Culture</th>
 
-                    <th>Quantité</th>
+                        <th>Quantité</th>
 
-                    <th>Montant</th>
+                        <th>Montant</th>
 
-                    <th>Enregistré par</th>
+                        <th>Enregistré par</th>
 
-                    <th>Statut</th>
+                        <th>Statut</th>
 
-                    <th>Actions</th>
-                  </tr>
-                </thead>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
 
-                <!-- =====================================================
+                    <!-- =====================================================
                    IMPORTANT :
                    main.js injecte les lignes ici.
                    NE PAS MODIFIER L'ID.
                    ===================================================== -->
-                <tbody id="liste-livraisons"></tbody>
-              </table>
-            </div>
+                    <tbody id="liste-livraisons"></tbody>
+                  </table>
+                </div>
 
-            <!-- PAGINATION VISUELLE -->
-            <div class="table-footer">
-              <span> Affichage des dernières livraisons </span>
+                <!-- PAGINATION VISUELLE -->
+                <div class="table-footer">
+                  <span> Affichage des dernières livraisons </span>
 
-              <div class="pagination">
-                <button type="button" disabled></button>
-              </div>
-            </div>
-          </section>
+                  <div class="pagination">
+                    <button type="button" disabled></button>
+                  </div>
+                </div>
+              </section>
+            </section>
+          </main>
         </section>
       </main>
-    </section>
+    </div>
   </body>
 </html>
