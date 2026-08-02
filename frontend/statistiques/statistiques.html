@@ -14,7 +14,7 @@
     />
   </head>
   <body>
-    <!-- SIDEBAR NAVIGATION -->
+    <!-- SIDEBAR -->
     <nav class="sidebar">
       <div class="sidebar-header">
         <h2>AgriCoop</h2>
@@ -42,89 +42,91 @@
         <p class="header-subtitle">Analyse des performances de la coopérative</p>
       </header>
 
-      <!-- SECTION 1 : INDICATEURS CLÉS -->
-      <section class="section indicators-section">
-        <h2>Indicateurs clés</h2>
-        <div class="indicators-grid">
-          <div class="indicator-card">
-            <span class="indicator-label">Volume total livré</span>
-            <span class="indicator-value" id="ind-volume-total">-- kg</span>
-          </div>
-          <div class="indicator-card">
-            <span class="indicator-label">Valeur totale des ventes</span>
-            <span class="indicator-value" id="ind-valeur-totale">-- FCFA</span>
-          </div>
-          <div class="indicator-card">
-            <span class="indicator-label">Nombre de membres actifs</span>
-            <span class="indicator-value" id="ind-membres-actifs">--</span>
-          </div>
-          <div class="indicator-card">
-            <span class="indicator-label">Taux de régularité</span>
-            <span class="indicator-value" id="ind-taux-regularite">-- %</span>
-          </div>
-        </div>
-      </section>
+      <!-- LIGNE 1 : INDICATEURS CLÉS (4 cartes) -->
+      <div class="row-four">
+        <section class="card card-indicator">
+          <span class="indicator-label">Volume total livré</span>
+          <span class="indicator-value" id="ind-volume-total">-- kg</span>
+        </section>
+        <section class="card card-indicator">
+          <span class="indicator-label">Valeur totale des ventes</span>
+          <span class="indicator-value" id="ind-valeur-totale">-- FCFA</span>
+        </section>
+        <section class="card card-indicator">
+          <span class="indicator-label">Membres actifs</span>
+          <span class="indicator-value" id="ind-membres-actifs">--</span>
+        </section>
+        <section class="card card-indicator">
+          <span class="indicator-label">Taux de régularité</span>
+          <span class="indicator-value" id="ind-taux-regularite">-- %</span>
+        </section>
+      </div>
 
-      <!-- SECTION 2 : CLASSEMENT DES MEMBRES -->
-      <section class="section ranking-section">
-        <h2>Classement des membres par volume livré</h2>
-        <p class="section-subtitle">Du plus gros producteur au plus petit</p>
-        <ol id="classement-membres" class="ranking-list">
-          <!-- Injecté par main.js -->
-        </ol>
-      </section>
+      <!-- LIGNE 2 : CLASSEMENT + TABLEAU PAR CULTURE -->
+      <div class="row-two">
+        <!-- Classement des membres -->
+        <section class="card card-ranking">
+          <h2>Classement des membres</h2>
+          <p class="card-subtitle">Du plus gros producteur au plus petit</p>
+          <ol id="classement-membres" class="ranking-list">
+            <!-- Injecté par main.js -->
+          </ol>
+        </section>
 
-      <!-- SECTION 3 : STATISTIQUES PAR CULTURE -->
-      <section class="section cultures-section">
-        <h2>Statistiques par culture</h2>
-        <div class="table-responsive">
-          <table class="table-cultures">
-            <thead>
-              <tr>
-                <th>Culture</th>
-                <th>Volume total (kg)</th>
-                <th>Valeur totale (FCFA)</th>
-                <th>Part du marché</th>
-              </tr>
-            </thead>
-            <tbody id="tableau-cultures">
-              <!-- Injecté par main.js -->
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <!-- Tableau par culture -->
+        <section class="card card-cultures">
+          <h2>Statistiques par culture</h2>
+          <div class="table-responsive">
+            <table class="table-cultures">
+              <thead>
+                <tr>
+                  <th>Culture</th>
+                  <th>Volume total</th>
+                  <th>Valeur totale</th>
+                </tr>
+              </thead>
+              <tbody id="tableau-cultures">
+                <!-- Injecté par main.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
 
-      <!-- SECTION 4 : TOP ACHETEUR -->
-      <section class="section top-buyer-section">
-        <h2>Meilleur acheteur</h2>
-        <div class="top-buyer-card">
-          <span class="top-buyer-label">Acheteur du mois</span>
-          <span id="top-acheteur" class="top-buyer-value">--</span>
-        </div>
-      </section>
+      <!-- LIGNE 3 : TOP ACHETEUR + RAPPORT BAILLEUR -->
+      <div class="row-two">
+        <!-- Top acheteur -->
+        <section class="card card-top-buyer">
+          <h2>Meilleur acheteur</h2>
+          <div class="top-buyer-card">
+            <span class="top-buyer-label">Acheteur du mois</span>
+            <span id="top-acheteur" class="top-buyer-value">--</span>
+          </div>
+        </section>
 
-      <!-- SECTION 5 : RAPPORT BAILLEUR -->
-      <section class="section rapport-section">
-        <h2>Rapport bailleur</h2>
-        <div id="rapport-bailleur-contenu" class="rapport-grid">
-          <div class="rapport-card">
-            <span class="rapport-label">Volume total sur la période</span>
-            <span id="rb-volume" class="rapport-value">-- kg</span>
+        <!-- Rapport bailleur -->
+        <section class="card card-rapport">
+          <h2>Rapport bailleur</h2>
+          <div id="rapport-bailleur-contenu" class="rapport-grid">
+            <div class="rapport-item">
+              <span class="rapport-label">Volume total</span>
+              <span id="rb-volume" class="rapport-value">-- kg</span>
+            </div>
+            <div class="rapport-item">
+              <span class="rapport-label">Montant des ventes</span>
+              <span id="rb-montant" class="rapport-value">-- FCFA</span>
+            </div>
+            <div class="rapport-item">
+              <span class="rapport-label">Taux de régularité</span>
+              <span id="rb-taux" class="rapport-value">-- %</span>
+            </div>
+            <div class="rapport-item">
+              <span class="rapport-label">Membres actifs</span>
+              <span id="rb-membres" class="rapport-value">--</span>
+            </div>
           </div>
-          <div class="rapport-card">
-            <span class="rapport-label">Montant des ventes sur la période</span>
-            <span id="rb-montant" class="rapport-value">-- FCFA</span>
-          </div>
-          <div class="rapport-card">
-            <span class="rapport-label">Taux de régularité des paiements</span>
-            <span id="rb-taux" class="rapport-value">-- %</span>
-          </div>
-          <div class="rapport-card">
-            <span class="rapport-label">Nombre de membres actifs</span>
-            <span id="rb-membres" class="rapport-value">--</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
 
     <!-- SCRIPTS -->
