@@ -249,6 +249,7 @@
 
 .topbar-main h1 {
   font-size: var(--text-xl);
+  color: var(--ds-accent);
 }
 
 .breadcrumb {
