@@ -3,57 +3,535 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgriCoop Connect — Livraisons</title>
+
+    <meta name="description" content="AgriCoop Connect - Gestion des livraisons agricoles" />
+
+    <title>AgriCoop Connect — Gestion des livraisons</title>
+
     <link rel="stylesheet" href="../css/index.css" />
   </head>
+
   <body>
-    <!-- NAVIGATION — TODO (Dev FS3) -->
+    <section class="livraisons-section">
+      <!-- ================================================================
+         SIDEBAR
+         ================================================================ -->
+      <aside class="sidebar">
+        <!-- LOGO -->
+        <div class="brand">
+          <div class="brand-logo">🌱</div>
 
-    <main>
-      <!-- =====================================================================
-         FORMULAIRE D'ENREGISTREMENT — TODO (Dev FS3)
-         Construire le formulaire (membre, culture, quantité) et les zones
-         de messages. Le dev doit structurer et styliser le formulaire.
+          <div class="brand-text">
+            <strong>AgriCoop</strong>
+            <span>Connect</span>
+          </div>
+        </div>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-      <form id="form-livraison">
-        <select id="f-membre">
-          <option value="">-- Choisir un membre --</option>
-        </select>
-        <select id="f-culture">
-          <option value="">-- Choisir une culture --</option>
-          <option value="Manioc">Manioc</option>
-          <option value="Maïs">Maïs</option>
-          <option value="Arachide">Arachide</option>
-        </select>
-        <input type="number" id="f-quantite" min="1" placeholder="Quantité (kg)" />
-        <button type="submit">Enregistrer</button>
-      </form>
+        <!-- PROFIL -->
+        <div class="sidebar-profile">
+          <div class="profile-avatar">A</div>
 
-      <div id="message-erreur-livraison" hidden></div>
-      <div id="message-succes-livraison" hidden></div>
+          <div class="profile-info">
+            <strong>Administrateur</strong>
+            <span>Gestionnaire</span>
+          </div>
+        </div>
 
-      <!-- =====================================================================
-         TABLEAU DES LIVRAISONS — TODO (Dev FS3)
-         Construire un tableau HTML triable. Le contenu des <tr> est injecté
-         par main.js dans le <tbody>. Le dev structure le <table>, le <thead>,
-         et le bouton de tri.
+        <!-- NAVIGATION -->
+        <nav class="navigation">
+          <p class="nav-title">PRINCIPAL</p>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-      <button id="btn-trier-livraisons">Trier par date</button>
+          <a href="../index.html" class="nav-item">
+            <span class="nav-icon">▦</span>
+            <span>Tableau de bord</span>
+          </a>
 
-      <table>
-        <thead>
-          <!-- TODO (Dev FS3) : en-têtes du tableau (Membre, Culture, Quantité, Date) -->
-        </thead>
-        <tbody id="liste-livraisons"></tbody>
-      </table>
-    </main>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">♙</span>
+            <span>Membres</span>
 
-    <!-- NE PAS MODIFIER — scripts de connexion au backend -->
-    <script src="../functions.js"></script>
-    <script src="../main.js"></script>
+            <span class="nav-badge"> 42 </span>
+          </a>
+
+          <a href="#" class="nav-item active" aria-current="page">
+            <span class="nav-icon">▣</span>
+            <span>Livraisons</span>
+          </a>
+
+          <p class="nav-title">GESTION</p>
+
+          <a href="#" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Paiements</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <span class="nav-icon">▥</span>
+            <span>Ventes &amp; Stock</span>
+          </a>
+
+          <a href="#" class="nav-item">
+            <span class="nav-icon">▧</span>
+            <span>Rapports</span>
+          </a>
+
+          <p class="nav-title">SYSTÈME</p>
+
+          <a href="#" class="nav-item">
+            <span class="nav-icon">⚙</span>
+            <span>Paramètres</span>
+          </a>
+        </nav>
+
+        <!-- AIDE -->
+        <div class="sidebar-help">
+          <div class="help-icon">?</div>
+
+          <div>
+            <strong>Besoin d'aide ?</strong>
+            <p>Consultez le centre d'aide.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================================
+         CONTENU PRINCIPAL
+         ================================================================ -->
+      <main class="main-content">
+        <!-- ================================================================
+           HEADER
+           ================================================================ -->
+        <header class="topbar">
+          <div class="page-title">
+            <div class="breadcrumb">
+              <span>Accueil</span>
+              <span>/</span>
+              <strong>Livraisons</strong>
+            </div>
+
+            <h1>Gestion des livraisons</h1>
+
+            <p>Enregistrez, suivez et gérez les livraisons des membres.</p>
+          </div>
+
+          <div class="topbar-actions">
+            <button type="button" class="notification-button" aria-label="Notifications">
+              🔔
+              <span class="notification-dot"></span>
+            </button>
+
+            <div class="current-date">
+              <span>DATE</span>
+
+              <strong> 24 Avril 2024 </strong>
+            </div>
+          </div>
+        </header>
+
+        <!-- ================================================================
+           CONTENU
+           ================================================================ -->
+        <section class="delivery-section">
+          <!-- ============================================================
+             STATISTIQUES RAPIDES
+             ============================================================ -->
+          <div class="quick-stats">
+            <!-- STAT 1 -->
+            <article class="stat-card">
+              <div class="stat-icon green">📦</div>
+
+              <div class="stat-content">
+                <span> Livraisons ce mois </span>
+
+                <strong> 128 </strong>
+
+                <small class="positive"> ↑ 12,5% depuis le mois dernier </small>
+              </div>
+            </article>
+
+            <!-- STAT 2 -->
+            <article class="stat-card">
+              <div class="stat-icon blue">⚖</div>
+
+              <div class="stat-content">
+                <span> Quantité livrée </span>
+
+                <strong> 18 250 kg </strong>
+
+                <small class="positive"> ↑ 8,4% cette semaine </small>
+              </div>
+            </article>
+
+            <!-- STAT 3 -->
+            <article class="stat-card">
+              <div class="stat-icon orange">FCFA</div>
+
+              <div class="stat-content">
+                <span> Montant généré </span>
+
+                <strong> 6 462 500 FCFA </strong>
+
+                <small class="positive"> ↑ 5,7% ce mois </small>
+              </div>
+            </article>
+
+            <!-- STAT 4 -->
+            <article class="stat-card">
+              <div class="stat-icon purple">♙</div>
+
+              <div class="stat-content">
+                <span> Membres actifs </span>
+
+                <strong> 42 </strong>
+
+                <small> Membres enregistrés </small>
+              </div>
+            </article>
+          </div>
+
+          <!-- ============================================================
+             FORMULAIRE + STOCK
+             ============================================================ -->
+          <div class="delivery-grid">
+            <!-- ==========================================================
+               FORMULAIRE DE LIVRAISON
+               ========================================================== -->
+            <section class="card delivery-form-card">
+              <!-- HEADER -->
+              <div class="card-header">
+                <div>
+                  <div class="section-label">NOUVELLE OPÉRATION</div>
+
+                  <h2>Enregistrer une livraison</h2>
+
+                  <p>Renseignez les informations concernant la livraison.</p>
+                </div>
+
+                <div class="operation-number">
+                  <span>Référence</span>
+
+                  <strong> LIV-2024-0048 </strong>
+                </div>
+              </div>
+
+              <!-- FORMULAIRE -->
+              <form id="form-livraison">
+                <!-- MEMBRE -->
+                <div class="form-group">
+                  <label for="f-membre">
+                    Membre
+                    <span class="required">*</span>
+                  </label>
+
+                  <div class="input-wrapper">
+                    <span class="input-icon"> ♙ </span>
+
+                    <select id="f-membre">
+                      <option value="">-- Choisir un membre --</option>
+                    </select>
+                  </div>
+
+                  <small class="field-help">
+                    Sélectionnez le membre qui effectue la livraison.
+                  </small>
+                </div>
+
+                <!-- CULTURE -->
+                <div class="form-group">
+                  <label for="f-culture">
+                    Culture / Produit
+                    <span class="required">*</span>
+                  </label>
+
+                  <div class="input-wrapper">
+                    <span class="input-icon"> 🌱 </span>
+
+                    <select id="f-culture">
+                      <option value="">-- Choisir une culture --</option>
+
+                      <option value="Manioc">Manioc</option>
+
+                      <option value="Maïs">Maïs</option>
+
+                      <option value="Arachide">Arachide</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- QUANTITÉ -->
+                <div class="form-group">
+                  <label for="f-quantite">
+                    Quantité livrée
+                    <span class="required">*</span>
+                  </label>
+
+                  <div class="input-wrapper">
+                    <span class="input-icon"> ⚖ </span>
+
+                    <input type="number" id="f-quantite" min="1" placeholder="Ex : 500" />
+
+                    <span class="input-unit"> kg </span>
+                  </div>
+
+                  <small class="field-help"> La quantité doit être supérieure à 0 kg. </small>
+                </div>
+
+                <!-- DATE -->
+                <div class="form-group">
+                  <label for="date-livraison">
+                    Date de livraison
+                    <span class="required">*</span>
+                  </label>
+
+                  <div class="input-wrapper">
+                    <span class="input-icon"> 📅 </span>
+
+                    <input type="date" id="date-livraison" value="2024-04-24" />
+                  </div>
+                </div>
+
+                <!-- PRIX -->
+                <div class="form-group">
+                  <label for="prix-kg"> Prix au kilogramme </label>
+
+                  <div class="input-wrapper">
+                    <span class="input-icon"> FCFA </span>
+
+                    <input type="number" id="prix-kg" min="0" placeholder="Ex : 500" />
+
+                    <span class="input-unit"> FCFA / kg </span>
+                  </div>
+                </div>
+
+                <!-- REMARQUE -->
+                <div class="form-group">
+                  <label for="remarque-livraison">
+                    Remarque
+
+                    <span class="optional"> (optionnel) </span>
+                  </label>
+
+                  <textarea
+                    id="remarque-livraison"
+                    rows="3"
+                    placeholder="Ajouter une remarque concernant cette livraison..."
+                  ></textarea>
+                </div>
+
+                <!-- RÉSUMÉ DE L'OPÉRATION -->
+                <div class="operation-summary">
+                  <div>
+                    <span> Quantité </span>
+
+                    <strong> 0 kg </strong>
+                  </div>
+
+                  <div>
+                    <span> Prix unitaire </span>
+
+                    <strong> 0 FCFA </strong>
+                  </div>
+
+                  <div class="total">
+                    <span> Montant total </span>
+
+                    <strong> 0 FCFA </strong>
+                  </div>
+                </div>
+
+                <!-- BOUTON -->
+                <button type="submit" class="btn-submit">
+                  <span> ✓ </span>
+
+                  Enregistrer la livraison
+                </button>
+              </form>
+
+              <!-- ========================================================
+                 MESSAGES — UTILISÉS PAR MAIN.JS
+                 ======================================================== -->
+
+              <div id="message-erreur-livraison" class="message message-error" hidden></div>
+
+              <div id="message-succes-livraison" class="message message-success" hidden></div>
+            </section>
+
+            <!-- ==========================================================
+               STOCK
+               ========================================================== -->
+            <aside class="stock-card">
+              <div class="stock-header">
+                <div>
+                  <span class="section-label"> INVENTAIRE </span>
+
+                  <h2>État du stock</h2>
+                </div>
+
+                <span class="stock-header-icon"> 📦 </span>
+              </div>
+
+              <div class="stock-total">
+                <span> Valeur totale du stock </span>
+
+                <strong> 3 080 kg </strong>
+
+                <small> Stock disponible </small>
+              </div>
+
+              <!-- MANIOC -->
+              <div class="stock-item">
+                <div class="product-info">
+                  <div class="product-icon manioc">🌱</div>
+
+                  <div>
+                    <strong> Manioc </strong>
+
+                    <small> Racines &amp; tubercules </small>
+                  </div>
+                </div>
+
+                <div class="stock-quantity">
+                  <strong> 1 350 </strong>
+
+                  <span> kg </span>
+                </div>
+              </div>
+
+              <!-- MAÏS -->
+              <div class="stock-item">
+                <div class="product-info">
+                  <div class="product-icon mais">🌽</div>
+
+                  <div>
+                    <strong> Maïs </strong>
+
+                    <small> Céréales </small>
+                  </div>
+                </div>
+
+                <div class="stock-quantity">
+                  <strong> 1 420 </strong>
+
+                  <span> kg </span>
+                </div>
+              </div>
+
+              <!-- ARACHIDE -->
+              <div class="stock-item">
+                <div class="product-info">
+                  <div class="product-icon arachide">🥜</div>
+
+                  <div>
+                    <strong> Arachide </strong>
+
+                    <small> Oléagineux </small>
+                  </div>
+                </div>
+
+                <div class="stock-quantity">
+                  <strong> 310 </strong>
+
+                  <span> kg </span>
+                </div>
+              </div>
+
+              <button type="button" class="stock-button">Voir le stock complet →</button>
+            </aside>
+          </div>
+
+          <!-- ============================================================
+             HISTORIQUE
+             ============================================================ -->
+          <section class="history-card">
+            <div class="history-header">
+              <div>
+                <div class="section-label">HISTORIQUE</div>
+
+                <h2>Dernières livraisons</h2>
+
+                <p>Consultez les dernières opérations enregistrées.</p>
+              </div>
+
+              <!-- ID CONSERVÉ POUR MAIN.JS -->
+              <button id="btn-trier-livraisons" class="btn-sort" type="button">
+                ↕ Trier par date
+              </button>
+            </div>
+
+            <!-- FILTRES VISUELS -->
+            <div class="table-filters">
+              <div class="search-box">
+                <span> 🔍 </span>
+
+                <input
+                  type="search"
+                  placeholder="Rechercher une livraison..."
+                  aria-label="Rechercher une livraison"
+                />
+              </div>
+
+              <select class="filter-select" aria-label="Filtrer par culture">
+                <option>Toutes les cultures</option>
+
+                <option>Manioc</option>
+
+                <option>Maïs</option>
+
+                <option>Arachide</option>
+              </select>
+
+              <select class="filter-select" aria-label="Filtrer par statut">
+                <option>Tous les statuts</option>
+
+                <option>Validée</option>
+
+                <option>En attente</option>
+              </select>
+            </div>
+
+            <!-- TABLEAU -->
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+
+                    <th>Membre</th>
+
+                    <th>Culture</th>
+
+                    <th>Quantité</th>
+
+                    <th>Montant</th>
+
+                    <th>Enregistré par</th>
+
+                    <th>Statut</th>
+
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <!-- =====================================================
+                   IMPORTANT :
+                   main.js injecte les lignes ici.
+                   NE PAS MODIFIER L'ID.
+                   ===================================================== -->
+                <tbody id="liste-livraisons"></tbody>
+              </table>
+            </div>
+
+            <!-- PAGINATION VISUELLE -->
+            <div class="table-footer">
+              <span> Affichage des dernières livraisons </span>
+
+              <div class="pagination">
+                <button type="button" disabled></button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </section>
   </body>
 </html>

@@ -1,0 +1,430 @@
+/* ============================================================
+   STATISTIQUES.CSS
+   AgriCoop Connect
+   ============================================================ */
+
+@import url("../css/index.css");
+
+/* ---------- LAYOUT PRINCIPAL ---------- */
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--ds-backgroud);
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--ds-bg-sidebar);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sidebar-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: block;
+  margin-top: -0.25rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+  flex: 1;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-nav li a {
+  display: block;
+  padding: 0.65rem 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.sidebar-nav li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.sidebar-nav li.active a {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.sidebar-footer span {
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.main-content {
+  margin-left: 260px;
+  flex: 1;
+  padding: 2rem 2.5rem;
+  max-width: calc(100% - 260px);
+}
+
+/* ---------- PAGE HEADER ---------- */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.header-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* ---------- SECTIONS ---------- */
+.section {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--foreground);
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0 0 1.25rem 0;
+}
+
+/* ---------- INDICATEURS CLÉS ---------- */
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.indicator-card {
+  background: var(--ds-backgroud);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.indicator-card:hover {
+  transform: translateY(-2px);
+}
+
+.indicator-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.indicator-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ds-accent);
+}
+
+/* ---------- CLASSEMENT ---------- */
+.ranking-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: ranking;
+}
+
+.ranking-list li {
+  counter-increment: ranking;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.ranking-list li:last-child {
+  border-bottom: none;
+}
+
+.ranking-list li::before {
+  content: counter(ranking);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--muted);
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #374151;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.ranking-list li:nth-child(1)::before {
+  background: #fbbf24;
+  color: #78350f;
+}
+
+.ranking-list li:nth-child(2)::before {
+  background: #d1d5db;
+  color: #374151;
+}
+
+.ranking-list li:nth-child(3)::before {
+  background: #d97706;
+  color: #ffffff;
+}
+
+.ranking-list .ranking-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.ranking-list .ranking-volume {
+  font-weight: 600;
+  color: var(--ds-accent);
+}
+
+/* ---------- TABLEAU PAR CULTURE ---------- */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-cultures {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table-cultures thead {
+  background: var(--muted);
+}
+
+.table-cultures th {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid var(--border);
+}
+
+.table-cultures td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-cultures tbody tr:hover {
+  background: var(--ds-backgroud);
+}
+
+.culture-market-share {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.culture-market-share.high {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.culture-market-share.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.culture-market-share.low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ---------- TOP ACHETEUR ---------- */
+.top-buyer-card {
+  background: var(--ds-accent);
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.top-buyer-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.top-buyer-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+/* ---------- RAPPORT BAILLEUR ---------- */
+.rapport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.rapport-card {
+  background: var(--ds-backgroud);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  border-left: 4px solid var(--ds-accent);
+}
+
+.rapport-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rapport-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  color: var(--foreground);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0.5rem 0 0 0;
+    flex: 1;
+  }
+
+  .sidebar-nav li a {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .indicators-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rapport-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .ranking-list li {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .ranking-list li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .indicators-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rapport-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .top-buyer-value {
+    font-size: 1.1rem;
+  }
+
+  .indicator-value {
+    font-size: 1.1rem;
+  }
+}
