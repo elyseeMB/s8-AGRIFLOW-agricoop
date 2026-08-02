@@ -16,11 +16,14 @@
   background-color: var(--background);
   border-right: var(--border-w-1) solid var(--border);
   color: var(--ds-accent);
-  position: static;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
   min-height: 100vh;
-  height: auto;
-  width: 260px;
+  flex: 0 0 260px;
   padding: var(--space-sm) var(--space-md);
+  overflow-y: auto;
 }
 
 .brand {
@@ -220,10 +223,18 @@
 /* ---------- CONTENU ---------- */
 .layout__main {
   flex: 1 1 auto;
+  min-width: 0;
   background-color: var(--background);
   padding-inline: var(--space-3xl);
   padding-top: 0;
   padding-bottom: var(--space-md);
+}
+
+@media only screen and (min-width: 2200px) {
+  .layout {
+    margin: 0 auto;
+    max-width: 1500px;
+  }
 }
 
 /* ---------- TOPBAR ---------- */
