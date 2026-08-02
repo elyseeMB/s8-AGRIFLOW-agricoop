@@ -50,3 +50,14 @@
   background-color: var(--ds-danger-light);
   color: var(--ds-danger);
 }
+
+/* Alias JS membres (main.js : class="badge ok|alerte") */
+.badge.ok {
+  background-color: var(--ds-accent-light);
+  color: var(--ds-accent-hover);
+}
+
+.badge.alerte {
+  background-color: var(--ds-warning-light);
+  color: var(--ds-warning);
+}

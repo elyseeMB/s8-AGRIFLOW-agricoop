@@ -1,415 +1,145 @@
-@import url("../css/index.css");
-
-body {
-  /* display: flex; */
-  min-height: 100vh;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: var(--ds-backgroud);
-}
-
-.sidebar {
-  width: 220px;
-  background: var(--ds-bg-sidebar);
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: auto;
-  z-index: 100;
-}
-
-.sidebar-header h2 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.sidebar-subtitle {
-  font-size: 0.7rem;
-  opacity: 0.7;
-  display: block;
-  margin-top: -0.25rem;
-}
-
-.sidebar-nav {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 0 0;
-  flex: 1;
-}
-
-.sidebar-nav li {
-  margin-bottom: 0.15rem;
-}
-
-.sidebar-nav li a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-  border-radius: 0.4rem;
-  transition: all 0.2s ease;
-  font-size: 0.85rem;
-}
-
-.sidebar-nav li a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-}
-
-.sidebar-nav li.active a {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.sidebar-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 0.75rem;
-  font-size: 0.8rem;
-}
-
-.sidebar-footer span {
-  display: block;
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
-}
-
-.main-content {
-  margin-left: 220px;
-  flex: 1;
-  padding: 1.5rem;
-  max-width: calc(100% - 220px);
-}
-
-.page-header {
-  margin-bottom: 1.5rem;
-}
-
-.page-header h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--foreground);
-  margin: 0;
-}
-
-.header-subtitle {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-top: 0.15rem;
-}
-
-.card {
-  background: var(--surface);
-  border-radius: 0.75rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-}
-
-.card h2 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem 0;
-  color: var(--foreground);
-}
-
-.card-subtitle {
-  font-size: 0.75rem;
-  color: #6b7280;
-  margin: 0 0 0.75rem 0;
-}
+/* ============================================================
+   STATISTIQUES — Styles spécifiques à la page
+   (réutilise : .card, .indicator-card, .indicator-label,
+    .indicator-value, .rapport-card, .top-buyer-card,
+    .total-card, .table-container — communs via card.css)
+   ============================================================ */
 
 .row-four {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .row-two {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
-/* ---------- INDICATEURS ---------- */
-.card-indicator {
-  text-align: center;
-  padding: 1rem 0.75rem;
-}
-
-.indicator-label {
-  display: block;
-  font-size: 0.7rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.indicator-value {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--ds-accent);
-  margin-top: 0.15rem;
-}
-
-/* ---------- CLASSEMENT ---------- */
+/* Classement des membres */
 .ranking-list {
+  counter-reset: r;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
   padding: 0;
   margin: 0;
-  counter-reset: ranking;
 }
 
 .ranking-list li {
-  counter-increment: ranking;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.85rem;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  border-bottom: var(--border-w-1) solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--foreground);
 }
 
-.ranking-list li:last-child {
+.ranking-list li:last-of-type {
   border-bottom: none;
 }
 
 .ranking-list li::before {
-  content: counter(ranking);
+  counter-increment: r;
+  content: counter(r);
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: var(--muted);
-  border-radius: 50%;
-  font-weight: 600;
-  font-size: 0.7rem;
-  color: #374151;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-}
-
-.ranking-list li:nth-child(1)::before {
-  background: #fbbf24;
-  color: #78350f;
-}
-.ranking-list li:nth-child(2)::before {
-  background: #d1d5db;
-  color: #374151;
-}
-.ranking-list li:nth-child(3)::before {
-  background: #d97706;
-  color: #ffffff;
-}
-
-.ranking-name {
-  flex: 1;
-  font-weight: 500;
-}
-
-.ranking-volume {
-  font-weight: 600;
+  border-radius: var(--rounded-full);
+  background: var(--ds-accent-light);
   color: var(--ds-accent);
+  font-weight: 700;
+  font-size: var(--text-xs);
 }
 
-/* ---------- TABLEAU CULTURES ---------- */
-.table-responsive {
-  overflow-x: auto;
+.ranking-list li.top3::before {
+  background: var(--ds-accent);
+  color: var(--surface);
 }
 
+/* Tableau par culture */
 .table-cultures {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
-.table-cultures thead {
-  background: var(--muted);
-}
-
-.table-cultures th {
-  padding: 0.4rem 0.5rem;
+.table-cultures thead th {
   text-align: left;
-  font-weight: 600;
-  color: #374151;
-  border-bottom: 2px solid var(--border);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: var(--border-w-1) solid var(--border);
 }
 
 .table-cultures td {
-  padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid var(--border);
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: var(--border-w-1) solid var(--border);
 }
 
 .table-cultures tbody tr:hover {
-  background: var(--ds-backgroud);
+  background: var(--muted);
 }
 
-/* ---------- TOP ACHETEUR ---------- */
-.top-buyer-card {
-  background: var(--ds-accent);
-  border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
-  text-align: center;
-  color: #ffffff;
+.table-cultures tbody tr:last-of-type td {
+  border-bottom: none;
 }
 
-.top-buyer-label {
-  display: block;
-  font-size: 0.7rem;
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.top-buyer-value {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 0.15rem;
-}
-
-/* ---------- RAPPORT BAILLEUR ---------- */
+/* Rapport bailleur */
 .rapport-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
 }
 
 .rapport-item {
-  background: var(--ds-backgroud);
-  border-radius: 0.4rem;
-  padding: 0.5rem 0.75rem;
-  text-align: center;
-  border-left: 3px solid var(--ds-accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs);
+  background: var(--backgroud);
+  border-radius: var(--rounded-md);
 }
 
-.rapport-label {
-  display: block;
-  font-size: 0.6rem;
-  color: #6b7280;
+.rapport-item .rapport-label {
+  color: var(--ds-muted-text);
+  font-size: var(--text-xs);
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.03em;
 }
 
-.rapport-value {
-  display: block;
-  font-size: 0.9rem;
+.rapport-item .rapport-value {
   font-weight: 700;
-  margin-top: 0.1rem;
   color: var(--foreground);
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 1024px) {
+/* Responsive */
+@media (min-width: 768px) {
   .row-four {
-    grid-template-columns: 1fr 1fr;
-  }
-  .row-two {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    position: relative;
-    height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .sidebar-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.15rem;
-    margin: 0.25rem 0 0 0;
-    flex: 1;
-  }
-
-  .sidebar-nav li a {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7rem;
-  }
-
-  .sidebar-footer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-top: none;
-    padding-top: 0;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: 0.75rem;
-    max-width: 100%;
-  }
-
-  .row-four {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .row-two {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .card {
-    padding: 0.75rem;
-  }
-
-  .rapport-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .row-four {
     grid-template-columns: 1fr 1fr;
   }
 
   .rapport-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .page-header h1 {
-    font-size: 1.1rem;
-  }
-
-  .indicator-value {
-    font-size: 1rem;
-  }
-
-  .table-cultures {
-    font-size: 0.75rem;
-  }
-
-  .table-cultures th,
-  .table-cultures td {
-    padding: 0.25rem 0.3rem;
-  }
-
-  .ranking-list li {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.3rem;
-  }
-
-  .ranking-list li::before {
-    width: 20px;
-    height: 20px;
-    font-size: 0.6rem;
-    margin-right: 0.5rem;
+@media (min-width: 1024px) {
+  .row-four {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

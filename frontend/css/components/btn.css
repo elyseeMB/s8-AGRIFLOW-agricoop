@@ -77,3 +77,8 @@
     background-color: var(--muted);
   }
 }
+
+.btn-block {
+  display: block;
+  width: 100%;
+}

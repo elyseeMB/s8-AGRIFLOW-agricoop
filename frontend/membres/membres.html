@@ -224,90 +224,96 @@
           </div>
         </header>
 
-        <!-- =====================================================================
-         FILTRES — TODO (Dev FS2)
-         Construire une zone de filtrage : un sélecteur de statut et un champ
-         de recherche par nom. Layout responsive.
+        <div class="page-content">
+          <!-- =====================================================================
+               FILTRES — TODO (Dev FS2)
+               Construire une zone de filtrage : un sélecteur de statut et un champ
+               de recherche par nom. Layout responsive.
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
+               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+               ===================================================================== -->
+          <section class="filters-bar">
+            <div class="filter-group">
+              <label for="filtre-statut">Filtrer par statut :</label>
 
-        <section class="filters-bar">
-          <div class="filter-group">
-            <label for="filtre-statut">Filtrer par statut :</label>
-
-            <select id="filtre-statut">
-              <option value="">Tous</option>
-              <option value="À jour">À jour</option>
-              <option value="En retard">En retard</option>
-            </select>
-          </div>
-
-          <div class="filter-group search-group">
-            <label for="champ-recherche-membre">Rechercher :</label>
-
-            <div class="search-box">
-              <input
-                type="text"
-                id="champ-recherche-membre"
-                placeholder="Rechercher un membre..."
-              />
-              <span class="search-icon">🔍</span>
+              <select id="filtre-statut">
+                <option value="">Tous</option>
+                <option value="À jour">À jour</option>
+                <option value="En retard">En retard</option>
+              </select>
             </div>
-          </div>
-        </section>
-        <!-- =====================================================================
-         LISTE DES MEMBRES — TODO (Dev FS2)
-         Le contenu est injecté par main.js. Le dev doit structurer le
-         conteneur et styliser les éléments .membre-ligne, .badge.
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-        <section class="membres-section">
-          <div class="membres-header">
-            <span>Nom</span>
-            <span>Village</span>
-            <span>Téléphone</span>
-            <span>Statut</span>
-            <span>Solde</span>
-          </div>
+            <div class="filter-group search-group">
+              <label for="champ-recherche-membre">Rechercher :</label>
 
-          <div id="liste-membres">
-            Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).
-          </div>
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input
+                  type="text"
+                  id="champ-recherche-membre"
+                  placeholder="Rechercher un membre..."
+                />
+              </div>
+            </div>
+          </section>
 
-          <div id="liste-membres-vide" class="empty-state" hidden="">Aucun membre trouvé.</div>
-        </section>
+          <!-- =====================================================================
+               LISTE DES MEMBRES — TODO (Dev FS2)
+               Le contenu est injecté par main.js. Le dev doit structurer le
+               conteneur et styliser les éléments .membre-ligne, .badge.
 
-        <!-- =====================================================================
-         NOUVEAU MEMBRE — TODO (Dev FS2)
-         Construire le formulaire de création d'un membre (module Membres,
-         nouveau — section 4.1 du FRD). Les 4 champs sont obligatoires.
-         Le village est un menu déroulant fermé (rempli par main.js depuis
-         la liste de référence de la coopérative), pas un champ libre.
+               *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
+               ===================================================================== -->
+          <section class="membres-section">
+            <div class="membres-header">
+              <span>Nom</span>
+              <span>Village</span>
+              <span>Téléphone</span>
+              <span>Statut</span>
+              <span>Solde</span>
+            </div>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-        <section class="new-member-panel">
-          <h2>Ajouter un nouveau membre</h2>
+            <div id="liste-membres"></div>
 
-          <form id="form-nouveau-membre" class="new-member-form">
-            <input type="text" id="nm-prenom" placeholder="Prénom" />
-            <input type="text" id="nm-nom" placeholder="Nom" />
-            <select id="nm-village">
-              <option value="">-- Choisir un village --</option>
-            </select>
-            <input type="text" id="nm-contact" placeholder="Contact (téléphone)" />
-            <button type="submit">Créer le membre</button>
-          </form>
+            <div id="liste-membres-vide" class="empty-state" hidden>Aucun membre trouvé.</div>
+          </section>
 
-          <div id="erreurs-nouveau-membre" hidden=""></div>
-          <div id="message-succes-nouveau-membre" hidden=""></div>
-        </section>
+          <!-- =====================================================================
+               NOUVEAU MEMBRE — TODO (Dev FS2)
+               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+               ===================================================================== -->
+          <section class="card new-member-panel">
+            <h2>Ajouter un nouveau membre</h2>
+
+            <form id="form-nouveau-membre" class="new-member-form">
+              <div class="form-group">
+                <input type="text" id="nm-prenom" placeholder="Prénom" required />
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="nm-nom" placeholder="Nom" required />
+              </div>
+
+              <div class="form-group">
+                <select id="nm-village" required>
+                  <option value="">-- Choisir un village --</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="nm-contact" placeholder="Contact (téléphone)" required />
+              </div>
+
+              <button type="submit" class="btn btn__primary">Créer le membre</button>
+            </form>
+
+            <div id="erreurs-nouveau-membre" class="message message-error" hidden></div>
+            <div id="message-succes-nouveau-membre" class="message message-success" hidden></div>
+          </section>
+        </div>
       </main>
     </div>
 
-    <!-- NE PAS MODIFIER — scripts de connexion au backend -->
     <script src="../functions.js"></script>
     <script src="../main.js"></script>
   </body>
