@@ -54,7 +54,7 @@
   --ds-purple: hsl(262deg 52% 47%);
 
   /* Background */
-  --background: hsl(225deg 16.67% 95.29%);
+  --background: transparent;
   --backgroud: var(--background);
   --surface: hsl(0, 0%, 100%);
   --foreground: hsl(0, 0%, 5%);
