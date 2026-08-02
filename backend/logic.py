@@ -370,17 +370,19 @@ def calculer_solde_membre(membre_id, livraisons, paiements):
 
         sortie -> 23000
     """
-    total_du = sum(
-        livraison["quantite"] * PRIX_ACHAT_KG.get(livraison["culture"], 0)
-        for livraison in livraisons
-        if livraison["membre_id"] == membre_id
-    )
-    total_paye = sum(
-        paiement["montant"]
-        for paiement in paiements
-        if paiement["membre_id"] == membre_id
-    )
-    return total_du - total_paye
+    total_dette = 0
+    for livraison in livraisons:
+        if livraison["membre_id"] == membre_id:
+            total_dette += livraison["quantite"] * PRIX_ACHAT_KG.get(
+                livraison["culture"], 0
+            )
+
+    total_paye = 0
+    for paiement in paiements:
+        if paiement["membre_id"] == membre_id:
+            total_paye += paiement["montant"]
+
+    return total_dette - total_paye
 
 
 def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
@@ -410,12 +412,14 @@ def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
 
         sortie -> [{"membre_id": 2, "nom": "Sandra Malonga"}]
     """
-    membres_avec_livraison = {livraison["membre_id"] for livraison in livraisons}
-    return [
+    membre_actif = {livraison["membre_id"] for livraison in livraisons}
+    membres_non_actifs = [
         {"membre_id": membre["id"], "nom": membre["nom"]}
         for membre in membres
-        if membre["id"] not in membres_avec_livraison
+        if membre["id"] not in membre_actif
     ]
+
+    return membres_non_actifs
 
 
 def detecter_anomalie_livraison(livraison):
@@ -450,11 +454,11 @@ def detecter_anomalie_livraison(livraison):
         sortie -> []
     """
     anomalies = []
-    if livraison.get("quantite", 0) <= 0:
+    if livraison["quantite"] <= 0:
         anomalies.append("Quantité invalide : doit être strictement positive.")
-    if livraison.get("culture") not in PRIX_ACHAT_KG:
-        anomalies.append(f"Culture inconnue : {livraison.get('culture')}.")
-    if not livraison.get("membre_id"):
+    if livraison["culture"] not in PRIX_ACHAT_KG:
+        anomalies.append(f"Culture inconnue : {livraison['culture']}.")
+    if not livraison["membre_id"]:
         anomalies.append("Aucun membre rattaché à cette livraison.")
     return anomalies
 
@@ -478,8 +482,10 @@ def generer_recu(membre_nom, montant):
           -> "Aucun montant à verser pour Jean Mabiala."
     """
     if montant <= 0:
-        return f"Aucun montant à verser pour {membre_nom}."
-    return f"Reçu - {membre_nom} : paiement de {montant} FCFA effectué."
+        reçu = f"Aucun montant n'a été versé pour {membre_nom}."
+    else:
+        reçu = f"Reçu - {membre_nom} : paiment de {montant} FCFA effectué."
+    return reçu
 
 
 def calculer_historique_paiements_membre(membre_id, paiements):
@@ -503,9 +509,12 @@ def calculer_historique_paiements_membre(membre_id, paiements):
         sortie    -> [{"membre_id": 1, "montant": 15000, "date": "2026-07-14"},
                       {"membre_id": 1, "montant": 5000, "date": "2026-07-05"}]
     """
-    historique = [p for p in paiements if p["membre_id"] == membre_id]
-    historique.sort(key=lambda paiement: paiement["date"], reverse=True)
-    return historique
+    historique_paiements = [
+        paiement for paiement in paiements if paiement["membre_id"] == membre_id
+    ]
+    historique_paiements.sort(key=lambda paiement: paiement["date"], reverse=True)
+
+    return historique_paiements
 
 
 def rechercher_membre_similaire(nom_complet, membres):
@@ -542,10 +551,10 @@ def rechercher_membre_similaire(nom_complet, membres):
         rechercher_membre_similaire("Marie Koumba", membres)
         -> None   (aucun membre existant ne porte ce nom)
     """
-    cible = " ".join(nom_complet.split()).lower()
+    ancien_membre = " ".join(nom_complet.split()).lower()
     for membre in membres:
-        candidat = " ".join(membre["nom"].split()).lower()
-        if candidat == cible:
+        nouveau_membre = " ".join(membre["nom"].split()).lower()
+        if nouveau_membre == ancien_membre:
             return membre
     return None
 
@@ -583,13 +592,13 @@ def valider_nouveau_membre(donnees):
         sortie -> []
     """
     anomalies = []
-    if not donnees.get("nom", "").strip():
+    if donnees["nom"].strip() == "":
         anomalies.append("Le nom est obligatoire.")
-    if not donnees.get("prenom", "").strip():
+    if donnees["prenom"].strip() == "":
         anomalies.append("Le prénom est obligatoire.")
-    if not donnees.get("village", "").strip():
+    if donnees["village"].strip() == "":
         anomalies.append("Le village est obligatoire.")
-    if not donnees.get("contact", "").strip():
+    if donnees["contact"].strip() == "":
         anomalies.append("Le contact est obligatoire.")
     return anomalies
 
@@ -817,6 +826,7 @@ def authentifier_utilisateur(nom_utilisateur, mot_de_passe, utilisateurs):
                 "nom_complet": utilisateur["nom_complet"],
                 "membre_id": utilisateur["membre_id"],
             }
+
     return None
 
 
@@ -844,4 +854,6 @@ def verifier_acces_role(role, action):
         verifier_acces_role("Trésorière", "enregistrer_vente")    -> False
         verifier_acces_role("Livreur",    "tableau_de_bord")      -> False  (rôle inconnu)
     """
-    return action in ACTIONS_PAR_ROLE.get(role, [])
+    if role in ACTIONS_PAR_ROLE and action in ACTIONS_PAR_ROLE[role]:
+        return True
+    return False
