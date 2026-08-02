@@ -105,18 +105,42 @@ def calculer_indicateurs_globaux(livraisons, ventes, paiements):
             "nb_livraisons_mois": 2
         }
     """
-    total_livre = sum(l["quantite"] for l in livraisons)
-    total_vendu = sum(v["quantite"] for v in ventes)
-    stock_total = total_livre - total_vendu
-    valeur_livraisons = sum(
-        l["quantite"] * PRIX_ACHAT_KG.get(l["culture"], 0) for l in livraisons
-    )
-    total_paiements = sum(p["montant"] for p in paiements)
+    # 1. Stock total
+    total_livraison = 0
+    total_vente = 0
+    for livraison in livraisons:
+        total_livraison += livraison["quantite"]
+    for vente in ventes:
+        total_vente += vente["quantite"]
+    stock_total = total_livraison - total_vente 
+    # 2. Montant du total
+    valeur_livraisons = 0  # initialisation
+    for livraison in livraisons:
+        quantite = livraison["quantite"]
+        culture = livraison["culture"]
+        if culture in PRIX_ACHAT_KG:
+            prix = PRIX_ACHAT_KG[culture]  
+        else:
+            prix = 0   
+        valeur = quantite * prix
+        valeur_livraisons += valeur
+    total_paiements = 0 
+    for paiement in paiements:
+        total_paiements += paiement["montant"]
+    montant_du_total = valeur_livraisons - total_paiements 
+    # 3. Nombre de membres actifs
+    membres_uniques = set()
+    for livraison in livraisons:
+        membres_uniques.add(livraison["membre_id"])
+    nb_membres_actifs = len(membres_uniques)
+    # 4. Nombre de livraisons du mois
+    nb_livraisons_mois = len(livraisons)
+
     return {
-        "stock_total": stock_total,
-        "montant_du_total": valeur_livraisons - total_paiements,
-        "nb_membres_actifs": len({l["membre_id"] for l in livraisons}),
-        "nb_livraisons_mois": len(livraisons),
+            "stock_total": stock_total,
+            "montant_du_total": valeur_livraisons - total_paiements,
+            "nb_membres_actifs": len({l["membre_id"] for l in livraisons}),
+            "nb_livraisons_mois": len(livraisons),
     }
 
 
@@ -139,8 +163,13 @@ def calculer_livraisons_par_jour_semaine(livraisons):
     resultat = {}
     for livraison in livraisons:
         date = livraison["date"]
-        resultat[date] = resultat.get(date, 0) + livraison["quantite"]
+        if date in resultat:
+            resultat[date] += livraison["quantite"]
+        else:
+            resultat[date] = livraison["quantite"]
+
     return resultat
+
 
 
 def classer_membres_par_production(livraisons):
@@ -178,15 +207,22 @@ def classer_membres_par_production(livraisons):
         ]
     """
     totaux = {}
+    #les quantités par membre
     for livraison in livraisons:
         membre_id = livraison["membre_id"]
-        totaux[membre_id] = totaux.get(membre_id, 0) + livraison["quantite"]
-    resultat = [
-        {"membre_id": membre_id, "volume_total": volume_total}
-        for membre_id, volume_total in totaux.items()
-    ]
+        if membre_id in totaux:
+            totaux[membre_id] += livraison["quantite"]
+        else:
+            totaux[membre_id] = livraison["quantite"]
+    # dictionnaires
+    resultat = []
+    for membre_id, volume_total in totaux.items():
+        resultat.append({"membre_id": membre_id, "volume_total": volume_total})
+    #  trier 
     resultat.sort(key=lambda membre: membre["volume_total"], reverse=True)
+
     return resultat
+
 
 
 def calculer_statistiques_globales(livraisons, ventes):
@@ -222,14 +258,21 @@ def calculer_statistiques_globales(livraisons, ventes):
         sortie -> {"Manioc": {"volume_total": 100, "valeur_totale": 11000}}
     """
     resultat = {}
+    # les livraisons
     for livraison in livraisons:
         culture = livraison["culture"]
-        resultat.setdefault(culture, {"volume_total": 0, "valeur_totale": 0})
+        if culture not in resultat:
+            resultat[culture] = {"volume_total": 0, "valeur_totale": 0}
         resultat[culture]["volume_total"] += livraison["quantite"]
+    # les ventes
     for vente in ventes:
         culture = vente["culture"]
-        resultat.setdefault(culture, {"volume_total": 0, "valeur_totale": 0})
+
+        if culture not in resultat:
+            resultat[culture] = {"volume_total": 0, "valeur_totale": 0}
+
         resultat[culture]["valeur_totale"] += vente["quantite"] * vente["prix_kg"]
+
     return resultat
 
 
@@ -274,21 +317,39 @@ def generer_indicateurs_rapport_bailleur(livraisons, ventes, paiements):
 
         sortie -> {"volume_total_periode": 150, "montant_ventes_periode": 17600,
                    "taux_regularite_paiements": 50, "nb_membres_actifs": 2}
+    
     """
-    membres_actifs = {livraison["membre_id"] for livraison in livraisons}
-    membres_payes = {paiement["membre_id"] for paiement in paiements}
+    #  les membres actifs
+    membres_actifs = set()
+    for livraison in livraisons:
+        membres_actifs.add(livraison["membre_id"])
     nb_membres_actifs = len(membres_actifs)
-    taux = (
-        0
-        if not nb_membres_actifs
-        else round(len(membres_actifs & membres_payes) / nb_membres_actifs * 100)
-    )
-    return {
-        "volume_total_periode": sum(l["quantite"] for l in livraisons),
-        "montant_ventes_periode": sum(v["quantite"] * v["prix_kg"] for v in ventes),
+    # les membres  payés
+    membres_payes = set()
+    for paiement in paiements:
+        membres_payes.add(paiement["membre_id"])
+    # le taux paiements
+    if nb_membres_actifs == 0:
+        taux = 0
+    else:
+        nb_membres_payes = len(membres_actifs & membres_payes)  # intersection
+        taux = round(nb_membres_payes / nb_membres_actifs * 100)
+    # le volume  des livraisons
+    volume_total_periode = 0
+    for l in livraisons:
+        volume_total_periode += l["quantite"]
+    #  le montant  des ventes
+    montant_ventes_periode = 0
+    for v in ventes:
+        montant_ventes_periode += v["quantite"] * v["prix_kg"]
+    resultat = {
+        "volume_total_periode": volume_total_periode,
+        "montant_ventes_periode": montant_ventes_periode,
         "taux_regularite_paiements": taux,
         "nb_membres_actifs": nb_membres_actifs,
     }
+
+    return resultat
 
 
 def identifier_top_acheteur(ventes, acheteurs):
@@ -314,13 +375,22 @@ def identifier_top_acheteur(ventes, acheteurs):
     """
     if not ventes:
         return {"acheteur_nom": None, "volume_total": 0}
+    # les quantités par acheteur
     totaux = {}
     for vente in ventes:
         acheteur_id = vente["acheteur_id"]
-        totaux[acheteur_id] = totaux.get(acheteur_id, 0) + vente["quantite"]
-    top_id = max(totaux, key=totaux.get)
-    noms = {acheteur["id"]: acheteur["nom"] for acheteur in acheteurs}
-    return {"acheteur_nom": noms.get(top_id), "volume_total": totaux[top_id]}
+        if acheteur_id in totaux:
+            totaux[acheteur_id] += vente["quantite"]
+        else:
+            totaux[acheteur_id] = vente["quantite"]
+    # acheteur max
+    top_id = max(totaux, key=lambda id_: totaux[id_])
+
+    noms = {}
+    for acheteur in acheteurs:
+        noms[acheteur["id"]] = acheteur["nom"]
+
+    return {"acheteur_nom": noms[top_id], "volume_total": totaux[top_id]}
 
 
 # ========================================================================
@@ -369,19 +439,8 @@ def calculer_solde_membre(membre_id, livraisons, paiements):
         solde = 28000 - 5000 = 23000
 
         sortie -> 23000
-    """
-    total_du = sum(
-        livraison["quantite"] * PRIX_ACHAT_KG.get(livraison["culture"], 0)
-        for livraison in livraisons
-        if livraison["membre_id"] == membre_id
-    )
-    total_paye = sum(
-        paiement["montant"]
-        for paiement in paiements
-        if paiement["membre_id"] == membre_id
-    )
-    return total_du - total_paye
 
+            """
 
 def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
     """
@@ -409,13 +468,9 @@ def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
         -> le membre id=2 n'apparaît dans aucune livraison, donc il EST inactif
 
         sortie -> [{"membre_id": 2, "nom": "Sandra Malonga"}]
+    
     """
-    membres_avec_livraison = {livraison["membre_id"] for livraison in livraisons}
-    return [
-        {"membre_id": membre["id"], "nom": membre["nom"]}
-        for membre in membres
-        if membre["id"] not in membres_avec_livraison
-    ]
+
 
 
 def detecter_anomalie_livraison(livraison):
@@ -449,14 +504,7 @@ def detecter_anomalie_livraison(livraison):
         livraison = {"membre_id": 1, "culture": "Manioc", "quantite": 100}
         sortie -> []
     """
-    anomalies = []
-    if livraison.get("quantite", 0) <= 0:
-        anomalies.append("Quantité invalide : doit être strictement positive.")
-    if livraison.get("culture") not in PRIX_ACHAT_KG:
-        anomalies.append(f"Culture inconnue : {livraison.get('culture')}.")
-    if not livraison.get("membre_id"):
-        anomalies.append("Aucun membre rattaché à cette livraison.")
-    return anomalies
+
 
 
 def generer_recu(membre_nom, montant):
@@ -477,9 +525,7 @@ def generer_recu(membre_nom, montant):
         generer_recu("Jean Mabiala", 0)
           -> "Aucun montant à verser pour Jean Mabiala."
     """
-    if montant <= 0:
-        return f"Aucun montant à verser pour {membre_nom}."
-    return f"Reçu - {membre_nom} : paiement de {montant} FCFA effectué."
+
 
 
 def calculer_historique_paiements_membre(membre_id, paiements):
@@ -503,9 +549,7 @@ def calculer_historique_paiements_membre(membre_id, paiements):
         sortie    -> [{"membre_id": 1, "montant": 15000, "date": "2026-07-14"},
                       {"membre_id": 1, "montant": 5000, "date": "2026-07-05"}]
     """
-    historique = [p for p in paiements if p["membre_id"] == membre_id]
-    historique.sort(key=lambda paiement: paiement["date"], reverse=True)
-    return historique
+
 
 
 def rechercher_membre_similaire(nom_complet, membres):
@@ -541,13 +585,9 @@ def rechercher_membre_similaire(nom_complet, membres):
 
         rechercher_membre_similaire("Marie Koumba", membres)
         -> None   (aucun membre existant ne porte ce nom)
+    
     """
-    cible = " ".join(nom_complet.split()).lower()
-    for membre in membres:
-        candidat = " ".join(membre["nom"].split()).lower()
-        if candidat == cible:
-            return membre
-    return None
+
 
 
 def valider_nouveau_membre(donnees):
@@ -582,16 +622,7 @@ def valider_nouveau_membre(donnees):
         donnees = {"nom": "Koumba", "prenom": "Marie", "village": "Séo", "contact": "064111222"}
         sortie -> []
     """
-    anomalies = []
-    if not donnees.get("nom", "").strip():
-        anomalies.append("Le nom est obligatoire.")
-    if not donnees.get("prenom", "").strip():
-        anomalies.append("Le prénom est obligatoire.")
-    if not donnees.get("village", "").strip():
-        anomalies.append("Le village est obligatoire.")
-    if not donnees.get("contact", "").strip():
-        anomalies.append("Le contact est obligatoire.")
-    return anomalies
+
 
 
 # ========================================================================
@@ -624,14 +655,23 @@ def calculer_stock_disponible(livraisons, ventes):
         Maïs et Arachide : aucune livraison ni vente -> 0
 
         sortie -> {"Manioc": 70, "Maïs": 0, "Arachide": 0}
+    
     """
-    stock = {culture: 0 for culture in PRIX_ACHAT_KG}
+    # initialiser le stock 
+    stock = {}
+    for culture in PRIX_ACHAT_KG:
+        stock[culture] = 0
+
     for livraison in livraisons:
-        if livraison["culture"] in stock:
-            stock[livraison["culture"]] += livraison["quantite"]
+        culture = livraison["culture"]
+        if culture in stock:
+            stock[culture] += livraison["quantite"]
+
     for vente in ventes:
-        if vente["culture"] in stock:
-            stock[vente["culture"]] -= vente["quantite"]
+        culture = vente["culture"]
+        if culture in stock:
+            stock[culture] -= vente["quantite"]
+
     return stock
 
 
@@ -661,7 +701,11 @@ def verifier_stock_avant_vente(vente, stock_disponible):
                                     {"Manioc": 50})
           -> True  (cas limite : égalité exacte, la vente est acceptée)
     """
-    return vente["quantite"] <= stock_disponible.get(vente["culture"], 0)
+    if vente["culture"] in stock_disponible:
+        return vente["quantite"] <= stock_disponible[vente["culture"]]
+    else:
+        return vente["quantite"] <= 0
+
 
 
 def calculer_marge_vente(vente):
@@ -688,7 +732,13 @@ def calculer_marge_vente(vente):
 
         sortie -> 10500
     """
-    prix_achat_reference = PRIX_ACHAT_KG.get(vente["culture"], 0)
+    culture = vente["culture"]
+
+    if culture in PRIX_ACHAT_KG:
+        prix_achat_reference = PRIX_ACHAT_KG[culture]
+    else:
+        prix_achat_reference = 0
+
     return (vente["prix_kg"] - prix_achat_reference) * vente["quantite"]
 
 
@@ -717,12 +767,18 @@ def verifier_paiement_valide(paiement, solde_du):
         -> ["Le montant dépasse le solde dû (20000 FCFA)."]
     """
     anomalies = []
-    montant = paiement.get("montant", 0)
+    if "montant" in paiement:
+        montant = paiement["montant"]
+    else:
+        montant = 0
+
     if montant <= 0:
         anomalies.append("Le montant doit être strictement positif.")
     if montant > solde_du:
         anomalies.append(f"Le montant dépasse le solde dû ({solde_du} FCFA).")
+
     return anomalies
+
 
 
 def calculer_moyenne_prix_vente(ventes, culture):
@@ -758,12 +814,24 @@ def calculer_moyenne_prix_vente(ventes, culture):
 
         sortie -> 210
     """
-    ventes_culture = [vente for vente in ventes if vente["culture"] == culture]
+    # filtrer les ventes par culture
+    ventes_culture = []
+    for vente in ventes:
+        if vente["culture"] == culture:
+            ventes_culture.append(vente)
     if not ventes_culture:
         return 0
-    total_quantite = sum(vente["quantite"] for vente in ventes_culture)
-    total_valeur = sum(vente["quantite"] * vente["prix_kg"] for vente in ventes_culture)
+    # la quantité totale
+    total_quantite = 0
+    for vente in ventes_culture:
+        total_quantite += vente["quantite"]
+    # la valeur totale
+    total_valeur = 0
+    for vente in ventes_culture:
+        total_valeur += vente["quantite"] * vente["prix_kg"]
+
     return round(total_valeur / total_quantite)
+
 
 
 # ========================================================================
@@ -806,18 +874,7 @@ def authentifier_utilisateur(nom_utilisateur, mot_de_passe, utilisateurs):
         authentifier_utilisateur("smalonga", "mauvais_mdp", utilisateurs)
         -> None
     """
-    for utilisateur in utilisateurs:
-        if (
-            utilisateur["nom_utilisateur"] == nom_utilisateur
-            and utilisateur["mot_de_passe"] == mot_de_passe
-        ):
-            return {
-                "nom_utilisateur": utilisateur["nom_utilisateur"],
-                "role": utilisateur["role"],
-                "nom_complet": utilisateur["nom_complet"],
-                "membre_id": utilisateur["membre_id"],
-            }
-    return None
+
 
 
 def verifier_acces_role(role, action):
@@ -843,5 +900,4 @@ def verifier_acces_role(role, action):
         verifier_acces_role("Trésorière", "enregistrer_paiement") -> True
         verifier_acces_role("Trésorière", "enregistrer_vente")    -> False
         verifier_acces_role("Livreur",    "tableau_de_bord")      -> False  (rôle inconnu)
-    """
-    return action in ACTIONS_PAR_ROLE.get(role, [])
+"""
