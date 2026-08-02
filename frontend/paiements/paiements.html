@@ -1,108 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriCoop Connect — Paiements</title>
-  <link rel="stylesheet" href="paiements.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="../dashboard/dashboard.html">AgriCoop <span>Connect</span></a>
-    <div class="session-actions">
-      <span id="utilisateur-connecte">Non connecté(e)</span>
-      <button id="btn-deconnexion" class="logout-button" type="button">Déconnexion</button>
-    </div>
-  </header>
-
-  <nav class="navigation" aria-label="Navigation principale">
-    <a href="../dashboard/dashboard.html">Tableau de bord</a>
-    <a href="../membres/membres.html">Membres</a>
-    <a href="../livraisons/livraisons.html">Livraisons</a>
-    <a class="active" href="paiements.html">Paiements</a>
-    <a href="../ventes/ventes.html">Ventes &amp; stock</a>
-    <a href="../statistiques/statistiques.html">Statistiques</a>
-  </nav>
-
-  <main class="page-content">
-    <section class="page-heading">
-      <div>
-        <p class="eyebrow">Gestion financière</p>
-        <h1>Paiements</h1>
-        <p>Enregistrez les règlements des membres et consultez l’historique.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriCoop Connect — Paiements</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../dashboard/dashboard.html">AgriCoop <span>Connect</span></a>
+      <div class="session-actions">
+        <span id="utilisateur-connecte">Non connecté(e)</span>
+        <button id="btn-deconnexion" class="logout-button" type="button">Déconnexion</button>
       </div>
-      <div class="total-card">
-        <span>Total encaissé</span>
-        <strong id="total-paiements">0 FCFA</strong>
-      </div>
-    </section>
+    </header>
 
-    <section class="content-grid">
-      <article class="panel payment-panel">
-        <div class="panel-heading">
-          <div class="panel-icon">₣</div>
-          <div>
-            <h2>Nouveau paiement</h2>
-            <p>Ajoutez un règlement au compte d’un membre.</p>
-          </div>
+    <nav class="navigation" aria-label="Navigation principale">
+      <a href="../dashboard/dashboard.html">Tableau de bord</a>
+      <a href="../membres/membres.html">Membres</a>
+      <a href="../livraisons/livraisons.html">Livraisons</a>
+      <a class="active" href="paiements.html">Paiements</a>
+      <a href="../ventes/ventes.html">Ventes &amp; stock</a>
+      <a href="../statistiques/statistiques.html">Statistiques</a>
+    </nav>
+
+    <main class="page-content">
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">Gestion financière</p>
+          <h1>Paiements</h1>
+          <p>Enregistrez les règlements des membres et consultez l’historique.</p>
         </div>
+        <div class="total-card">
+          <span>Total encaissé</span>
+          <strong id="total-paiements">0 FCFA</strong>
+        </div>
+      </section>
 
-        <form id="form-paiement" class="payment-form">
-          <div class="form-group">
-            <label for="p-membre">Membre</label>
-            <select id="p-membre" required>
-              <option value="">-- Choisir un membre --</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="p-montant">Montant</label>
-            <div class="input-with-unit">
-              <input type="number" id="p-montant" min="1" placeholder="Ex. 25 000" required>
-              <span>FCFA</span>
+      <section class="content-grid">
+        <article class="panel payment-panel">
+          <div class="panel-heading">
+            <div class="panel-icon">₣</div>
+            <div>
+              <h2>Nouveau paiement</h2>
+              <p>Ajoutez un règlement au compte d’un membre.</p>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="p-mode-paiement">Mode de paiement</label>
-            <select id="p-mode-paiement" required>
-              <option value="">-- Choisir un mode --</option>
-              <option value="Espèces">Espèces</option>
-              <option value="Mobile Money">Mobile Money</option>
-            </select>
+          <form id="form-paiement" class="payment-form">
+            <div class="form-group">
+              <label for="p-membre">Membre</label>
+              <select id="p-membre" required>
+                <option value="">-- Choisir un membre --</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="p-montant">Montant</label>
+              <div class="input-with-unit">
+                <input type="number" id="p-montant" min="1" placeholder="Ex. 25 000" required />
+                <span>FCFA</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="p-mode-paiement">Mode de paiement</label>
+              <select id="p-mode-paiement" required>
+                <option value="">-- Choisir un mode --</option>
+                <option value="Espèces">Espèces</option>
+                <option value="Mobile Money">Mobile Money</option>
+              </select>
+            </div>
+
+            <div id="message-erreur-paiement" class="message error" hidden></div>
+            <div id="message-succes-paiement" class="message success" hidden></div>
+            <button class="primary-button" type="submit">Enregistrer le paiement</button>
+          </form>
+        </article>
+
+        <article class="panel history-panel">
+          <div class="panel-heading history-heading">
+            <div>
+              <h2>Historique des paiements</h2>
+              <p>Les dernières opérations enregistrées.</p>
+            </div>
           </div>
-
-          <div id="message-erreur-paiement" class="message error" hidden></div>
-          <div id="message-succes-paiement" class="message success" hidden></div>
-          <button class="primary-button" type="submit">Enregistrer le paiement</button>
-        </form>
-      </article>
-
-      <article class="panel history-panel">
-        <div class="panel-heading history-heading">
-          <div>
-            <h2>Historique des paiements</h2>
-            <p>Les dernières opérations enregistrées.</p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Membre</th>
+                  <th>Montant</th>
+                  <th>Mode</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="liste-paiements"></tbody>
+            </table>
           </div>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Membre</th>
-                <th>Montant</th>
-                <th>Mode</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="liste-paiements"></tbody>
-          </table>
-        </div>
-      </article>
-    </section>
-  </main>
+        </article>
+      </section>
+    </main>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

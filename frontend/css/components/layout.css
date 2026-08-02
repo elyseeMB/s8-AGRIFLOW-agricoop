@@ -1,0 +1,387 @@
+/* ============================================================
+   LAYOUT — Sidebar à gauche + Topbar
+   Dashboard classique : sidebar fixe à gauche, contenu à droite.
+   ============================================================ */
+
+.layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ---------- SIDEBAR (gauche) ---------- */
+.sidebar {
+  flex: 0 0 260px;
+  width: 260px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-bg-sidebar);
+  color: var(--surface);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.brand {
+  height: calc((var(--header-height) - var(--space-sm)) + var(--space-sm));
+  margin-inline: calc(var(--space-md) * -1);
+  padding-inline: var(--space-md);
+  margin-top: calc(var(--space-sm) * -1);
+
+  border-bottom: var(--border-w-1) solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.brand-logo {
+  font-size: var(--text-lg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: var(--leading-1);
+}
+
+.brand-text strong {
+  font-size: var(--text-md);
+}
+
+.brand-text span {
+  font-size: var(--text-xs);
+  opacity: 0.75;
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding: var(--space-xs);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--rounded-md);
+}
+
+.profile-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  color: var(--surface);
+  font-size: var(--text-sm);
+}
+
+.profile-info span {
+  font-size: var(--text-xs);
+  opacity: 0.75;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  margin-top: var(--space-lg);
+}
+
+.nav-title {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  margin: var(--space-sm) 0 var(--space-2xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-base) var(--space-md);
+  border-radius: var(--rounded-lg);
+  color: var(--surface);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  opacity: 0.85;
+  transition:
+    background var(--tr-light),
+    opacity var(--tr-light);
+}
+
+.nav-item:hover,
+.nav-item:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 1;
+}
+
+.nav-item.active {
+  background: var(--surface);
+  color: var(--ds-accent);
+  opacity: 1;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon {
+  width: 1.25rem;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: var(--text-md);
+}
+
+.nav-badge {
+  margin-left: auto;
+  background: var(--ds-accent-hover);
+  color: var(--surface);
+  border-radius: var(--rounded-full);
+  padding: 0 var(--space-3xs);
+  font-size: var(--text-xs);
+}
+
+.sidebar-help {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  margin-top: auto;
+  padding: var(--space-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--rounded-md);
+  color: var(--surface);
+  font-size: var(--text-xs);
+}
+
+.help-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.sidebar-help p {
+  margin: 0;
+}
+
+/* ---------- CONTENU ---------- */
+.layout__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--backgroud);
+  color: var(--foreground);
+  padding-inline: var(--space-md) var(--space-sm) var(--space-2xl);
+}
+
+/* ---------- TOPBAR ---------- */
+.topbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.topbar-main {
+  width: calc(100% + calc(var(--space-3xl) * 2));
+  display: flex;
+  height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: var(--border-w-1) solid var(--border);
+  margin-inline: calc(var(--space-3xl) * -1);
+  padding-inline: var(--space-3xl);
+  gap: var(--space-md);
+}
+
+.topbar-main h1 {
+  font-size: var(--text-xl);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+}
+
+.breadcrumb strong {
+  color: var(--foreground);
+}
+
+.page-title h1 {
+  font-size: var(--text-xl);
+  margin: var(--space-3xs) 0;
+}
+
+.page-title p {
+  font-size: var(--text-sm);
+  color: var(--ds-muted-text);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.notification-button {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-w-1) solid var(--border);
+  background: var(--surface);
+  border-radius: var(--rounded-full);
+  cursor: pointer;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ds-danger);
+}
+
+.current-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: var(--text-xs);
+}
+
+.current-date strong {
+  font-size: var(--text-sm);
+}
+
+/* Bouton d'action avec icône à droite (CTA du header) */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+/* Profil utilisateur dans le header (topbar) */
+.topbar-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.topbar-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: var(--text-sm);
+}
+
+.topbar-profile-info strong {
+  color: var(--foreground);
+}
+
+.topbar-profile-info span {
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+}
+
+/* ---------- PAGE HEADER (variante) ---------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: var(--text-2xl);
+  color: var(--foreground);
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header-subtitle {
+  margin: var(--space-2xs) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ds-muted-text);
+}
+
+/* ---------- RESPONSIVE : la sidebar devient une barre horizontale ---------- */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    overflow-x: auto;
+  }
+
+  .sidebar-profile,
+  .sidebar-help {
+    display: none;
+  }
+
+  .navigation {
+    flex-direction: row;
+    overflow-x: auto;
+    margin-top: 0;
+    gap: var(--space-2xs);
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+    border-radius: var(--rounded-full);
+  }
+}

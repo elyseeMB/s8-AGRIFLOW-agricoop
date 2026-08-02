@@ -16,6 +16,7 @@
 
 .header__list {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2xs, 2px);
   list-style: none;

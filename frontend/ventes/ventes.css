@@ -7,7 +7,7 @@
 
 /* ---------- LAYOUT PRINCIPAL ---------- */
 body {
-  display: flex;
+  /* display: flex; */
   min-height: 100vh;
   margin: 0;
   font-family: "Inter", sans-serif;
