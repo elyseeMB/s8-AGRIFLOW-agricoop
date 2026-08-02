@@ -1,0 +1,28 @@
+/* ============================================================
+   CHART — Graphique en barres
+   ============================================================ */
+
+.chart-bars,
+#graphique-semaine {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  padding-inline: var(--space-sm);
+  padding-top: var(--space-md);
+  border-bottom: var(--border-w-1) solid var(--border);
+  min-height: 120px;
+}
+
+.chart-bars .barre,
+#graphique-semaine .barre {
+  width: 28px;
+  flex-shrink: 0;
+  background: var(--ds-accent);
+  border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+  transition: background var(--tr-light);
+}
+
+.chart-bars .barre:hover,
+#graphique-semaine .barre:hover {
+  background: var(--ds-accent-hover);
+}

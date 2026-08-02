@@ -1,4 +1,3 @@
-
 :root {
   --vert-principal: #2e7330;
   --vert-fonce: #2e7330;
@@ -13,12 +12,13 @@
   --radius: 10px;
   --ombre: 0 1px 3px rgba(0, 0, 0, 0.06);
   --text-4xl: 2.25rem;
---text-3xl: 1.875rem;
---text-xl: 1.25rem;
---text-lg: 1.125rem;
---text-md: 1rem;
---text-sm: 0.875rem;
---text-xs: 0.75rem; }
+  --text-3xl: 1.875rem;
+  --text-xl: 1.25rem;
+  --text-lg: 1.125rem;
+  --text-md: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+}
 
 * {
   box-sizing: border-box;
@@ -26,7 +26,7 @@
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   min-height: 100vh;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--gris-fond);
@@ -87,7 +87,6 @@ body {
   width: 20px;
   text-align: center;
 }
-
 
 main {
   flex: 1;

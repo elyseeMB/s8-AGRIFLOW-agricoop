@@ -1,4 +1,6 @@
 .badge {
+  display: inline-block;
+  width: fit-content;
   padding-inline: var(--space-md);
   padding-block: var(--space-xs);
   color: var(--surface);
@@ -9,14 +11,14 @@
   border-radius: var(--rounded-full);
 }
 
-.badge__sucess {
+.badge__success {
   background-color: var(--ds-accent-light);
   color: var(--ds-accent-hover);
 }
 
-.badge__danger {
-  background-color: var(--ds-danger-light);
-  color: var(--ds-danger);
+.badge__info {
+  background-color: var(--ds-info-light);
+  color: var(--ds-info);
 }
 
 .badge__warning {
@@ -24,7 +26,27 @@
   color: var(--ds-warning);
 }
 
-.badge__info {
-  background-color: var(--ds-info-light);
-  color: var(--ds-info);
+.badge__danger {
+  background-color: var(--ds-danger-light);
+  color: var(--ds-danger);
+}
+
+/* ---------- Variantes "statut" (mappées sur les tokens) ---------- */
+.badge--ok,
+.badge--a-jour,
+.badge--disponible {
+  background-color: var(--ds-accent-light);
+  color: var(--ds-accent-hover);
+}
+
+.badge--alerte,
+.badge--en-retard,
+.badge--faible {
+  background-color: var(--ds-warning-light);
+  color: var(--ds-warning);
+}
+
+.badge--epuise {
+  background-color: var(--ds-danger-light);
+  color: var(--ds-danger);
 }

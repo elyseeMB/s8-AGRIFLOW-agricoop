@@ -1,27 +1,27 @@
-
-
 :root {
   --vert-foret: #2e7330;
   --vert-mousse: #2e7330;
-  --vert-clair: #E7EEE3;
-  --or-recolte: #C89B3C;
-  --or-recolte-fonce: #A87F2C;
-  --argile: #A8562E;
-  --argile-clair: #F5E3DA;
-  --papier: #F5F1E8;
-  --papier-carte: #FFFFFF;
-  --encre: #24211C;
-  --encre-douce: #56503F;
-  --ligne: #DEDACB;
-   --text-4xl: 2.25rem;
---text-3xl: 1.875rem;
+  --vert-clair: #e7eee3;
+  --or-recolte: #c89b3c;
+  --or-recolte-fonce: #a87f2c;
+  --argile: #a8562e;
+  --argile-clair: #f5e3da;
+  --papier: #f5f1e8;
+  --papier-carte: #ffffff;
+  --encre: #24211c;
+  --encre-douce: #56503f;
+  --ligne: #dedacb;
+  --text-4xl: 2.25rem;
+  --text-3xl: 1.875rem;
 
   --largeur-sidebar: 230px;
   --rayon: 6px;
   --ombre: 0 1px 2px rgba(31, 61, 43, 0.08), 0 4px 12px rgba(31, 61, 43, 0.06);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -35,7 +35,6 @@ body {
   display: flex;
   min-height: 100vh;
 }
-
 
 .sidebar {
   width: var(--largeur-sidebar);
@@ -65,13 +64,16 @@ body {
 }
 
 .sidebar-liens a {
-  color: #D9E3D3;
+  color: #d9e3d3;
   text-decoration: none;
   font-size: 0.92rem;
   padding: 0.55rem 0.7rem;
   border-radius: var(--rayon);
   border-left: 3px solid transparent;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .sidebar-liens a:hover,
@@ -96,7 +98,7 @@ body {
 #utilisateur-connecte {
   margin: 0 0 0.7rem;
   font-size: 0.82rem;
-  color: #D9E3D3;
+  color: #d9e3d3;
 }
 
 #btn-deconnexion {
@@ -111,7 +113,9 @@ body {
   transition: background 0.15s ease;
 }
 
-#btn-deconnexion:hover { background: rgba(255, 255, 255, 0.1); }
+#btn-deconnexion:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
 #btn-deconnexion:focus-visible {
   outline: 2px solid var(--or-recolte);
@@ -133,7 +137,7 @@ h1 {
 
 h1::after {
   content: "";
-  display: block;
+  display: none;
   width: 100%;
   height: 6px;
   margin-top: 0.6rem;
@@ -167,15 +171,19 @@ h2 {
   box-shadow: var(--ombre);
   padding: 1.5rem;
   display: grid;
-  gap: 1rem;}
+  gap: 1rem;
+}
 
-#form-nouveau-compte h2 { margin-top: 0; }
+#form-nouveau-compte h2 {
+  margin-top: 0;
+}
 
 #form-nouveau-compte label {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--encre-douce);
-  margin-bottom: -0.5rem;}
+  margin-bottom: -0.5rem;
+}
 
 #form-nouveau-compte input,
 #form-nouveau-compte select {
@@ -186,7 +194,8 @@ h2 {
   background: var(--papier);
   color: var(--encre);
   font-size: 0.95rem;
-  font-family: inherit;}
+  font-family: inherit;
+}
 
 #form-nouveau-compte input:focus-visible,
 #form-nouveau-compte select:focus-visible {
@@ -208,7 +217,9 @@ h2 {
   transition: background 0.15s ease;
 }
 
-#form-nouveau-compte button:hover { background: var(--or-recolte-fonce); }
+#form-nouveau-compte button:hover {
+  background: var(--or-recolte-fonce);
+}
 
 #form-nouveau-compte button:focus-visible {
   outline: 3px solid var(--vert-mousse);
@@ -244,7 +255,9 @@ table {
   overflow: hidden;
   box-shadow: var(--ombre);
 }
-thead tr { background: var(--vert-clair); }
+thead tr {
+  background: var(--vert-clair);
+}
 th {
   text-align: left;
   font-size: 0.8rem;
@@ -261,7 +274,9 @@ td {
   color: var(--encre);
 }
 
-tbody tr:hover { background: #FBFAF5; }
+tbody tr:hover {
+  background: #fbfaf5;
+}
 
 tbody:empty::after {
   content: "Aucun compte enregistré pour le moment.";
@@ -271,7 +286,9 @@ tbody:empty::after {
   font-style: italic;
 }
 @media (max-width: 900px) {
-  .mise-en-page { flex-direction: column; }
+  .mise-en-page {
+    flex-direction: column;
+  }
   .sidebar {
     width: 100%;
     height: auto;
@@ -282,8 +299,14 @@ tbody:empty::after {
     gap: 1rem;
     padding: 1rem 1.2rem;
   }
-  .sidebar-logo { margin-bottom: 0; }
-  .sidebar-liens { flex-direction: row; flex-wrap: wrap; flex-grow: 1; }
+  .sidebar-logo {
+    margin-bottom: 0;
+  }
+  .sidebar-liens {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
   .sidebar-session {
     border-top: none;
     padding-top: 0;
@@ -292,24 +315,46 @@ tbody:empty::after {
     align-items: center;
     gap: 0.7rem;
   }
-  #utilisateur-connecte { margin: 0; }
-  #btn-deconnexion { width: auto; }
+  #utilisateur-connecte {
+    margin: 0;
+  }
+  #btn-deconnexion {
+    width: auto;
+  }
 }
 @media (max-width: 640px) {
-  main { padding: 1.5rem 1rem 3rem; }
-  table, thead, tbody, th, td, tr { display: block; }
-  thead { display: none; }
+  main {
+    padding: 1.5rem 1rem 3rem;
+  }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
   tbody tr {
     border-top: 1px solid var(--ligne);
     padding: 0.6rem 0.9rem;
   }
   td {
     border: none;
-    padding: 0.25rem 0;}
-    
-  td:nth-of-type(1)::before { content: "Nom d'utilisateur : "; }
-  td:nth-of-type(2)::before { content: "Nom complet : "; }
-  td:nth-of-type(3)::before { content: "Rôle : "; }
+    padding: 0.25rem 0;
+  }
+
+  td:nth-of-type(1)::before {
+    content: "Nom d'utilisateur : ";
+  }
+  td:nth-of-type(2)::before {
+    content: "Nom complet : ";
+  }
+  td:nth-of-type(3)::before {
+    content: "Rôle : ";
+  }
   td::before {
     font-size: 0.72rem;
     text-transform: uppercase;
@@ -318,4 +363,7 @@ tbody:empty::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }}
+  * {
+    transition: none !important;
+  }
+}

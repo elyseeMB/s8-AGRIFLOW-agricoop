@@ -21,6 +21,13 @@
 @import "./components/Badge.css";
 @import "./components/btn.css";
 @import "./components/alert.css";
+@import "./components/layout.css";
+@import "./components/card.css";
+@import "./components/form.css";
+@import "./components/table.css";
+@import "./components/progress.css";
+@import "./components/chart.css";
+@import "./components/message.css";
 
 /* Module - design-system */
 @import "./design-system/root.css";
@@ -30,6 +37,7 @@
 @import "./design-system/alert.css";
 
 :root {
+  --header-height: 60px;
   /* typography */
   --font-sans: "inter";
   --text-base: 16px;
@@ -50,6 +58,7 @@
   --ds-info-light: hsla(212, 100%, 93%, 0.717);
   --ds-disable: hsl(0, 0%, 92%);
   --ds-disable-text: hsla(0, 0%, 66%, 0.717);
+  --ds-muted-text: hsl(0, 0%, 82%);
 
   /* Background */
   --backgroud: hsl(225deg 16.67% 95.29%);
