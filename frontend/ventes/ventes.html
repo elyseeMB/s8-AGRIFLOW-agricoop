@@ -277,45 +277,6 @@
               </div>
             </section>
 
-            <section class="card card-vente">
-              <h2>Enregistrer une vente</h2>
-              <form id="form-vente">
-                <div class="form-group">
-                  <label>Acheteur</label>
-                  <input
-                    type="text"
-                    id="v-acheteur"
-                    placeholder="Rechercher un acheteur"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Produit</label>
-                  <select id="v-produit" required>
-                    <option value="">Sélectionner</option>
-                    <option value="Manioc">Manioc</option>
-                    <option value="Maïs">Maïs</option>
-                    <option value="Arachide">Arachide</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Quantité vendue (kg)</label>
-                  <input type="number" id="v-quantite" placeholder="0" min="1" required />
-                </div>
-                <div class="form-group">
-                  <label>Prix négocié par kg (FCFA)</label>
-                  <input type="number" id="v-prix" placeholder="0" min="1" required />
-                </div>
-                <div class="form-group">
-                  <label>Date de vente</label>
-                  <input type="date" id="v-date" required />
-                </div>
-                <button type="submit" class="btn btnprimary btn-block">Enregistrer</button>
-                <div id="message-erreur-vente" class="alert alertdanger" hidden></div>
-                <div id="message-succes-vente" class="alert alertsuccess" hidden></div>
-              </form>
-            </section>
-
             <section class="card card-control">
               <h2>Contrôle automatique du stock</h2>
               <div class="control-info">

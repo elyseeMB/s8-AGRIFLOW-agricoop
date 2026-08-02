@@ -50,7 +50,14 @@ function validerFormulaireLogin(donnees) {
    Exemple    : compterJoursActifs({"2026-07-08": 135, "2026-07-09": 60}, 100) -> 1
    Astuce     : Object.values(livraisonsParJour) donne un tableau des quantités. */
 function compterJoursActifs(livraisonsParJour, seuil) {
-  // TODO : à compléter
+  const quantites = Object.values(livraisonsParJour);
+  let compteur = 0;
+  for (const quantite of quantites) {
+    if (quantite > seuil) {
+      compteur++;
+    }
+  }
+  return compteur;
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter]
@@ -60,7 +67,7 @@ function compterJoursActifs(livraisonsParJour, seuil) {
    Retourne   : un nouveau tableau ne contenant que les membres dont
                 .statut_cotisation est égal au statut demandé. */
 function filtrerMembresParStatut(membres, statut) {
-  return membres.filter(m => m.statut_cotisation === statut)
+  return membres.filter((m) => m.statut_cotisation === statut);
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter + méthode de chaîne]
@@ -73,7 +80,7 @@ function filtrerMembresParStatut(membres, statut) {
 function rechercherMembreParNom(membres, texte) {
   if (!texte.trim()) return membres;
   const recherche = texte.toLowerCase();
-  return membres.filter(m => m.nom.toLowerCase().includes(recherche));
+  return membres.filter((m) => m.nom.toLowerCase().includes(recherche));
 }
 
 /* [Dev FS2 — Membres — niveau S7 : conditions simples — NOUVEAU]
@@ -107,7 +114,21 @@ function validerFormulaireNouveauMembre(donnees) {
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
 function validerFormulaireLivraison(donnees) {
-  // TODO : à compléter
+  if (donnees.membre_id === "") {
+    return false;
+  }
+
+  if (donnees.culture === "") {
+    return false;
+  }
+
+  const quantite = Number(donnees.quantite);
+
+  if (isNaN(quantite) || quantite <= 0) {
+    return false;
+  }
+
+  return true;
 }
 
 /* [Dev FS3 — Livraisons — niveau S8 : tableau .sort]
@@ -118,7 +139,8 @@ function validerFormulaireLivraison(donnees) {
    Astuce    : au format "AAAA-MM-JJ", comparer les chaînes fonctionne
                directement (ordre alphabétique = ordre chronologique). */
 function trierLivraisonsParDate(livraisons) {
-  // TODO : à compléter
+  console.log(livraisons);
+  return livraisons.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }
 
 /* [Dev FS4 — Paiements — niveau S7 : conditions imbriquées]
