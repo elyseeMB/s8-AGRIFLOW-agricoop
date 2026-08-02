@@ -1,23 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 /* Tools */
-@import './tools/reset.css';
-@import './tools/typography.css';
-@import './tools/layout.css';
+@import "./tools/reset.css";
+@import "./tools/typography.css";
+@import "./tools/layout.css";
 
 /* Layouts */
 
+/* Pages */
+@import "../comptes/comptes.css";
+@import "../dashboard/dashboard.css";
+@import "../livraisons/livraisons.css";
+@import "../paiements/paiements.css";
+@import "../statistiques/statistiques.css";
+@import "../ventes/ventes.css";
+@import "../membres/membres.css";
+@import "../login/login.css";
+
 /* Components */
-@import './components/Badge.css';
-@import './components/btn.css';
+@import "./components/Badge.css";
+@import "./components/btn.css";
+@import "./components/alert.css";
 
 /* Module - design-system */
-@import './design-system/root.css';
-@import './design-system/palettes.css';
-@import './design-system/typography.css';
-@import './design-system/navigation.css';
+@import "./design-system/root.css";
+@import "./design-system/palettes.css";
+@import "./design-system/typography.css";
+@import "./design-system/navigation.css";
+@import "./design-system/alert.css";
 
 :root {
   /* typography */
-  --font-sans: 'inter';
+  --font-sans: "inter";
   --text-base: 16px;
   --leading-1: 1;
   --tr-light: 200ms;
@@ -96,4 +110,23 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.main-content {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.441);
+}
+
+.main-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../public/login_img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
 }

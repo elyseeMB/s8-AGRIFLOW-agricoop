@@ -1,60 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriCoop Connect — Statistiques</title>
-  <link rel="stylesheet" href="statistiques.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriCoop Connect — Statistiques</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="statistiques.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <h2>AgriCoop</h2>
+        <span class="sidebar-subtitle">Connect</span>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+        <li><a href="../membres/membres.html">Membres</a></li>
+        <li><a href="../livraisons/livraisons.html">Livraisons</a></li>
+        <li><a href="../paiements/paiements.html">Paiements</a></li>
+        <li><a href="../ventes/ventes.html">Ventes & Stock</a></li>
+        <li class="active"><a href="statistiques.html">Statistiques</a></li>
+        <li><a href="../comptes/comptes.html">Comptes</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <span id="utilisateur-connecte">Non connecté(e)</span>
+        <button id="btn-deconnexion" class="btn btn-small btndanger">Déconnexion</button>
+      </div>
+    </nav>
 
-  <!-- NAVIGATION — TODO (Dev FS6) -->
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <header class="page-header">
+        <h1>Statistiques et rapport</h1>
+        <p class="header-subtitle">Analyse des performances de la coopérative</p>
+      </header>
 
-  <main>
-    <!-- =====================================================================
-         CLASSEMENT DES MEMBRES — TODO (Dev FS6)
-         Le contenu (liste <li>) est injecté par main.js.
+      <!-- SECTION 1 : INDICATEURS CLÉS -->
+      <section class="section indicators-section">
+        <h2>Indicateurs clés</h2>
+        <div class="indicators-grid">
+          <div class="indicator-card">
+            <span class="indicator-label">Volume total livré</span>
+            <span class="indicator-value" id="ind-volume-total">-- kg</span>
+          </div>
+          <div class="indicator-card">
+            <span class="indicator-label">Valeur totale des ventes</span>
+            <span class="indicator-value" id="ind-valeur-totale">-- FCFA</span>
+          </div>
+          <div class="indicator-card">
+            <span class="indicator-label">Nombre de membres actifs</span>
+            <span class="indicator-value" id="ind-membres-actifs">--</span>
+          </div>
+          <div class="indicator-card">
+            <span class="indicator-label">Taux de régularité</span>
+            <span class="indicator-value" id="ind-taux-regularite">-- %</span>
+          </div>
+        </div>
+      </section>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <ol id="classement-membres"></ol>
+      <!-- SECTION 2 : CLASSEMENT DES MEMBRES -->
+      <section class="section ranking-section">
+        <h2>Classement des membres par volume livré</h2>
+        <p class="section-subtitle">Du plus gros producteur au plus petit</p>
+        <ol id="classement-membres" class="ranking-list">
+          <!-- Injecté par main.js -->
+        </ol>
+      </section>
 
-    <!-- =====================================================================
-         TABLEAU PAR CULTURE — TODO (Dev FS6)
+      <!-- SECTION 3 : STATISTIQUES PAR CULTURE -->
+      <section class="section cultures-section">
+        <h2>Statistiques par culture</h2>
+        <div class="table-responsive">
+          <table class="table-cultures">
+            <thead>
+              <tr>
+                <th>Culture</th>
+                <th>Volume total (kg)</th>
+                <th>Valeur totale (FCFA)</th>
+                <th>Part du marché</th>
+              </tr>
+            </thead>
+            <tbody id="tableau-cultures">
+              <!-- Injecté par main.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <table>
-      <thead>
-        <!-- TODO (Dev FS6) : en-têtes (Culture, Volume total, Valeur totale) -->
-      </thead>
-      <tbody id="tableau-cultures"></tbody>
-    </table>
+      <!-- SECTION 4 : TOP ACHETEUR -->
+      <section class="section top-buyer-section">
+        <h2>Meilleur acheteur</h2>
+        <div class="top-buyer-card">
+          <span class="top-buyer-label">Acheteur du mois</span>
+          <span id="top-acheteur" class="top-buyer-value">--</span>
+        </div>
+      </section>
 
-    <!-- =====================================================================
-         TOP ACHETEUR — TODO (Dev FS6)
+      <!-- SECTION 5 : RAPPORT BAILLEUR -->
+      <section class="section rapport-section">
+        <h2>Rapport bailleur</h2>
+        <div id="rapport-bailleur-contenu" class="rapport-grid">
+          <div class="rapport-card">
+            <span class="rapport-label">Volume total sur la période</span>
+            <span id="rb-volume" class="rapport-value">-- kg</span>
+          </div>
+          <div class="rapport-card">
+            <span class="rapport-label">Montant des ventes sur la période</span>
+            <span id="rb-montant" class="rapport-value">-- FCFA</span>
+          </div>
+          <div class="rapport-card">
+            <span class="rapport-label">Taux de régularité des paiements</span>
+            <span id="rb-taux" class="rapport-value">-- %</span>
+          </div>
+          <div class="rapport-card">
+            <span class="rapport-label">Nombre de membres actifs</span>
+            <span id="rb-membres" class="rapport-value">--</span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <div id="top-acheteur"></div>
-
-    <!-- =====================================================================
-         RAPPORT BAILLEUR — TODO (Dev FS6 + DM)
-         Le dev structure la section, le DM fournit les textes d'habillage.
-         Les valeurs chiffrées sont injectées par main.js.
-
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <section id="rapport-bailleur-contenu">
-      <span id="rb-volume"></span>
-      <span id="rb-montant"></span>
-      <span id="rb-taux"></span>
-      <span id="rb-membres"></span>
-    </section>
-  </main>
-
-  <!-- NE PAS MODIFIER — scripts de connexion au backend -->
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <!-- SCRIPTS -->
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

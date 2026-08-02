@@ -102,7 +102,8 @@ async function initDashboard() {
     }
   } catch (e) {
     // Ici, l'API est réellement injoignable (backend pas démarré, etc.)
-    cible.innerHTML = "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
+    cible.innerHTML =
+      "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
     console.error(e);
     return;
   }
@@ -123,7 +124,8 @@ async function initDashboard() {
   try {
     const joursActifs = document.getElementById("jours-actifs");
     if (joursActifs) {
-      joursActifs.textContent = compterJoursActifs(data.livraisons_par_jour, 80) + " jour(s) à forte activité (> 80 kg)";
+      joursActifs.textContent =
+        compterJoursActifs(data.livraisons_par_jour, 80) + " jour(s) à forte activité (> 80 kg)";
     }
   } catch (e) {
     console.error("Section jours-actifs :", e);
@@ -133,7 +135,10 @@ async function initDashboard() {
     const graphique = document.getElementById("graphique-semaine");
     if (graphique) {
       graphique.innerHTML = Object.entries(data.livraisons_par_jour)
-        .map(([date, qte]) => `<div class="barre" style="height:${qte}px" title="${formaterDate(date)} : ${qte} kg"></div>`)
+        .map(
+          ([date, qte]) =>
+            `<div class="barre" style="height:${qte}px" title="${formaterDate(date)} : ${qte} kg"></div>`
+        )
         .join("");
     }
   } catch (e) {
@@ -157,7 +162,8 @@ async function initMembres() {
     _membresCache = data.membres;
     appliquerFiltresMembres();
   } catch (e) {
-    conteneur.innerHTML = "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
+    conteneur.innerHTML =
+      "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
     console.error(e);
   }
 }
@@ -223,7 +229,8 @@ async function chargerLivraisons() {
     _livraisonsCache = data;
     afficherLivraisons(_livraisonsCache);
   } catch (e) {
-    conteneur.innerHTML = "<tr><td colspan='4'>Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).</td></tr>";
+    conteneur.innerHTML =
+      "<tr><td colspan='4'>Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).</td></tr>";
     console.error(e);
   }
 }
@@ -277,7 +284,10 @@ function initFormLivraison() {
       const reponse = await fetch(`${API_URL}/livraisons`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...donnees, quantite: Number(donnees.quantite) }),
+        body: JSON.stringify({
+          ...donnees,
+          quantite: Number(donnees.quantite),
+        }),
       });
       const resultat = await reponse.json();
 
@@ -327,7 +337,8 @@ async function chargerPaiements() {
       totalCible.textContent = formaterMontant(calculerTotalPaiements(data.paiements));
     }
   } catch (e) {
-    conteneur.innerHTML = "<tr><td colspan='3'>Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).</td></tr>";
+    conteneur.innerHTML =
+      "<tr><td colspan='3'>Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).</td></tr>";
     console.error(e);
   }
 }
@@ -394,7 +405,8 @@ async function initVentesStock() {
       return;
     }
   } catch (e) {
-    cible.innerHTML = "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
+    cible.innerHTML =
+      "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
     console.error(e);
     return;
   }
@@ -455,16 +467,15 @@ async function initStatistiques() {
       return;
     }
   } catch (e) {
-    cible.innerHTML = "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
+    cible.innerHTML =
+      "Impossible de joindre l'API. Vérifiez que le backend est démarré (python app.py).";
     console.error(e);
     return;
   }
 
   try {
     const classement = trierClassementParVolume(data.classement_membres);
-    cible.innerHTML = classement
-      .map((c) => `<li>${c.nom} — ${c.volume_total} kg</li>`)
-      .join("");
+    cible.innerHTML = classement.map((c) => `<li>${c.nom} — ${c.volume_total} kg</li>`).join("");
   } catch (e) {
     cible.innerHTML = "Classement : vérifiez trierClassementParVolume() dans functions.js.";
     console.error(e);
@@ -474,12 +485,14 @@ async function initStatistiques() {
     const tableauCultures = document.getElementById("tableau-cultures");
     if (tableauCultures) {
       tableauCultures.innerHTML = Object.entries(data.statistiques_par_culture)
-        .map(([culture, stats]) => `
+        .map(
+          ([culture, stats]) => `
         <tr>
           <td>${culture}</td>
           <td>${stats.volume_total} kg</td>
           <td>${formaterMontant(stats.valeur_totale)}</td>
-        </tr>`)
+        </tr>`
+        )
         .join("");
     }
   } catch (e) {
@@ -554,7 +567,9 @@ async function initComptes() {
       const reponse = await fetch(`${API_URL}/utilisateurs`);
       const comptes = await reponse.json();
       listeCible.innerHTML = comptes
-        .map((c) => `<tr><td>${c.nom_utilisateur}</td><td>${c.nom_complet}</td><td>${c.role}</td></tr>`)
+        .map(
+          (c) => `<tr><td>${c.nom_utilisateur}</td><td>${c.nom_complet}</td><td>${c.role}</td></tr>`
+        )
         .join("");
     } catch (e) {
       listeCible.innerHTML = "<tr><td colspan='3'>Impossible de charger les comptes.</td></tr>";
@@ -613,7 +628,8 @@ async function initNouveauMembre() {
     try {
       const reponse = await fetch(`${API_URL}/villages`);
       const villages = await reponse.json();
-      selectVillage.innerHTML = `<option value="">-- Choisir un village --</option>` +
+      selectVillage.innerHTML =
+        `<option value="">-- Choisir un village --</option>` +
         villages.map((v) => `<option value="${v}">${v}</option>`).join("");
     } catch (e) {
       console.error("Impossible de charger les villages :", e);
@@ -633,7 +649,8 @@ async function initNouveauMembre() {
 
     const validation = validerFormulaireNouveauMembre(donnees);
     if (!validation.valide) {
-      erreursCible.innerHTML = "<ul>" + validation.erreurs.map((e) => `<li>${e}</li>`).join("") + "</ul>";
+      erreursCible.innerHTML =
+        "<ul>" + validation.erreurs.map((e) => `<li>${e}</li>`).join("") + "</ul>";
       erreursCible.hidden = false;
       succesCible.hidden = true;
       return;
@@ -654,7 +671,8 @@ async function initNouveauMembre() {
         form.reset();
         initMembres();
       } else {
-        erreursCible.innerHTML = "<ul>" + resultat.anomalies.map((a) => `<li>${a}</li>`).join("") + "</ul>";
+        erreursCible.innerHTML =
+          "<ul>" + resultat.anomalies.map((a) => `<li>${a}</li>`).join("") + "</ul>";
         erreursCible.hidden = false;
         succesCible.hidden = true;
       }
