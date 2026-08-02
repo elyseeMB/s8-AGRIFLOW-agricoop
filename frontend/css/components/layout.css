@@ -11,17 +11,13 @@
 
 /* ---------- SIDEBAR (gauche) ---------- */
 .sidebar {
-  flex: 0 0 260px;
+  background-color: var(--background);
+  border-right: var(--border-w-1) solid var(--border);
+  color: var(--ds-accent);
+  position: static;
+  min-height: 380px;
+  height: auto;
   width: 260px;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  background: var(--ds-bg-sidebar);
-  color: var(--surface);
   padding: var(--space-sm) var(--space-md);
 }
 
@@ -113,10 +109,10 @@
   gap: var(--space-sm);
   padding: var(--space-base) var(--space-md);
   border-radius: var(--rounded-lg);
-  color: var(--surface);
   text-decoration: none;
   font-size: var(--text-sm);
-  opacity: 0.85;
+  color: var(--ds-accent);
+  opacity: 1;
   transition:
     background var(--tr-light),
     opacity var(--tr-light);
@@ -124,16 +120,13 @@
 
 .nav-item:hover,
 .nav-item:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ds-accent);
 }
 
 .nav-item.active {
-  background: var(--surface);
+  background: var(--ds-accent-light);
   color: var(--ds-accent);
-  opacity: 1;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .nav-icon {
@@ -183,12 +176,10 @@
 /* ---------- CONTENU ---------- */
 .layout__main {
   flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--backgroud);
-  color: var(--foreground);
-  padding-inline: var(--space-md) var(--space-sm) var(--space-2xl);
+  background-color: var(--background);
+  padding-inline: var(--space-3xl);
+  padding-top: 0;
+  padding-bottom: var(--space-md);
 }
 
 /* ---------- TOPBAR ---------- */
