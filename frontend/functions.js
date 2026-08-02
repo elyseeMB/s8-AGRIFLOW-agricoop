@@ -107,7 +107,21 @@ function validerFormulaireNouveauMembre(donnees) {
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
 function validerFormulaireLivraison(donnees) {
-  // TODO : à compléter
+  if (donnees.membre_id === "") {
+    return false;
+  }
+
+  if (donnees.culture === "") {
+    return false;
+  }
+
+  const quantite = Number(donnees.quantite);
+
+  if (isNaN(quantite) || quantite <= 0) {
+    return false;
+  }
+
+  return true;
 }
 
 /* [Dev FS3 — Livraisons — niveau S8 : tableau .sort]
