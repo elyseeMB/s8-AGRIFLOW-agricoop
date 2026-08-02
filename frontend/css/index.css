@@ -11,10 +11,10 @@
 @import "../comptes/comptes.css";
 @import "../dashboard/dashboard.css";
 @import "../livraisons/livraisons.css";
-@import "../paiements/paiements.css";
 @import "../statistiques/statistiques.css";
-@import "../ventes/ventes.css";
 @import "../membres/membres.css";
+@import "../ventes/ventes.css";
+@import "../paiements/paiements.css";
 @import "../login/login.css";
 
 /* Components */
