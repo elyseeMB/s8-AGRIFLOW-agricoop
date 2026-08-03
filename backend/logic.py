@@ -53,7 +53,12 @@ PRIX_VENTE_KG = {
 # une opération précise de l'application. Si l'action demandée n'apparaît
 # pas dans la liste du rôle, l'accès doit être refusé .
 ACTIONS_PAR_ROLE = {
-    "Secrétaire": ["gerer_comptes", "gerer_membres", "tableau_de_bord", "consulter_rapport_partenaire"],
+    "Secrétaire": [
+        "gerer_comptes",
+        "gerer_membres",
+        "tableau_de_bord",
+        "consulter_rapport_partenaire",
+    ],
     "Président": ["enregistrer_vente", "tableau_de_bord", "generer_rapport_partenaire"],
     "Trésorière": ["enregistrer_paiement", "tableau_de_bord"],
     "Responsable dépôt": ["enregistrer_livraison", "tableau_de_bord"],
@@ -64,6 +69,7 @@ ACTIONS_PAR_ROLE = {
 # ========================================================================
 # ZONE A — Tableau de bord & Statistiques
 # ========================================================================
+
 
 def calculer_indicateurs_globaux(livraisons, ventes, paiements):
     """
@@ -190,7 +196,7 @@ def classer_membres_par_production(livraisons):
             {"membre_id": 1, "quantite": 100},
             {"membre_id": 2, "quantite": 50},
             {"membre_id": 1, "quantite": 30},
-            
+
         ]
         -> le membre 1 a livré 100 + 30 = 130 au total
         -> le membre 2 a livré 50 au total
@@ -391,6 +397,7 @@ def identifier_top_acheteur(ventes, acheteurs):
 # ZONE B — Membres & Livraisons
 # ========================================================================
 
+
 def calculer_solde_membre(membre_id, livraisons, paiements):
     """
     Calcule ce qui est dû à un membre : valeur totale de ses livraisons
@@ -432,8 +439,20 @@ def calculer_solde_membre(membre_id, livraisons, paiements):
         solde = 28000 - 5000 = 23000
 
         sortie -> 23000
+    """
+    total_dette = 0
+    for livraison in livraisons:
+        if livraison["membre_id"] == membre_id:
+            total_dette += livraison["quantite"] * PRIX_ACHAT_KG.get(
+                livraison["culture"], 0
+            )
 
-            """
+    total_paye = 0
+    for paiement in paiements:
+        if paiement["membre_id"] == membre_id:
+            total_paye += paiement["montant"]
+
+    return total_dette - total_paye
 
 def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
     """
@@ -463,7 +482,14 @@ def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
         sortie -> [{"membre_id": 2, "nom": "Sandra Malonga"}]
     
     """
+    membre_actif = {livraison["membre_id"] for livraison in livraisons}
+    membres_non_actifs = [
+        {"membre_id": membre["id"], "nom": membre["nom"]}
+        for membre in membres
+        if membre["id"] not in membre_actif
+    ]
 
+    return membres_non_actifs
 
 
 def detecter_anomalie_livraison(livraison):
@@ -497,7 +523,14 @@ def detecter_anomalie_livraison(livraison):
         livraison = {"membre_id": 1, "culture": "Manioc", "quantite": 100}
         sortie -> []
     """
-
+    anomalies = []
+    if livraison["quantite"] <= 0:
+        anomalies.append("Quantité invalide : doit être strictement positive.")
+    if livraison["culture"] not in PRIX_ACHAT_KG:
+        anomalies.append(f"Culture inconnue : {livraison['culture']}.")
+    if not livraison["membre_id"]:
+        anomalies.append("Aucun membre rattaché à cette livraison.")
+    return anomalies
 
 
 def generer_recu(membre_nom, montant):
@@ -518,7 +551,11 @@ def generer_recu(membre_nom, montant):
         generer_recu("Jean Mabiala", 0)
           -> "Aucun montant à verser pour Jean Mabiala."
     """
-
+    if montant <= 0:
+        reçu = f"Aucun montant n'a été versé pour {membre_nom}."
+    else:
+        reçu = f"Reçu - {membre_nom} : paiment de {montant} FCFA effectué."
+    return reçu
 
 
 def calculer_historique_paiements_membre(membre_id, paiements):
@@ -542,7 +579,12 @@ def calculer_historique_paiements_membre(membre_id, paiements):
         sortie    -> [{"membre_id": 1, "montant": 15000, "date": "2026-07-14"},
                       {"membre_id": 1, "montant": 5000, "date": "2026-07-05"}]
     """
+    historique_paiements = [
+        paiement for paiement in paiements if paiement["membre_id"] == membre_id
+    ]
+    historique_paiements.sort(key=lambda paiement: paiement["date"], reverse=True)
 
+    return historique_paiements
 
 
 def rechercher_membre_similaire(nom_complet, membres):
@@ -580,7 +622,12 @@ def rechercher_membre_similaire(nom_complet, membres):
         -> None   (aucun membre existant ne porte ce nom)
     
     """
-
+    ancien_membre = " ".join(nom_complet.split()).lower()
+    for membre in membres:
+        nouveau_membre = " ".join(membre["nom"].split()).lower()
+        if nouveau_membre == ancien_membre:
+            return membre
+    return None
 
 
 def valider_nouveau_membre(donnees):
@@ -615,12 +662,22 @@ def valider_nouveau_membre(donnees):
         donnees = {"nom": "Koumba", "prenom": "Marie", "village": "Séo", "contact": "064111222"}
         sortie -> []
     """
-
+    anomalies = []
+    if donnees["nom"].strip() == "":
+        anomalies.append("Le nom est obligatoire.")
+    if donnees["prenom"].strip() == "":
+        anomalies.append("Le prénom est obligatoire.")
+    if donnees["village"].strip() == "":
+        anomalies.append("Le village est obligatoire.")
+    if donnees["contact"].strip() == "":
+        anomalies.append("Le contact est obligatoire.")
+    return anomalies
 
 
 # ========================================================================
 # ZONE C — Ventes, Stock & Paiements
 # ========================================================================
+
 
 def calculer_stock_disponible(livraisons, ventes):
     """
@@ -830,6 +887,7 @@ def calculer_moyenne_prix_vente(ventes, culture):
 # ZONE D — Authentification (nouveau module)
 # ========================================================================
 
+
 def authentifier_utilisateur(nom_utilisateur, mot_de_passe, utilisateurs):
     """
     NOUVELLE FONCTION — vérifie les identifiants saisis sur l'écran de
@@ -865,7 +923,19 @@ def authentifier_utilisateur(nom_utilisateur, mot_de_passe, utilisateurs):
         authentifier_utilisateur("smalonga", "mauvais_mdp", utilisateurs)
         -> None
     """
+    for utilisateur in utilisateurs:
+        if (
+            utilisateur["nom_utilisateur"] == nom_utilisateur
+            and utilisateur["mot_de_passe"] == mot_de_passe
+        ):
+            return {
+                "nom_utilisateur": utilisateur["nom_utilisateur"],
+                "role": utilisateur["role"],
+                "nom_complet": utilisateur["nom_complet"],
+                "membre_id": utilisateur["membre_id"],
+            }
 
+    return None
 
 
 def verifier_acces_role(role, action):
@@ -891,4 +961,7 @@ def verifier_acces_role(role, action):
         verifier_acces_role("Trésorière", "enregistrer_paiement") -> True
         verifier_acces_role("Trésorière", "enregistrer_vente")    -> False
         verifier_acces_role("Livreur",    "tableau_de_bord")      -> False  (rôle inconnu)
-"""
+    """
+    if role in ACTIONS_PAR_ROLE and action in ACTIONS_PAR_ROLE[role]:
+        return True
+    return False

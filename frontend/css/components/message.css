@@ -1,0 +1,28 @@
+/* ============================================================
+   MESSAGE — Retours d'opération (erreur / succès)
+   ============================================================ */
+
+.message {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--rounded-md);
+  border-left: 3px solid transparent;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.message[hidden] {
+  display: none;
+}
+
+.message-error {
+  background: var(--ds-danger-light);
+  color: var(--ds-danger);
+  border-left-color: var(--ds-danger);
+}
+
+.message-success {
+  background: var(--ds-accent-light);
+  color: var(--ds-accent);
+  border-left-color: var(--ds-accent);
+}

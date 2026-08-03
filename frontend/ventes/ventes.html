@@ -1,41 +1,342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriCoop Connect — Ventes & Stock</title>
-  <link rel="stylesheet" href="ventes.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriCoop Connect — Ventes & Stock</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="ventes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- SIDEBAR -->
 
-  <!-- NAVIGATION — TODO (Dev FS5) -->
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"
+              ></path>
+              <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <strong>AgriCoop</strong>
+            <span>Connect</span>
+          </div>
+        </div>
 
-  <main>
-    <!-- =====================================================================
-         CARTES STOCK — TODO (Dev FS5)
-         Le contenu est injecté par main.js (une carte par culture avec
-         badge et barre de remplissage). Le dev stylise .card, .badge,
-         .barre-stock-fond, .barre-stock-remplissage.
+        <nav class="navigation">
+          <a href="../dashboard/dashboard.html" class="nav-item active">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+              </svg>
+            </span>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="../membres/membres.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span>Membres</span>
+          </a>
+          <a href="../livraisons/livraisons.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+                ></path>
+                <path d="M12 22V12"></path>
+                <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                <path d="m7.5 4.27 9 5.15"></path>
+              </svg>
+            </span>
+            <span>Livraisons</span>
+          </a>
+          <a href="../paiements/paiements.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
+                ></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+              </svg>
+            </span>
+            <span>Paiements</span>
+          </a>
+          <a href="../ventes/ventes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"></path>
+                <path
+                  d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"
+                ></path>
+                <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"></path>
+              </svg>
+            </span>
+            <span>Ventes &amp; Stock</span>
+          </a>
+          <a href="../statistiques/statistiques.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+                <path d="M18 17V9"></path>
+                <path d="M13 17V5"></path>
+                <path d="M8 17v-3"></path>
+              </svg>
+            </span>
+            <span>Statistiques</span>
+          </a>
+          <a href="../comptes/comptes.html" class="nav-item">
+            <span class="nav-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span>Comptes</span>
+          </a>
+        </nav>
+      </aside>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <div id="cartes-stock"></div>
+      <main class="layout__main">
+        <header class="topbar">
+          <div class="topbar-main">
+            <h1>Ventes et gestion du stock</h1>
+            <div class="topbar-actions">
+              <div class="topbar-profile">
+                <div class="topbar-avatar">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="topbar-profile-info">
+                  <strong>Administrateur</strong>
+                  <span>Secrétaire</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="breadcrumb">
+            <span>Accueil</span>
+            <span>/</span>
+            <strong>Ventes et gestion du stock</strong>
+          </div>
+        </header>
 
-    <!-- =====================================================================
-         TABLEAU DES VENTES — TODO (Dev FS5)
+        <div class="">
+          <!-- LIGNE 1 -->
+          <div class="row-three">
+            <section class="card card-stock">
+              <h2>Vue globale du stock</h2>
+              <div id="cartes-stock" class="stock-mini"></div>
+              <div class="stock-footer">
+                <div>
+                  <span class="label">Valeur estimée du stock</span>
+                  <span class="value" id="valeur-stock">-- FCFA</span>
+                </div>
+                <div>
+                  <span class="label">Dernière mise à jour</span>
+                  <span class="value" id="derniere-maj">--</span>
+                </div>
+              </div>
+            </section>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <table>
-      <thead>
-        <!-- TODO (Dev FS5) : en-têtes (Acheteur, Culture, Quantité, Prix/kg) -->
-      </thead>
-      <tbody id="liste-ventes"></tbody>
-    </table>
-  </main>
+            <section class="card card-control">
+              <h2>Contrôle automatique du stock</h2>
+              <div class="control-info">
+                <span class="label">Produit</span>
+                <span class="value" id="ctrl-produit">Manioc</span>
+              </div>
+              <div class="control-info">
+                <span class="label">Stock disponible</span>
+                <span class="value" id="ctrl-stock">-- kg</span>
+              </div>
+              <div class="control-info">
+                <span class="label">Quantité demandée</span>
+                <span class="value" id="ctrl-demande">-- kg</span>
+              </div>
+              <div id="ctrl-resultat" class="control-resultat"></div>
+            </section>
+          </div>
 
-  <!-- NE PAS MODIFIER — scripts de connexion au backend -->
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+          <!-- LIGNE 2 -->
+          <div class="row-two">
+            <section class="card card-alertes">
+              <h2>Alertes de stock</h2>
+              <div class="alerte-item warning">
+                <span class="alerte-badge"></span>
+                <span>Stock faible</span>
+                <span class="alerte-valeur" id="alerte-stock-faible">--</span>
+              </div>
+              <div class="alerte-item danger">
+                <span class="alerte-badge"></span>
+                <span>Rupture</span>
+                <span class="alerte-valeur" id="alerte-rupture">-- kg</span>
+              </div>
+            </section>
+
+            <section class="card card-resume">
+              <h2>Résumé commercial</h2>
+              <div class="resume-item">
+                <span class="label">Chiffre d'affaires du mois</span>
+                <span class="value" id="resume-ca">-- FCFA</span>
+              </div>
+              <div class="resume-item">
+                <span class="label">Nombre de ventes</span>
+                <span class="value" id="resume-nb-ventes">0</span>
+              </div>
+              <div class="resume-item highlight">
+                <span class="label">Meilleur acheteur du mois</span>
+                <span class="value" id="resume-meilleur-acheteur">--</span>
+              </div>
+            </section>
+          </div>
+
+          <!-- TABLEAU -->
+          <section class="card card-table">
+            <div class="table-header">
+              <h2>Tableau des ventes récentes</h2>
+            </div>
+            <div class="table-responsive">
+              <table class="table-ventes">
+                <thead>
+                  <tr>
+                    <th>Acheteur</th>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                  </tr>
+                </thead>
+                <tbody id="liste-ventes"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <!-- SCRIPTS -->
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

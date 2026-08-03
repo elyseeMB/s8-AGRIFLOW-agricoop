@@ -1,0 +1,145 @@
+/* ============================================================
+   STATISTIQUES — Styles spécifiques à la page
+   (réutilise : .card, .indicator-card, .indicator-label,
+    .indicator-value, .rapport-card, .top-buyer-card,
+    .total-card, .table-container — communs via card.css)
+   ============================================================ */
+
+.row-four {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.row-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* Classement des membres */
+.ranking-list {
+  counter-reset: r;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: 0;
+  margin: 0;
+}
+
+.ranking-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  border-bottom: var(--border-w-1) solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}
+
+.ranking-list li:last-of-type {
+  border-bottom: none;
+}
+
+.ranking-list li::before {
+  counter-increment: r;
+  content: counter(r);
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rounded-full);
+  background: var(--ds-accent-light);
+  color: var(--ds-accent);
+  font-weight: 700;
+  font-size: var(--text-xs);
+}
+
+.ranking-list li.top3::before {
+  background: var(--ds-accent);
+  color: var(--surface);
+}
+
+/* Tableau par culture */
+.table-cultures {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table-cultures thead th {
+  text-align: left;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: var(--border-w-1) solid var(--border);
+}
+
+.table-cultures td {
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: var(--border-w-1) solid var(--border);
+}
+
+.table-cultures tbody tr:hover {
+  background: var(--muted);
+}
+
+.table-cultures tbody tr:last-of-type td {
+  border-bottom: none;
+}
+
+/* Rapport bailleur */
+.rapport-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+.rapport-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs);
+  background: var(--backgroud);
+  border-radius: var(--rounded-md);
+}
+
+.rapport-item .rapport-label {
+  color: var(--ds-muted-text);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.rapport-item .rapport-value {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .row-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .row-two {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rapport-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .row-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

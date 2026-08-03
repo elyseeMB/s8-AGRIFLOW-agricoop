@@ -1,0 +1,121 @@
+/* ============================================================
+   LIVRAISONS — Styles spécifiques à la page
+   (réutilise : .card, .card-header, .section-label, .form-group,
+    .input-wrapper, .input-icon, .input-unit, .field-help,
+    .operation-summary, .table-container, .message, .stock-card,
+    .quick-stats, .stat-card, .notification-button, .current-date — communs)
+   ============================================================ */
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.history-card {
+  background: var(--surface);
+  border-radius: var(--rounded-xl);
+  box-shadow: 0 0 0 var(--border-w-1) var(--border);
+  padding: 0;
+  overflow: hidden;
+}
+
+.history-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-bottom: var(--border-w-1) solid var(--border);
+}
+
+.history-header h2 {
+  font-size: var(--text-lg);
+  margin: var(--space-3xs) 0;
+}
+
+.history-header p {
+  font-size: var(--text-sm);
+  color: var(--ds-muted-text);
+  margin: 0;
+}
+
+.btn-sort {
+  align-self: flex-start;
+  background: var(--muted);
+  border: none;
+  border-radius: var(--rounded-md);
+  padding: var(--space-2xs) var(--space-sm);
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+.table-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+}
+
+.filter-select {
+  border: var(--border-w-1) solid var(--border);
+  border-radius: var(--rounded-md);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.table-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+}
+
+.pagination {
+  display: flex;
+  gap: var(--space-2xs);
+}
+
+.pagination button {
+  border: var(--border-w-1) solid var(--border);
+  background: var(--surface);
+  border-radius: var(--rounded-sm);
+  padding: var(--space-3xs) var(--space-xs);
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .table-filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .search-box {
+    flex: 1;
+  }
+
+  .table-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .history-header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .delivery-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}

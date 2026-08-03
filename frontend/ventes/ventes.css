@@ -1,0 +1,224 @@
+/* ============================================================
+   VENTES & STOCK — Styles spécifiques à la page
+   (réutilise : .card, .nested-card, .control-info, .control-label,
+    .control-value, .control-resultat, .stock-card, .stock-header,
+    .stock-item, .product-info, .product-icon, .stock-quantity,
+    .total-card, .top-buyer-card, .badge, .table-container — communs)
+   ============================================================ */
+
+.row-three {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.row-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* Mini-cartes stock */
+.stock-mini {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+.stock-mini .card {
+  text-align: center;
+  background: var(--backgroud);
+  border-radius: var(--rounded-md);
+  padding: var(--space-sm);
+  border: var(--border-w-1) solid var(--border);
+}
+
+.stock-mini .card h3 {
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+  margin: 0 0 var(--space-3xs);
+  font-weight: 600;
+}
+
+.stock-mini .card .badge {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stock-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  background: var(--backgroud);
+  border-radius: var(--rounded-md);
+  padding: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.stock-footer .label {
+  color: var(--ds-muted-text);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stock-footer .value {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.card-vente {
+  min-height: 320px;
+}
+
+/* Résumé commercial */
+.resume-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) 0;
+  border-bottom: var(--border-w-1) solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.resume-item:last-of-type {
+  border-bottom: none;
+}
+
+.resume-item .label {
+  color: var(--ds-muted-text);
+}
+
+.resume-item .value {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.resume-item.highlight {
+  background: var(--ds-accent);
+  color: var(--surface);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--rounded-md);
+  margin-top: var(--space-2xs);
+  border: none;
+}
+
+.resume-item.highlight .label,
+.resume-item.highlight .value {
+  color: var(--surface);
+}
+
+/* Alertes de stock */
+.alerte-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  border-bottom: var(--border-w-1) solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.alerte-item:last-of-type {
+  border-bottom: none;
+}
+
+.alerte-badge {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: var(--rounded-full);
+}
+
+.alerte-item.warning .alerte-badge {
+  background: var(--ds-warning);
+}
+
+.alerte-item.danger .alerte-badge {
+  background: var(--ds-danger);
+}
+
+.alerte-valeur {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+/* Tableau ventes */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.table-ventes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table-ventes thead {
+  background: var(--muted);
+}
+
+.table-ventes th {
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  font-weight: 600;
+  color: var(--foreground);
+  border-bottom: var(--border-w-1) solid var(--border);
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+}
+
+.table-ventes td {
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: var(--border-w-1) solid var(--border);
+}
+
+.table-ventes tbody tr:hover {
+  background: var(--muted);
+}
+
+.table-ventes tbody tr:last-of-type td {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .row-three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .row-two {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stock-mini {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .table-ventes {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  .row-three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stock-mini {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stock-footer {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,136 @@
+.ds__main {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--space-3xl);
+  padding-block: var(--space-xl);
+}
+
+.ds {
+  padding-block: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Rangement des démos de composants */
+.ds__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.ds__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.Badges__wrapper,
+.Buttons__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Boîte de démo pour le layout (sidebar + contenu) */
+.ds__preview {
+}
+
+.ds__preview .layout {
+  min-height: 0;
+  border-radius: var(--rounded-lg);
+  overflow: hidden;
+  border: var(--border-w-1) solid var(--border);
+}
+
+.ds__preview .sidebar {
+  background-color: var(--background);
+  border-right: var(--border-w-1) solid var(--border);
+  color: var(--ds-accent);
+  position: static;
+  min-height: 380px;
+  height: auto;
+}
+
+.ds__preview .sidebar .nav-item {
+  color: var(--ds-accent);
+  box-shadow: none !important;
+  opacity: 1;
+}
+
+.ds__preview .sidebar .nav-item:hover,
+.ds__preview .sidebar .nav-item:focus-visible {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ds-accent);
+}
+
+.ds__preview .sidebar .nav-item.active {
+  background: var(--ds-accent-light);
+  color: var(--ds-accent);
+}
+
+.ds__preview .sidebar .brand-text span {
+  opacity: 0.7;
+}
+
+.ds__preview .layout__main {
+  background-color: var(--background);
+  padding-inline: var(--space-3xl);
+  padding-top: 0;
+  padding-bottom: var(--space-md);
+}
+
+/* Note / avertissement de démo */
+.ds__note {
+  font-size: var(--text-sm);
+  color: var(--ds-muted-text);
+  background: var(--muted);
+  border-left: 3px solid var(--ds-warning);
+  border-radius: var(--rounded-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* Grille d'icônes (section Icons) */
+.ds__icon-group {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ds-muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ds__icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-sm);
+}
+
+.ds__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+}
+
+.ds__icon-item svg {
+  color: var(--foreground);
+}
+
+.ds__icon-name {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.ds__icon-usage {
+  font-size: var(--text-xs);
+  color: var(--ds-muted-text);
+}
