@@ -1,0 +1,43 @@
+/* Page Comptes */
+
+#acces-refuse-comptes:not(:empty) {
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--ds-danger-light);
+  color: var(--ds-danger);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  border-radius: var(--rounded-md);
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+#form-nouveau-compte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  align-items: end;
+}
+
+#form-nouveau-compte h2 {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+#form-nouveau-compte button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: var(--space-xs);
+}
+
+tbody:empty::after {
+  content: "Aucun compte enregistré";
+  display: block;
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--ds-muted-text);
+  font-style: italic;
+  font-size: var(--text-sm);
+}

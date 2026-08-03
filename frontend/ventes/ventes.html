@@ -5,17 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriCoop Connect — Ventes & Stock</title>
     <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="ventes.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <!-- SIDEBAR -->
-
     <div class="layout">
       <aside class="sidebar">
         <div class="brand">
@@ -46,7 +37,7 @@
         </div>
 
         <nav class="navigation">
-          <a href="../dashboard/dashboard.html" class="nav-item active">
+          <a href="../dashboard/dashboard.html" class="nav-item">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +127,7 @@
             </span>
             <span>Paiements</span>
           </a>
-          <a href="../ventes/ventes.html" class="nav-item">
+          <a href="../ventes/ventes.html" class="nav-item active">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,44 +186,25 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
         <header class="topbar">
           <div class="topbar-main">
             <h1>Ventes et gestion du stock</h1>
-            <div class="topbar-actions">
-              <div class="topbar-profile">
-                <div class="topbar-avatar">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="topbar-profile-info">
-                  <strong>Administrateur</strong>
-                  <span>Secrétaire</span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="breadcrumb">
             <span>Accueil</span>
@@ -241,9 +213,8 @@
           </div>
         </header>
 
-        <div class="">
-          <!-- LIGNE 1 -->
-          <div class="row-three">
+        <div class="page-content">
+          <div class="row-stock-top">
             <section class="card card-stock">
               <h2>Vue globale du stock</h2>
               <div id="cartes-stock" class="stock-mini"></div>
@@ -277,7 +248,6 @@
             </section>
           </div>
 
-          <!-- LIGNE 2 -->
           <div class="row-two">
             <section class="card card-alertes">
               <h2>Alertes de stock</h2>
@@ -310,30 +280,25 @@
             </section>
           </div>
 
-          <!-- TABLEAU -->
-          <section class="card card-table">
+          <section class="card table-container">
             <div class="table-header">
               <h2>Tableau des ventes récentes</h2>
             </div>
-            <div class="table-responsive">
-              <table class="table-ventes">
-                <thead>
-                  <tr>
-                    <th>Acheteur</th>
-                    <th>Produit</th>
-                    <th>Quantité</th>
-                    <th>Prix unitaire</th>
-                  </tr>
-                </thead>
-                <tbody id="liste-ventes"></tbody>
-              </table>
-            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Acheteur</th>
+                  <th>Produit</th>
+                  <th>Quantité</th>
+                  <th>Prix unitaire</th>
+                </tr>
+              </thead>
+              <tbody id="liste-ventes"></tbody>
+            </table>
           </section>
         </div>
       </main>
     </div>
-
-    <!-- MAIN CONTENT -->
 
     <!-- SCRIPTS -->
     <script src="../functions.js"></script>

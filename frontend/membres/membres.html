@@ -37,7 +37,7 @@
         </div>
 
         <nav class="navigation">
-          <a href="../dashboard/dashboard.html" class="nav-item active">
+          <a href="../dashboard/dashboard.html" class="nav-item">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
             </span>
             <span>Tableau de bord</span>
           </a>
-          <a href="../membres/membres.html" class="nav-item">
+          <a href="../membres/membres.html" class="nav-item active">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,44 +186,25 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
         <header class="topbar">
           <div class="topbar-main">
             <h1>Gestion membres</h1>
-            <div class="topbar-actions">
-              <div class="topbar-profile">
-                <div class="topbar-avatar">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="topbar-profile-info">
-                  <strong>Administrateur</strong>
-                  <span>Secrétaire</span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="breadcrumb">
             <span>Accueil</span>
@@ -233,13 +214,6 @@
         </header>
 
         <div class="page-content">
-          <!-- =====================================================================
-               FILTRES — TODO (Dev FS2)
-               Construire une zone de filtrage : un sélecteur de statut et un champ
-               de recherche par nom. Layout responsive.
-
-               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-               ===================================================================== -->
           <section class="filters-bar">
             <div class="filter-group">
               <label for="filtre-statut">Filtrer par statut :</label>
@@ -255,7 +229,23 @@
               <label for="champ-recherche-membre">Rechercher :</label>
 
               <div class="search-box">
-                <span class="search-icon">🔍</span>
+                <span class="search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                  </svg>
+                </span>
                 <input
                   type="text"
                   id="champ-recherche-membre"
@@ -265,13 +255,6 @@
             </div>
           </section>
 
-          <!-- =====================================================================
-               LISTE DES MEMBRES — TODO (Dev FS2)
-               Le contenu est injecté par main.js. Le dev doit structurer le
-               conteneur et styliser les éléments .membre-ligne, .badge.
-
-               *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-               ===================================================================== -->
           <section class="membres-section">
             <div class="membres-header">
               <span>Nom</span>
@@ -286,10 +269,6 @@
             <div id="liste-membres-vide" class="empty-state" hidden>Aucun membre trouvé.</div>
           </section>
 
-          <!-- =====================================================================
-               NOUVEAU MEMBRE — TODO (Dev FS2)
-               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-               ===================================================================== -->
           <section class="card new-member-panel">
             <h2>Ajouter un nouveau membre</h2>
 

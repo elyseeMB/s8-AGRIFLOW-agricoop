@@ -12,16 +12,18 @@
 }
 
 .message[hidden] {
-  display: none;
+  display: none !important;
 }
 
-.message-error {
+.message-error,
+.message.error {
   background: var(--ds-danger-light);
   color: var(--ds-danger);
   border-left-color: var(--ds-danger);
 }
 
-.message-success {
+.message-success,
+.message.success {
   background: var(--ds-accent-light);
   color: var(--ds-accent);
   border-left-color: var(--ds-accent);

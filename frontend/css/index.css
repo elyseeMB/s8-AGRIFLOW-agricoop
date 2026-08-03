@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap");
 
 /* Tools */
 @import "./tools/reset.css";
@@ -30,45 +30,58 @@
 :root {
   --header-height: 70px;
 
-  /* typography */
-  --font-sans: "inter";
-  --text-base: 16px;
-  --leading-1: 1;
-  --tr-light: 200ms;
+  /* Typography */
+  --font-sans: "Outfit", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --text-base: 15px;
+  --leading-1: 1.2;
+  --tr-light: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --tr-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Main - Colors */
-  --ds-accent: hsl(122.61deg 42.33% 31.96%);
-  --ds-accent-light: hsl(116.67deg 39.13% 90.98%);
-  --ds-accent-hover: hsl(129.35deg 69.37% 43.53%);
-  /* Status - Colors */
-  --ds-success: hsl(132.52deg 66.51% 40.98%);
-  --ds-danger: hsl(357.88deg 72.03% 46.27%);
-  --ds-danger-light: hsl(3.4deg 89.83% 88.43%);
-  --ds-warning: hsl(37.33deg 85.77% 50.39%);
-  --ds-warning-light: hsla(37, 100%, 92%, 0.724);
-  --ds-info: hsla(212, 86%, 50%, 0.717);
-  --ds-info-light: hsla(212, 100%, 93%, 0.717);
-  --ds-disable: hsl(0, 0%, 92%);
-  --ds-disable-text: hsla(0, 0%, 66%, 0.717);
-  --ds-muted-text: hsl(0, 0%, 45%);
-  --ds-purple: hsl(262deg 52% 47%);
+  /* Modern Emerald Palette */
+  --ds-accent: hsl(158, 64%, 32%);
+  --ds-accent-light: hsl(152, 60%, 93%);
+  --ds-accent-hover: hsl(158, 70%, 25%);
+  --ds-accent-gradient: linear-gradient(135deg, hsl(158, 64%, 34%), hsl(164, 75%, 26%));
 
-  /* Background */
-  --background: transparent;
+  /* Status Colors */
+  --ds-success: hsl(145, 65%, 40%);
+  --ds-success-light: hsl(145, 60%, 94%);
+  --ds-danger: hsl(355, 78%, 56%);
+  --ds-danger-light: hsl(355, 85%, 96%);
+  --ds-warning: hsl(38, 92%, 50%);
+  --ds-warning-light: hsl(38, 90%, 95%);
+  --ds-info: hsl(215, 85%, 56%);
+  --ds-info-light: hsl(215, 85%, 95%);
+  --ds-disable: hsl(215, 15%, 92%);
+  --ds-disable-text: hsl(215, 12%, 60%);
+  --ds-muted-text: hsl(215, 15%, 46%);
+  --ds-purple: hsl(265, 60%, 54%);
+  --ds-purple-light: hsl(265, 60%, 95%);
+
+  /* Background & Surfaces */
+  --background: hsl(150, 15%, 97%);
   --backgroud: var(--background);
   --surface: hsl(0, 0%, 100%);
-  --foreground: hsl(0, 0%, 5%);
-  --muted: hsl(220deg 9.68% 93.92%);
-  --border: hsl(0, 0%, 88%);
+  --foreground: hsl(215, 28%, 15%);
+  --muted: hsl(150, 12%, 94%);
+  --border: hsl(215, 16%, 90%);
+  --border-focus: hsl(158, 64%, 42%);
+
+  /* Shadows & Depth */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 1px 3px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.07), 0 3px 8px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 36px -8px rgba(16, 80, 50, 0.08), 0 6px 16px -4px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(22, 163, 74, 0.22);
 
   /* Border */
-  --border-w-1: 1.5px;
-  --ds-border-accent: hsl(116.47deg 9.94% 66.47%);
+  --border-w-1: 1px;
+  --ds-border-accent: hsl(158, 50%, 80%);
 
   /* Sidebar */
-  --ds-bg-sidebar: hsl(121.74deg 42.86% 31.57%);
+  --ds-bg-sidebar: linear-gradient(180deg, hsl(164, 75%, 16%) 0%, hsl(160, 70%, 12%) 100%);
 
-  /* Space */
+  /* Space Scale */
   --ratio: 1.25;
   --space-base: 0.5rem;
   --space-3xs: calc(var(--space-base) / pow(var(--ratio), 6));
@@ -81,7 +94,7 @@
   --space-2xl: calc(var(--space-base) * pow(var(--ratio), 4));
   --space-3xl: calc(var(--space-base) * pow(var(--ratio), 5));
 
-  /* text */
+  /* Typography Scale */
   --text-xs: calc(var(--text-base) / pow(var(--ratio), 2));
   --text-sm: calc(var(--text-base) / pow(var(--ratio), 1));
   --text-md: calc(var(--text-base) * pow(var(--ratio), 1));
@@ -91,50 +104,32 @@
   --text-3xl: calc(var(--text-base) * pow(var(--ratio), 5));
   --text-4xl: calc(var(--text-base) * pow(var(--ratio), 6));
 
-  /* rounded */
-  --rounded-ratio: 1.12;
-  --rounded-base: 0.4rem;
+  /* Border Radius */
   --rounded-full: 9999px;
-  --rounded-xs: calc(var(--rounded-base) / pow(var(--rounded-ratio), 2));
-  --rounded-sm: calc(var(--rounded-base) / pow(var(--rounded-ratio), 1));
-  --rounded-md: calc(var(--rounded-base) * pow(var(--rounded-ratio), 1));
-  --rounded-lg: calc(var(--rounded-base) * pow(var(--rounded-ratio), 2));
-  --rounded-xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 3));
-  --rounded-2xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 4));
-  --rounded-3xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 5));
-  --rounded-4xl: calc(var(--rounded-base) * pow(var(--rounded-ratio), 6));
+  --rounded-xs: 4px;
+  --rounded-sm: 8px;
+  --rounded-md: 12px;
+  --rounded-lg: 16px;
+  --rounded-xl: 22px;
+  --rounded-2xl: 28px;
 }
 
-/* Base */
-body {
-  margin: 0;
-  font-family: var(--font-sans), sans-serif;
-  background-color: var(--background);
-  color: var(--foreground);
-  line-height: 1.5;
-}
-
+/* Base resets & typography enhancements */
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Splash d'index.html (racine, redirige vers login) */
-.main-content {
-  display: grid;
-  width: 100%;
-  height: 100vh;
-  place-items: center;
-  background-color: rgba(0, 0, 0, 0.441);
-  position: relative;
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
 }
 
-.main-content::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("../public/login_img.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
 }

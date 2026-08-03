@@ -1,5 +1,5 @@
 /* ============================================================
-   CARD — Conteneurs de contenu
+   CARD — High-End Glass & Metric Containers
    ============================================================ */
 
 .card,
@@ -11,25 +11,36 @@
 .total-card,
 .rapport-card {
   background: var(--surface);
-  border: none;
-  border-radius: var(--rounded-xl);
-  padding: var(--space-md);
-  box-shadow: 0 0 0 var(--border-w-1) var(--ring-color, var(--border));
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--tr-light), box-shadow var(--tr-light), border-color var(--tr-light);
 }
 
-/* ---------- EN-TÊTE DE CARTE ---------- */
+.card:hover,
+.panel:hover,
+.stat-card:hover,
+.summary-card:hover,
+.indicator-card:hover,
+.resume-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--ds-border-accent);
+}
+
+/* Header */
 .card-header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   margin-bottom: var(--space-md);
 }
 
 .section-label {
   font-size: var(--text-xs);
   color: var(--ds-accent);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -37,73 +48,58 @@
 .card-header h3 {
   margin: var(--space-3xs) 0;
   font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--foreground);
 }
 
 .card-header p {
   font-size: var(--text-sm);
   color: var(--ds-muted-text);
+  margin: 0;
 }
 
-.operation-number {
-  display: flex;
-  flex-direction: column;
-  background: var(--ds-accent-light);
-  border-radius: var(--rounded-md);
-  padding: var(--space-xs) var(--space-sm);
-  white-space: nowrap;
-}
-
-.operation-number span {
-  font-size: var(--text-xs);
-  color: var(--ds-accent);
-}
-
-.operation-number strong {
-  font-size: var(--text-sm);
-  color: var(--ds-accent);
-}
-
-/* ---------- CARTES STATISTIQUES RAPIDES ---------- */
+/* Stat Cards */
 .quick-stats {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
 
 .stat-card {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
 .stat-icon {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3.25rem;
+  height: 3.25rem;
   flex-shrink: 0;
   border-radius: var(--rounded-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: var(--text-xs);
-  color: var(--surface);
+  font-size: var(--text-md);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-icon.green {
-  background: var(--ds-accent);
+  background: linear-gradient(135deg, hsl(158, 64%, 40%), hsl(158, 70%, 28%));
 }
 
 .stat-icon.blue {
-  background: var(--ds-info);
+  background: linear-gradient(135deg, hsl(215, 85%, 60%), hsl(215, 85%, 45%));
 }
 
 .stat-icon.orange {
-  background: var(--ds-warning);
+  background: linear-gradient(135deg, hsl(38, 92%, 55%), hsl(38, 92%, 42%));
 }
 
 .stat-icon.purple {
-  background: hsl(262deg 52% 47%);
+  background: linear-gradient(135deg, hsl(265, 60%, 60%), hsl(265, 60%, 45%));
 }
 
 .stat-content {
@@ -114,392 +110,47 @@
 .stat-content span {
   font-size: var(--text-xs);
   color: var(--ds-muted-text);
+  font-weight: 500;
 }
 
 .stat-content strong {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
 }
 
 .stat-content small {
   font-size: var(--text-xs);
+  color: var(--ds-muted-text);
 }
 
 .stat-content small.positive {
   color: var(--ds-success);
+  font-weight: 600;
 }
 
-/* ---------- PANEL (formulaire / historique) ---------- */
-.panel {
-  box-shadow: 0 0 0 var(--border-w-1) var(--ring-color, var(--border));
-}
-
-.panel-heading {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
-}
-
-.panel-heading h2,
-.panel-heading h3 {
-  margin: 0 0 var(--space-2xs);
-  font-size: var(--text-lg);
-}
-
-.panel-heading p {
-  margin: 0;
-  font-size: var(--text-sm);
-  color: var(--ds-muted-text);
-}
-
-.panel-icon {
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
+/* Total / Highlight Card */
+.total-card {
+  background: linear-gradient(135deg, hsl(158, 64%, 96%), hsl(152, 60%, 92%));
+  border: 1px solid var(--ds-border-accent);
+  padding: var(--space-md) var(--space-lg);
   border-radius: var(--rounded-md);
-  background: var(--ds-accent-light);
-  color: var(--ds-accent);
-  font-size: var(--text-lg);
-  font-weight: 800;
-}
-
-/* ---------- CARTE STOCK (accent vert foncé) ---------- */
-.stock-card {
-  background: var(--ds-accent);
-  color: var(--surface);
-  border: none;
-}
-
-.stock-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-
-.stock-header .section-label {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.stock-header h2,
-.stock-header h3 {
-  color: var(--surface);
-}
-
-.stock-header-icon {
-  font-size: var(--text-lg);
-}
-
-.stock-total {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: var(--rounded-md);
-  padding: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-
-.stock-total span {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.stock-total strong {
-  font-size: var(--text-xl);
-  color: var(--surface);
-}
-
-.stock-total small {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.stock-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  padding: var(--space-xs) 0;
-  border-bottom: var(--border-w-1) solid rgba(255, 255, 255, 0.18);
-}
-
-.stock-item:last-of-type {
-  border-bottom: none;
-}
-
-.product-info {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  min-width: 0;
-}
-
-.product-icon {
-  width: 2.25rem;
-  height: 2.25rem;
-  flex-shrink: 0;
-  border-radius: var(--rounded-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.product-info strong {
-  display: block;
-  font-size: var(--text-sm);
-  color: var(--surface);
-}
-
-.product-info small {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.stock-quantity {
-  text-align: right;
-  font-size: var(--text-sm);
-  color: var(--surface);
-  white-space: nowrap;
-}
-
-.stock-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--space-md);
-  background: var(--surface);
-  border: none;
-  color: var(--ds-accent);
-  border-radius: var(--rounded-md);
-  padding: var(--space-xs);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity var(--tr-light);
-}
-
-.stock-button:hover {
-  opacity: 0.9;
-}
-
-/* ---------- CARTES MÉTRIQUES (résumé / indicateur) ---------- */
-.summary-card,
-.indicator-card,
-.resume-card,
-.rapport-card {
-  text-align: center;
-  background: var(--backgroud);
-}
-
-.summary-label,
-.indicator-label,
-.resume-label,
-.rapport-label {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--ds-muted-text);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--space-2xs);
-}
-
-.summary-value,
-.indicator-value,
-.resume-value,
-.rapport-value {
-  display: block;
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--foreground);
-}
-
-.indicator-value {
-  font-size: var(--text-xl);
-  color: var(--ds-accent);
-}
-
-.resume-value.warning {
-  color: var(--ds-warning);
-}
-
-.resume-value.danger {
-  color: var(--ds-danger);
-}
-
-.resume-card.highlight {
-  background: var(--ds-accent);
-  --ring-color: var(--ds-accent);
-  color: var(--surface);
-}
-
-.resume-card.highlight .resume-label {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.resume-card.highlight .resume-value {
-  color: var(--surface);
-}
-
-/* ---------- CARTE TOTAL (soft accent) ---------- */
-.total-card {
-  background: var(--ds-accent-light);
-  --ring-color: var(--ds-border-accent);
+  gap: var(--space-3xs);
 }
 
 .total-card span {
-  display: block;
-  margin-bottom: var(--space-2xs);
-  color: var(--ds-accent);
   font-size: var(--text-xs);
+  color: var(--ds-accent);
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .total-card strong {
-  font-size: var(--text-xl);
-  color: var(--ds-accent);
-}
-
-/* ---------- TOP ACHETEUR (pleine accent) ---------- */
-.top-buyer-card {
-  background: var(--ds-accent);
-  border: none;
-  color: var(--surface);
-  text-align: center;
-}
-
-.top-buyer-label {
-  display: block;
-  font-size: var(--text-xs);
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.top-buyer-value {
-  display: block;
-  font-size: var(--text-xl);
-  font-weight: 700;
-  margin-top: var(--space-2xs);
-}
-
-/* ---------- CARTE CONTRÔLE ---------- */
-.control-info {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  padding: var(--space-2xs) 0;
-  border-bottom: var(--border-w-1) solid var(--border);
-  font-size: var(--text-sm);
-}
-
-.control-info:last-of-type {
-  border-bottom: none;
-}
-
-.control-label {
-  color: var(--ds-muted-text);
-}
-
-.control-value {
-  font-weight: 600;
-}
-
-.control-resultat {
-  margin-top: var(--space-sm);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--rounded-md);
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.control-resultat.valide {
-  background: var(--ds-accent-light);
-  color: var(--ds-accent);
-}
-
-.control-resultat.refuse {
-  background: var(--ds-danger-light);
-  color: var(--ds-danger);
-}
-
-/* ---------- CARTE EMBOÎTÉE (carte dans la carte) ---------- */
-.nested-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  width: 100%;
-  max-width: 100%;
-  background: var(--ds-accent-light);
-  border-radius: var(--rounded-3xl);
-  box-shadow: 0 0 0 var(--border-w-1) var(--ring-color, var(--border));
-  padding: var(--space-xl);
-}
-
-.nested-card-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-}
-
-.nested-card-title {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--foreground);
-}
-
-.nested-card-action {
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  border-radius: var(--rounded-sm);
-  color: var(--foreground);
-  cursor: pointer;
-  transition: background var(--tr-light);
-}
-
-.nested-card-action:hover,
-.nested-card-action:focus-visible {
-  background: rgba(0, 0, 0, 0.06);
-}
-
-.nested-card-content {
-  border-radius: var(--rounded-3xl);
-  box-shadow: 0 0 0 1px var(--border);
-  background: var(--surface);
-  padding-inline: var(--space-lg);
-  padding-block: var(--space-xl);
-  font-size: var(--text-sm);
-  line-height: 1.5;
-  color: var(--foreground);
-  margin: 0 calc(var(--space-xl) * -1) calc(var(--space-xl) * -1) calc(var(--space-xl) * -1);
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (min-width: 768px) {
-  .quick-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card-header {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 1024px) {
-  .quick-stats {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--ds-accent-hover);
 }

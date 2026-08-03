@@ -1,16 +1,16 @@
 /* ============================================================
-   FORM — Formulaires, champs, groupes de champs
+   FORM — Modern Floating & Focused Fields
    ============================================================ */
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: var(--space-md);
 }
 
@@ -18,13 +18,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  margin-bottom: var(--space-md);
 }
 
 .form-group label {
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: 700;
   color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .required {
@@ -38,27 +39,41 @@
 
 .form-group input,
 .form-group select,
-.form-group textarea {
+.form-group textarea,
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="search"],
+select,
+textarea {
   width: 100%;
-  border: var(--border-w-1) solid var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--rounded-md);
-  padding: var(--space-xs) var(--space-sm);
+  padding: 0.65rem 0.85rem;
   font-size: var(--text-sm);
-  font-family: inherit;
+  font-family: var(--font-sans);
   background: var(--surface);
   color: var(--foreground);
-  transition: border-color var(--tr-light);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--tr-light);
 }
 
-.form-group textarea {
+.form-group textarea,
+textarea {
   resize: vertical;
+  min-height: 80px;
 }
 
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: var(--ds-accent);
+  box-shadow: 0 0 0 3.5px rgba(16, 110, 65, 0.16);
 }
 
 .field-help {
@@ -68,59 +83,41 @@
   color: var(--ds-muted-text);
 }
 
-/* ---------- Champ avec icône à gauche / unité à droite ---------- */
-.input-wrapper {
+/* Wrapper for Inputs with Icons/Units */
+.input-wrapper,
+.input-with-unit {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .input-icon {
   position: absolute;
-  left: var(--space-sm);
+  left: 0.85rem;
   font-size: var(--text-sm);
   color: var(--ds-muted-text);
   pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
 .input-wrapper > input,
 .input-wrapper > select {
-  padding-left: 2.25rem;
+  padding-left: 2.5rem;
 }
 
-.input-wrapper--unit > input {
-  padding-right: 2.5rem;
-}
-
-.input-unit {
-  position: absolute;
-  right: var(--space-sm);
-  font-size: var(--text-xs);
-  color: var(--ds-muted-text);
-  pointer-events: none;
-}
-
-/* ---------- Champ avec unité (variante paiement) ---------- */
-.input-with-unit {
-  position: relative;
-}
-
-.input-with-unit input {
-  padding-right: 3.5rem;
-}
-
+.input-unit,
 .input-with-unit span {
   position: absolute;
-  top: 50%;
-  right: var(--space-sm);
-  transform: translateY(-50%);
-  color: var(--ds-muted-text);
+  right: 0.85rem;
   font-size: var(--text-xs);
   font-weight: 700;
+  color: var(--ds-muted-text);
   pointer-events: none;
 }
 
-/* ---------- Groupe avec icône + toggle (login) ---------- */
+/* Login Form Fields */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -128,23 +125,28 @@
 }
 
 .input-group__label {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 700;
   color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .input-group__field {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-xl);
-  padding: var(--space-sm) var(--space-md);
-  transition: border-color var(--tr-light);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-md);
+  padding: 0.65rem 0.85rem;
+  background: var(--surface);
+  transition: all var(--tr-light);
+  box-shadow: var(--shadow-xs);
 }
 
 .input-group__field:focus-within {
   border-color: var(--ds-accent);
+  box-shadow: 0 0 0 3.5px rgba(16, 110, 65, 0.16);
 }
 
 .input-group__icon {
@@ -154,53 +156,36 @@
   flex-shrink: 0;
 }
 
+.input-group__toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ds-muted-text);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
 .form__input {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: none;
   flex: 1;
   min-width: 0;
-  border: none;
-  outline: none;
+  font-size: var(--text-sm);
   background: transparent;
   color: var(--foreground);
-  font-size: var(--text-sm);
 }
 
-.form__input::placeholder {
-  color: var(--ds-muted-text);
-}
-
-/* ---------- Résumé d'opération ---------- */
-.operation-summary {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  background: var(--muted);
-  border-radius: var(--rounded-md);
-  padding: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-
-.operation-summary > div {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  font-size: var(--text-sm);
-}
-
-.operation-summary .total {
-  border-top: var(--border-w-1) solid var(--border);
-  padding-top: var(--space-2xs);
-  font-weight: 700;
-  color: var(--ds-accent);
-}
-
-/* ---------- Séparateur ---------- */
 .form-divider {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   color: var(--ds-muted-text);
   font-size: var(--text-xs);
-  text-align: center;
+  font-weight: 600;
+  margin-block: var(--space-xs);
 }
 
 .form-divider::before,
@@ -209,12 +194,4 @@
   flex: 1;
   height: 1px;
   background-color: var(--border);
-}
-
-/* ---------- Actions ---------- */
-.form-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
 }

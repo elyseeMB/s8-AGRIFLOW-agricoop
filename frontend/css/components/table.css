@@ -1,5 +1,5 @@
 /* ============================================================
-   TABLE — Tableaux de données
+   TABLE — Modern Data Tables with Fluid Overflow
    ============================================================ */
 
 .table-container,
@@ -8,172 +8,51 @@
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: var(--rounded-md);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: var(--text-sm);
+  background: var(--surface);
 }
 
 thead th {
   text-align: left;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 0.75rem var(--space-md);
   font-size: var(--text-xs);
-  color: var(--ds-muted-text);
+  font-weight: 700;
+  color: var(--ds-accent);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-bottom: var(--border-w-1) solid var(--border);
+  letter-spacing: 0.06em;
+  background: var(--ds-accent-light);
+  border-bottom: 1px solid var(--ds-border-accent);
   white-space: nowrap;
 }
 
-/* Carte tableau façon logs (démo) — <article> + grille de divs, sur le modèle de .nested-card */
-.table-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  width: 100%;
-  max-width: 100%;
-  background: var(--background);
-  border-radius: var(--rounded-xl);
-  box-shadow: 0 0 0 var(--border-w-1) var(--border);
-  padding: var(--space-xl);
+thead th:first-child {
+  border-top-left-radius: var(--rounded-md);
 }
 
-.table-card__head,
-.table-card__row {
-  display: grid;
-  grid-template-columns: 150px minmax(180px, 1fr) minmax(110px, 1fr) 90px 1fr;
-  align-items: center;
-  gap: var(--space-sm);
+thead th:last-child {
+  border-top-right-radius: var(--rounded-md);
 }
-
-.table-card__head {
-  margin-inline: calc(var(--space-xl) * -1);
-  padding-inline: var(--space-xl);
-  color: var(--foreground);
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.table-card__body {
-  background: var(--surface);
-  border-radius: var(--rounded-xl);
-  box-shadow: 0 0 0 var(--border-w-1) var(--border);
-  margin: 0 calc(var(--space-xl) * -1) calc(var(--space-xl) * -1) calc(var(--space-xl) * -1);
-  overflow: hidden;
-}
-
-.table-card__head-item:last-child,
-.table-card__cell:last-child {
-  justify-self: end;
-}
-
-.table-card__row {
-  padding-inline: var(--space-xl);
-  padding-block: var(--space-md);
-  border-bottom: var(--border-w-1) solid var(--border);
-  transition: background var(--tr-light);
-}
-
-.table-card__row:last-child {
-  border-bottom: none;
-}
-
-.table-card__row:hover {
-  background: var(--muted);
-}
-
-.table-card__cell {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  min-width: 0;
-  color: var(--foreground);
-  font-size: var(--text-sm);
-  white-space: nowrap;
-}
-
-/* Tri */
-.table-card .th-sort {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2xs);
-}
-
-/* Membre (nom avec ellipse) */
-.table-card .cell-user {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-
-/* Quantité alignée à droite */
-.table-card__head .cell-num {
-  text-align: right;
-}
-
-.table-card__cell.cell-num {
-  justify-content: flex-end;
-}
-
-/* Badges statut avec léger ring */
 
 tbody td {
-  padding: var(--space-xs) var(--space-sm);
-  border-bottom: var(--border-w-1) solid var(--border);
+  padding: 0.75rem var(--space-md);
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: var(--text-sm);
   white-space: nowrap;
-}
-
-tbody tr {
   transition: background var(--tr-light);
 }
 
-tbody tr:hover {
-  background: var(--muted);
-}
-
-tbody tr:last-of-type td {
+tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* ---------- Recherche ---------- */
-.search-box {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-xl);
-  padding: var(--space-md) var(--space-lg);
-  background: var(--surface);
-}
-
-.search-box input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--foreground);
-  font-size: var(--text-sm);
-}
-
-.search-icon {
-  color: var(--ds-muted-text);
-  flex-shrink: 0;
-}
-
-/* ---------- État vide ---------- */
-.empty-state {
-  padding: var(--space-xl) var(--space-lg);
-  text-align: center;
-  color: var(--ds-muted-text);
-  font-style: italic;
-  font-size: var(--text-sm);
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (min-width: 768px) {
-  .search-box {
-    flex: 1;
-  }
+tbody tr:hover td {
+  background: hsl(150, 20%, 96%);
 }
