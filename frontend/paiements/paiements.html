@@ -37,7 +37,7 @@
         </div>
 
         <nav class="navigation">
-          <a href="../dashboard/dashboard.html" class="nav-item active">
+          <a href="../dashboard/dashboard.html" class="nav-item">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
             </span>
             <span>Livraisons</span>
           </a>
-          <a href="../paiements/paiements.html" class="nav-item">
+          <a href="../paiements/paiements.html" class="nav-item active">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,44 +186,25 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
         <header class="topbar">
           <div class="topbar-main">
             <h1>Gestion paiements</h1>
-            <div class="topbar-actions">
-              <div class="topbar-profile">
-                <div class="topbar-avatar">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="topbar-profile-info">
-                  <strong>Administrateur</strong>
-                  <span>Secrétaire</span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="breadcrumb">
             <span>Accueil</span>
@@ -232,81 +213,76 @@
           </div>
         </header>
 
-        <section class="page-heading">
-          <div>
-            <p class="eyebrow">Gestion financière</p>
-            <h1>Paiements</h1>
-            <p>Enregistrez les règlements des membres et consultez l’historique.</p>
-          </div>
-          <div class="total-card">
-            <span>Total encaissé</span>
-            <strong id="total-paiements">0 FCFA</strong>
-          </div>
-        </section>
+        <div class="page-content">
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow">Gestion financière</p>
+              <h1>Paiements</h1>
+              <p>Enregistrez les règlements des membres et consultez l’historique.</p>
+            </div>
+            <div class="card total-card">
+              <span>Total encaissé</span>
+              <strong id="total-paiements">0 FCFA</strong>
+            </div>
+          </section>
 
-        <section class="content-grid">
-          <article class="panel payment-panel">
-            <div class="panel-heading">
-              <div class="panel-icon">₣</div>
-              <div>
+          <section class="content-grid">
+            <article class="card panel payment-panel">
+              <div class="panel-heading">
                 <h2>Nouveau paiement</h2>
                 <p>Ajoutez un règlement au compte d’un membre.</p>
               </div>
-            </div>
 
-            <form id="form-paiement" class="payment-form">
-              <div class="form-group">
-                <label for="p-membre">Membre</label>
-                <select id="p-membre" required>
-                  <option value="">-- Choisir un membre --</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="p-montant">Montant</label>
-                <div class="input-with-unit">
-                  <input type="number" id="p-montant" min="1" placeholder="Ex. 25 000" required />
-                  <span>FCFA</span>
+              <form id="form-paiement" class="form">
+                <div class="form-group">
+                  <label for="p-membre">Membre</label>
+                  <select id="p-membre" required>
+                    <option value="">-- Choisir un membre --</option>
+                  </select>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="p-mode-paiement">Mode de paiement</label>
-                <select id="p-mode-paiement" required>
-                  <option value="">-- Choisir un mode --</option>
-                  <option value="Espèces">Espèces</option>
-                  <option value="Mobile Money">Mobile Money</option>
-                </select>
-              </div>
+                <div class="form-group">
+                  <label for="p-montant">Montant</label>
+                  <div class="input-wrapper">
+                    <input type="number" id="p-montant" min="1" placeholder="Ex. 25 000" required />
+                  </div>
+                </div>
 
-              <div id="message-erreur-paiement" class="message error" hidden></div>
-              <div id="message-succes-paiement" class="message success" hidden></div>
-              <button class="btn btn__primary" type="submit">Enregistrer le paiement</button>
-            </form>
-          </article>
+                <div class="form-group">
+                  <label for="p-mode-paiement">Mode de paiement</label>
+                  <select id="p-mode-paiement" required>
+                    <option value="">-- Choisir un mode --</option>
+                    <option value="Espèces">Espèces</option>
+                    <option value="Mobile Money">Mobile Money</option>
+                  </select>
+                </div>
 
-          <article class="panel history-panel">
-            <div class="panel-heading history-heading">
-              <div>
+                <div id="message-erreur-paiement" class="message message-error" hidden></div>
+                <div id="message-succes-paiement" class="message message-success" hidden></div>
+                <button class="btn btn__primary" type="submit">Enregistrer le paiement</button>
+              </form>
+            </article>
+
+            <article class="card panel history-panel">
+              <div class="panel-heading history-heading">
                 <h2>Historique des paiements</h2>
-                <p>Les dernières opérations enregistrées.</p>
               </div>
-            </div>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Membre</th>
-                    <th>Montant</th>
-                    <th>Mode</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody id="liste-paiements"></tbody>
-              </table>
-            </div>
-          </article>
-        </section>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Membre</th>
+                      <th>Montant</th>
+                      <th>Mode</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="liste-paiements"></tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+        </div>
       </main>
     </div>
 

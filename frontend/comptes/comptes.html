@@ -37,7 +37,7 @@
         </div>
 
         <nav class="navigation">
-          <a href="../dashboard/dashboard.html" class="nav-item active">
+          <a href="../dashboard/dashboard.html" class="nav-item">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +172,7 @@
             </span>
             <span>Statistiques</span>
           </a>
-          <a href="../comptes/comptes.html" class="nav-item">
+          <a href="../comptes/comptes.html" class="nav-item active">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,44 +186,25 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
         <header class="topbar">
           <div class="topbar-main">
             <h1>Gestion des comptes</h1>
-            <div class="topbar-actions">
-              <div class="topbar-profile">
-                <div class="topbar-avatar">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="topbar-profile-info">
-                  <strong>Administrateur</strong>
-                  <span>Secrétaire</span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="breadcrumb">
             <span>Accueil</span>
@@ -232,176 +213,94 @@
           </div>
         </header>
 
-        <!-- =====================================================================
-           RÉSERVÉ À LA SECRÉTAIRE — TODO (Dev FS2)
-           initComptes() écrit ici avec .textContent selon le cas :
-           "Vous devez être connecté(e)..." ou "Accès réservé à la Secrétaire."
+        <div class="page-content">
+          <div id="acces-refuse-comptes"></div>
 
-           *** NE PAS MODIFIER l'id ci-dessous ***
-           ===================================================================== -->
-        <div id="acces-refuse-comptes">Vous devez être connecté(e) pour accéder à cette page.</div>
+          <div class="card">
+            <form id="form-nouveau-compte" class="form">
+              <h2>Créer un nouveau compte</h2>
 
-        <!-- =====================================================================
-           FORMULAIRE NOUVEAU COMPTE — TODO (Dev FS2)
-           *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-           ===================================================================== -->
-        <form id="form-nouveau-compte" class="form">
-          <h2>Créer un nouveau compte</h2>
+              <div class="form-group">
+                <label for="c-nom-utilisateur">
+                  Nom d'utilisateur
+                  <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="c-nom-utilisateur"
+                    placeholder="Nom d'utilisateur"
+                    required=""
+                  />
+                </div>
+                <small class="field-help">Utilisé pour se connecter à la plateforme.</small>
+              </div>
 
-          <div class="form-group">
-            <label for="c-nom-utilisateur">
-              Nom d'utilisateur
-              <span class="required">*</span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+              <div class="form-group">
+                <label for="c-mot-de-passe">
+                  Mot de passe temporaire
+                  <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="password"
+                    id="c-mot-de-passe"
+                    placeholder="Mot de passe temporaire"
+                    required=""
+                  />
+                </div>
+                <small class="field-help"
+                  >L'utilisateur devra le changer à sa première connexion.</small
                 >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </span>
-              <input
-                type="text"
-                id="c-nom-utilisateur"
-                placeholder="Nom d'utilisateur"
-                required=""
-              />
-            </div>
-            <small class="field-help">Utilisé pour se connecter à la plateforme.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="c-nom-complet">
+                  Nom complet
+                  <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input type="text" id="c-nom-complet" placeholder="Nom complet" required="" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="c-role">
+                  Rôle
+                  <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <select id="c-role" required="">
+                    <option value="">-- Choisir un rôle --</option>
+                    <option value="Président">Président</option>
+                    <option value="Trésorière">Trésorière</option>
+                    <option value="Responsable dépôt">Responsable dépôt</option>
+                    <option value="Membre">Membre</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn btn__primary" type="submit">Créer le compte</button>
+            </form>
+
+            <div id="message-erreur-compte" class="message message-error" hidden=""></div>
+            <div id="message-succes-compte" class="message message-success" hidden=""></div>
           </div>
 
-          <div class="form-group">
-            <label for="c-mot-de-passe">
-              Mot de passe temporaire
-              <span class="required">*</span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-              </span>
-              <input
-                type="password"
-                id="c-mot-de-passe"
-                placeholder="Mot de passe temporaire"
-                required=""
-              />
-            </div>
-            <small class="field-help"
-              >L'utilisateur devra le changer à sa première connexion.</small
-            >
+          <div class="card table-container">
+            <h2>Comptes existants</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom d'utilisateur</th>
+                  <th>Nom complet</th>
+                  <th>Rôle</th>
+                </tr>
+              </thead>
+              <tbody id="liste-comptes"></tbody>
+            </table>
           </div>
-
-          <div class="form-group">
-            <label for="c-nom-complet">
-              Nom complet
-              <span class="required">*</span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </span>
-              <input type="text" id="c-nom-complet" placeholder="Nom complet" required="" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="c-role">
-              Rôle
-              <span class="required">*</span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                  <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                </svg>
-              </span>
-              <select id="c-role" required="">
-                <option value="">-- Choisir un rôle --</option>
-                <option value="Président">Président</option>
-                <option value="Trésorière">Trésorière</option>
-                <option value="Responsable dépôt">Responsable dépôt</option>
-                <option value="Membre">Membre</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="btn btn__primary" type="submit">Créer le compte</button>
-        </form>
-
-        <div id="message-erreur-compte" hidden=""></div>
-        <div id="message-succes-compte" hidden=""></div>
-
-        <!-- =====================================================================
-           LISTE DES COMPTES EXISTANTS — TODO (Dev FS2)
-           chargerComptes() injecte des <tr><td>nom_utilisateur</td>
-           <td>nom_complet</td><td>role</td></tr> dans #liste-comptes.
-
-           *** NE PAS MODIFIER l'id ci-dessous ***
-           ===================================================================== -->
-        <h2>Comptes existants</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Nom d'utilisateur</th>
-              <th>Nom complet</th>
-              <th>Rôle</th>
-            </tr>
-          </thead>
-          <tbody id="liste-comptes"></tbody>
-        </table>
+        </div>
       </main>
     </div>
 

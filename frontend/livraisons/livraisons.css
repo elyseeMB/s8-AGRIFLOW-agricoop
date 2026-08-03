@@ -1,22 +1,22 @@
-/* ============================================================
-   LIVRAISONS — Styles spécifiques à la page
-   (réutilise : .card, .card-header, .section-label, .form-group,
-    .input-wrapper, .input-icon, .input-unit, .field-help,
-    .operation-summary, .table-container, .message, .stock-card,
-    .quick-stats, .stat-card, .notification-button, .current-date — communs)
-   ============================================================ */
+/* Page Livraisons */
+
+.delivery-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
 
 .delivery-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  gap: var(--space-lg);
 }
 
 .history-card {
   background: var(--surface);
-  border-radius: var(--rounded-xl);
-  box-shadow: 0 0 0 var(--border-w-1) var(--border);
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   padding: 0;
   overflow: hidden;
 }
@@ -25,91 +25,50 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  padding: var(--space-md);
-  border-bottom: var(--border-w-1) solid var(--border);
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--background) 100%);
 }
 
 .history-header h2 {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+  font-weight: 800;
   margin: var(--space-3xs) 0;
-}
-
-.history-header p {
-  font-size: var(--text-sm);
-  color: var(--ds-muted-text);
-  margin: 0;
-}
-
-.btn-sort {
-  align-self: flex-start;
-  background: var(--muted);
-  border: none;
-  border-radius: var(--rounded-md);
-  padding: var(--space-2xs) var(--space-sm);
-  font-size: var(--text-xs);
-  cursor: pointer;
-}
-
-.table-filters {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  padding: var(--space-md);
-}
-
-.filter-select {
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
-  padding: var(--space-xs) var(--space-sm);
-  font-size: var(--text-sm);
-  background: var(--surface);
   color: var(--foreground);
 }
 
-.table-footer {
+.stock-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  align-items: flex-start;
-  margin-top: var(--space-md);
-  padding: var(--space-md);
-  font-size: var(--text-xs);
-  color: var(--ds-muted-text);
+  gap: var(--space-md);
 }
 
-.pagination {
+.stock-header {
   display: flex;
-  gap: var(--space-2xs);
+  align-items: center;
+  justify-content: space-between;
 }
 
-.pagination button {
-  border: var(--border-w-1) solid var(--border);
-  background: var(--surface);
-  border-radius: var(--rounded-sm);
-  padding: var(--space-3xs) var(--space-xs);
-  font-size: var(--text-xs);
-  cursor: pointer;
+.stock-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--background);
+  border-radius: var(--rounded-md);
+  border: 1px solid var(--border);
+}
+
+.product-info strong {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--foreground);
 }
 
 @media (min-width: 768px) {
-  .table-filters {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .search-box {
-    flex: 1;
-  }
-
-  .table-footer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .history-header {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
   }
 }

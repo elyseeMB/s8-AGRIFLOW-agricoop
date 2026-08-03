@@ -1,21 +1,11 @@
-/* ============================================================
-   PAIEMENTS — Styles spécifiques à la page (sidebar à gauche)
-   Les styles de base (layout, boutons, formulaires, tableaux,
-   messages) proviennent des composants partagés via index.css.
-   ============================================================ */
-
-.page-content {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: var(--space-lg) 0;
-}
+/* Page Paiements */
 
 .page-heading {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .eyebrow {
@@ -29,18 +19,21 @@
 
 .page-heading h1 {
   margin: 0 0 var(--space-2xs);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  letter-spacing: -0.05em;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
 }
 
 .page-heading p:not(.eyebrow) {
   margin: 0;
-  color: var(--ds-disable-text);
+  color: var(--ds-muted-text);
   line-height: 1.5;
+  font-size: var(--text-sm);
 }
 
 .page-heading .total-card {
-  min-width: 210px;
+  min-width: 220px;
 }
 
 .content-grid {
@@ -56,59 +49,21 @@
 
 .panel.history-panel {
   min-width: 0;
-  padding: var(--space-xl) 0 var(--space-sm);
+  padding: var(--space-xl);
 }
 
 .history-heading {
-  padding-inline: var(--space-xl);
-}
-
-/* ---------- Pied de sidebar (session + déconnexion) ---------- */
-.sidebar-footer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  padding-top: var(--space-sm);
-  border-top: var(--border-w-1) solid rgba(255, 255, 255, 0.18);
-  color: var(--surface);
-  font-size: var(--text-xs);
-}
-
-.sidebar-footer .btn-logout {
-  border: var(--border-w-1) solid rgba(255, 255, 255, 0.4);
-  background: transparent;
-  color: var(--surface);
-  cursor: pointer;
-  transition:
-    background var(--tr-light),
-    border-color var(--tr-light);
-}
-
-.sidebar-footer .btn-logout:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--surface);
+  margin-bottom: var(--space-md);
 }
 
 @media (max-width: 800px) {
   .content-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 800px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 600px) {
   .page-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .page-content {
-    width: min(100% - 24px, 1180px);
-    padding: var(--space-md) 0;
   }
 
   .page-heading .total-card {

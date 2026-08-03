@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriCoop Connect — Statistiques</title>
     <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="statistiques.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="layout">
@@ -44,7 +37,7 @@
         </div>
 
         <nav class="navigation">
-          <a href="../dashboard/dashboard.html" class="nav-item active">
+          <a href="../dashboard/dashboard.html" class="nav-item">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +150,7 @@
             </span>
             <span>Ventes &amp; Stock</span>
           </a>
-          <a href="../statistiques/statistiques.html" class="nav-item">
+          <a href="../statistiques/statistiques.html" class="nav-item active">
             <span class="nav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -193,44 +186,25 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
         <header class="topbar">
           <div class="topbar-main">
             <h1>Statistiques et rapport</h1>
-            <div class="topbar-actions">
-              <div class="topbar-profile">
-                <div class="topbar-avatar">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="topbar-profile-info">
-                  <strong>Administrateur</strong>
-                  <span>Secrétaire</span>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="breadcrumb">
             <span>Accueil</span>
@@ -239,14 +213,7 @@
           </div>
         </header>
 
-        <!-- MAIN CONTENT -->
-        <div class="">
-          <header class="page-header">
-            <h1>Statistiques et rapport</h1>
-            <p class="header-subtitle">Analyse des performances de la coopérative</p>
-          </header>
-
-          <!-- LIGNE 1 : INDICATEURS CLÉS (4 cartes) -->
+        <div class="page-content">
           <div class="row-four">
             <section class="card card-indicator">
               <span class="indicator-label">Volume total livré</span>
@@ -266,21 +233,16 @@
             </section>
           </div>
 
-          <!-- LIGNE 2 : CLASSEMENT + TABLEAU PAR CULTURE -->
           <div class="row-two">
-            <!-- Classement des membres -->
             <section class="card card-ranking">
               <h2>Classement des membres</h2>
               <p class="card-subtitle">Du plus gros producteur au plus petit</p>
-              <ol id="classement-membres" class="ranking-list">
-                <!-- Injecté par main.js -->
-              </ol>
+              <ol id="classement-membres" class="ranking-list"></ol>
             </section>
 
-            <!-- Tableau par culture -->
             <section class="card card-cultures">
               <h2>Statistiques par culture</h2>
-              <div class="table-responsive">
+              <div class="table-container">
                 <table class="table-cultures">
                   <thead>
                     <tr>
@@ -289,17 +251,13 @@
                       <th>Valeur totale</th>
                     </tr>
                   </thead>
-                  <tbody id="tableau-cultures">
-                    <!-- Injecté par main.js -->
-                  </tbody>
+                  <tbody id="tableau-cultures"></tbody>
                 </table>
               </div>
             </section>
           </div>
 
-          <!-- LIGNE 3 : TOP ACHETEUR + RAPPORT BAILLEUR -->
           <div class="row-two">
-            <!-- Top acheteur -->
             <section class="card card-top-buyer">
               <h2>Meilleur acheteur</h2>
               <div class="top-buyer-card">
@@ -308,7 +266,6 @@
               </div>
             </section>
 
-            <!-- Rapport bailleur -->
             <section class="card card-rapport">
               <h2>Rapport bailleur</h2>
               <div id="rapport-bailleur-contenu" class="rapport-grid">

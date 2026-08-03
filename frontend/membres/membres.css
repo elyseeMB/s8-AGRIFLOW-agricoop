@@ -1,39 +1,38 @@
+/* Page Membres */
+
 .filters-bar {
   background: var(--surface);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-lg);
   padding: var(--space-md) var(--space-lg);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-lg);
   align-items: flex-end;
+  box-shadow: var(--shadow-sm);
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  font-size: var(--text-sm);
-  color: var(--ds-muted-text);
+  font-size: var(--text-xs);
 }
 
 .filter-group label {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 #filtre-statut {
-  padding: var(--space-xs) var(--space-sm);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
-  min-width: 160px;
-  background: var(--surface);
-  font-size: var(--text-sm);
+  min-width: 170px;
 }
 
 .search-group {
   flex: 1;
-  min-width: 220px;
+  min-width: 240px;
 }
 
 .search-box {
@@ -42,16 +41,12 @@
 
 #champ-recherche-membre {
   width: 100%;
-  padding: var(--space-xs) var(--space-xl) var(--space-xs) var(--space-sm);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
-  font-size: var(--text-sm);
-  background: var(--surface);
+  padding-right: 2.5rem;
 }
 
 .search-icon {
   position: absolute;
-  right: var(--space-sm);
+  right: 0.85rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--ds-muted-text);
@@ -60,9 +55,10 @@
 
 .membres-section {
   background: var(--surface);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .membres-header,
@@ -71,25 +67,27 @@
   grid-template-columns: 2fr 1.3fr 1.5fr 1fr 1fr;
   gap: var(--space-sm);
   align-items: center;
-  padding: var(--space-sm) var(--space-lg);
+  padding: 0.85rem var(--space-lg);
 }
 
 .membres-header {
   background: var(--ds-accent-light);
-  color: var(--ds-accent);
-  font-weight: 700;
+  color: var(--ds-accent-hover);
+  font-weight: 800;
   font-size: var(--text-xs);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--ds-border-accent);
 }
 
 .membre-ligne {
-  border-top: var(--border-w-1) solid var(--border);
+  border-top: 1px solid var(--border);
   font-size: var(--text-sm);
+  transition: background var(--tr-light);
 }
 
 .membre-ligne:hover {
-  background: var(--muted);
+  background: hsl(150, 20%, 96%);
 }
 
 .empty-state {
@@ -101,59 +99,28 @@
 
 .new-member-panel {
   background: var(--surface);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
-  padding: var(--space-lg) var(--space-xl);
+  border: 1px solid var(--border);
+  border-radius: var(--rounded-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
 }
 
 .new-member-panel h2 {
   margin: 0 0 var(--space-md);
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
+  font-weight: 800;
   color: var(--foreground);
 }
 
 .new-member-form {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
-  gap: var(--space-sm);
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  align-items: end;
 }
 
-.new-member-form input,
-.new-member-form select {
-  padding: var(--space-xs) var(--space-sm);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-md);
-  font-size: var(--text-sm);
-  width: 100%;
-  background: var(--surface);
-}
-
-.new-member-form input:focus,
-.new-member-form select:focus {
-  outline: none;
-  border-color: var(--ds-accent);
-  box-shadow: 0 0 0 3px var(--ds-accent-light);
-}
-
-#erreurs-nouveau-membre,
-#message-succes-nouveau-membre {
-  margin-top: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--rounded-md);
-  font-size: var(--text-sm);
-}
-
-#erreurs-nouveau-membre {
-  background: var(--ds-danger-light);
-  color: var(--ds-danger);
-  border: var(--border-w-1) solid var(--ds-danger-light);
-}
-
-#message-succes-nouveau-membre {
-  background: var(--ds-accent-light);
-  color: var(--ds-accent-hover);
-  border: var(--border-w-1) solid var(--ds-accent-light);
+.new-member-form button {
+  justify-self: start;
 }
 
 @media (max-width: 900px) {

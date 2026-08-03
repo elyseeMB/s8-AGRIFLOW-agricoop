@@ -560,7 +560,7 @@ def generer_recu(membre_nom, montant):
 
 def calculer_historique_paiements_membre(membre_id, paiements):
     """
-    NOUVELLE FONCTION — extrait l'historique des paiements d'un membre
+    NOUVELLE FONCTIONS — extrait l'historique des paiements d'un membre
     précis, pour la nouvelle page Paiements (fiche membre).
 
     Paramètres :

@@ -1,3 +1,25 @@
+/* Splash screen d'index.html (racine) */
+.main-content {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  place-items: center;
+  background-color: rgba(10, 35, 20, 0.65);
+  position: relative;
+}
+
+.main-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../public/login_img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Page Login */
 .login {
   position: relative;
   width: 100%;
@@ -6,9 +28,9 @@
   align-items: center;
   justify-content: space-evenly;
   gap: var(--space-3xl);
-  padding-inline: calc(2 * var(--space-3xl));
+  padding-inline: var(--space-3xl);
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.441);
+  background-color: rgba(10, 35, 20, 0.65);
 }
 
 .login::after {
@@ -26,8 +48,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--surface);
-  clip-path: circle(75% at 100% 50%);
+  background: var(--background);
+  clip-path: circle(70% at 100% 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -38,10 +60,9 @@
   z-index: 1;
 }
 
-/* ---- Colonne gauche ---- */
+/* Colonne gauche */
 .wrapper__content {
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-2xl);
@@ -59,15 +80,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   border-radius: var(--rounded-full);
-  background-color: var(--ds-accent);
+  background: var(--ds-accent-gradient);
   margin-bottom: var(--space-sm);
+  box-shadow: 0 8px 24px rgba(16, 80, 50, 0.4);
 }
 
 .wrapper__content-top h1 {
-  font-size: var(--text-3xl);
+  font-size: var(--text-4xl);
   font-weight: 800;
   color: var(--ds-accent);
   margin: 0;
@@ -90,18 +112,20 @@
 .wrapper__content-bottom span {
   font-size: var(--text-md);
   font-weight: 700;
-  color: var(--surface);
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* ---- Carte de connexion ---- */
+/* Carte de connexion */
 .wrapper__form {
-  padding-inline: var(--space-3xl);
-  padding-block: var(--space-3xl);
+  padding: var(--space-3xl);
   background-color: var(--surface);
   border-radius: var(--rounded-2xl);
-  border: var(--border-w-1) solid var(--border);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
   display: flex;
-  min-width: 460px;
+  width: 100%;
+  max-width: 460px;
   flex-direction: column;
   gap: var(--space-xl);
 }
@@ -115,203 +139,34 @@
 }
 
 .wrapper__content-info h2 {
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--foreground);
   margin: 0;
 }
 
 .wrapper__content-info p {
   font-size: var(--text-sm);
+  color: var(--ds-muted-text);
   margin: 0;
-}
-
-/* ---- Formulaire ---- */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.input-group__label {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--foreground);
-  padding-bottom: var(--space-sm);
-}
-
-.input-group__field {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  border: var(--border-w-1) solid var(--border);
-  border-radius: var(--rounded-xl);
-  padding: var(--space-xl);
-  transition: border-color var(--tr-light);
-}
-
-.input-group__field:focus-within {
-  border-color: var(--ds-accent);
-}
-
-.input-group__icon {
-  display: flex;
-  align-items: center;
-  color: var(--ds-disable-text);
-  flex-shrink: 0;
-}
-
-.input-group__toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--ds-disable-text);
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-
-.form__input {
-  border: none;
-  outline: none;
-  flex: 1;
-  min-width: 0;
-  font-size: var(--text-sm);
-  background: transparent;
-  color: var(--foreground);
-}
-
-.form__input::placeholder {
-  color: var(--ds-disable-text);
 }
 
 .form .btn-large {
   width: 100%;
 }
 
-.form-divider {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--ds-disable-text);
-  font-size: var(--text-xs);
-  text-align: center;
-}
-
-.form-divider::before,
-.form-divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--border);
-}
-
-.form-legacy {
-  font-size: var(--text-xs);
-  color: var(--ds-disable-text);
-  text-align: center;
-}
-
-.alert[hidden] {
-  display: none;
-}
-
-/* Responsive grand écran */
-@media (min-width: 1600px) {
-  .login {
-    padding-inline: calc((100% - 1580px) / 2);
-  }
-}
-
-@media (max-width: 1200px) {
-  .login {
-    padding-inline: var(--space-2xl);
-    gap: var(--space-2xl);
-  }
-
-  .wrapper__form {
-    min-width: 420px;
-    padding-inline: var(--space-2xl);
-  }
-}
-
 @media (max-width: 900px) {
-  .login {
-    padding-inline: var(--space-xl);
-  }
-
-  .wrapper__logo {
-    width: 56px;
-    height: 56px;
-  }
-
-  .wrapper__content-top h1 {
-    font-size: var(--text-2xl);
-  }
-
-  .wrapper__form {
-    min-width: 380px;
-    padding-inline: var(--space-xl);
-    padding-block: var(--space-2xl);
-  }
-
-  .login::before {
-    clip-path: circle(70% at 100% 50%);
-  }
-}
-
-@media (max-width: 640px) {
   .login {
     flex-direction: column;
     justify-content: center;
     padding: var(--space-lg);
-    gap: var(--space-lg);
   }
 
   .login::before {
     display: none;
   }
 
-  .wrapper__content {
-    align-items: center;
-    height: auto;
-    gap: var(--space-md);
-  }
-
   .wrapper__content-bottom {
     display: none;
-  }
-
-  .wrapper__logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .wrapper__content-top h1 {
-    font-size: var(--text-xl);
-  }
-
-  .wrapper__tagline {
-    font-size: var(--text-xs);
-  }
-
-  .wrapper__form {
-    width: 100%;
-    min-width: 0;
-    max-width: 420px;
-    padding-inline: var(--space-lg);
-    padding-block: var(--space-xl);
-  }
-
-  .input-group__field {
-    padding: var(--space-md);
-  }
-
-  .wrapper__content-info h2 {
-    font-size: var(--text-lg);
   }
 }

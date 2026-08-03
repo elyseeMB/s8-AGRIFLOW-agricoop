@@ -8,11 +8,6 @@
   </head>
   <body>
     <div class="layout">
-      <!-- =====================================================================
-         NAVIGATION — TODO (Dev FS1)
-         Construire un menu de navigation vers les 8 pages du site.
-         Doit inclure un menu burger pour mobile.
-         ===================================================================== -->
       <aside class="sidebar">
         <div class="brand">
           <div class="brand-logo">
@@ -191,13 +186,19 @@
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                ></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </span>
             <span>Comptes</span>
           </a>
         </nav>
+        <div class="sidebar-session">
+          <span id="utilisateur-connecte"></span>
+          <button id="btn-deconnexion" class="btn btn__small btn__outline">Déconnexion</button>
+        </div>
       </aside>
 
       <main class="layout__main">
@@ -212,35 +213,25 @@
           </div>
         </header>
 
-        <!-- =====================================================================
-           CARTES INDICATEURS — TODO (Dev FS1)
-           *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-           ===================================================================== -->
-        <div id="dashboard-cartes" class="quick-stats">
-          <div id="carte-stock" class="stat-card"></div>
-          <div id="carte-montant-du" class="stat-card"></div>
-          <div id="carte-membres" class="stat-card"></div>
-          <div id="carte-livraisons" class="stat-card"></div>
-        </div>
-
-        <!-- =====================================================================
-           JOURS À FORTE ACTIVITÉ — TODO (Dev FS1)
-           *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-           ===================================================================== -->
-        <div id="jours-actifs" class="total-card"></div>
-
-        <!-- =====================================================================
-           GRAPHIQUE SEMAINE — TODO (Dev FS1)
-           *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-           ===================================================================== -->
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <div class="section-label">CETTE SEMAINE</div>
-              <h3>Livraisons par jour</h3>
-            </div>
+        <div class="page-content">
+          <div id="dashboard-cartes">
+            <div id="carte-stock" class="stat-card"></div>
+            <div id="carte-montant-du" class="stat-card"></div>
+            <div id="carte-membres" class="stat-card"></div>
+            <div id="carte-livraisons" class="stat-card"></div>
           </div>
-          <div id="graphique-semaine" class="chart-bars"></div>
+
+          <div id="jours-actifs"></div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="section-label">CETTE SEMAINE</div>
+                <h3>Livraisons par jour</h3>
+              </div>
+            </div>
+            <div id="graphique-semaine" class="chart-bars"></div>
+          </div>
         </div>
       </main>
     </div>
