@@ -42,7 +42,7 @@ Ouvrir `frontend/login/login.html` dans un navigateur (ou via l'extension Live S
 
 ## Équipe
 
-| Qui                                                    | Rôle                                   |
+| Noms                                                   | Rôle                                   |
 | ------------------------------------------------------ | -------------------------------------- |
 | Mboussa Emmanuelito (elyseeMB)                         | Développeur Fullstack — Repo Admin     |
 | Botoko Steven (Botoko09)                               | Développeur Fullstack — Lead Fullstack |
@@ -54,15 +54,15 @@ Ouvrir `frontend/login/login.html` dans un navigateur (ou via l'extension Live S
 
 ## Répartition des tâches
 
-| Qui                                                    | Dossier & pages                                                                                                        | Fonctions JS                                                                          |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Mboussa Emmanuelito (elyseeMB)                         | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` + Design system (palette, typo, badges, buttons) | `validerFormulaireLogin`, `compterJoursActifs`                                        |
-| Botoko Steven (Botoko09)                               | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html`                                                  | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
-| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | `frontend/livraisons/livraisons.html`                                                                                  | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
-| Holandais Mbemba Scintillé Grâciel (Holandais)         | `frontend/paiements/paiements.html`                                                                                    | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
-| Issoko Ulrich (thomas-issoko)                          | `frontend/ventes/ventes.html` **+** `frontend/statistiques/statistiques.html`                                          | `getBadgeStock`, `formaterMontant`, `trierClassementParVolume`, `formaterDate`        |
-| Lumeya Kwivangana Exaucée (lums02)                     | Design system (palette, typo, badges, buttons) + Backend A                                                             | —                                                                                     |
-| Ongouya Elie Yann (elieyann-21)                        | Backend B                                                                                                              | —                                                                                     |
+| Noms                                                   | Dossier & pages                                                                       | Fonctions JS                                                                          |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Mboussa Emmanuelito (elyseeMB)                         | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` + Design system | `validerFormulaireLogin`, `compterJoursActifs`                                        |
+| Botoko Steven (Botoko09)                               | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html`                 | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
+| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | `frontend/livraisons/livraisons.html`                                                 | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
+| Holandais Mbemba Scintillé Grâciel (Holandais)         | `frontend/paiements/paiements.html`                                                   | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
+| Issoko Ulrich (thomas-issoko)                          | `frontend/ventes/ventes.html` **+** `frontend/statistiques/statistiques.html`         | `getBadgeStock`, `formaterMontant`, `trierClassementParVolume`, `formaterDate`        |
+| Lumeya Kwivangana Exaucée (lums02)                     | Design system + Backend A                                                             | —                                                                                     |
+| Ongouya Elie Yann (elieyann-21)                        | Backend B                                                                             | —                                                                                     |
 
 ![alt text](frontend/public/image.png)
 
