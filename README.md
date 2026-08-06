@@ -42,27 +42,31 @@ Ouvrir `frontend/login/login.html` dans un navigateur (ou via l'extension Live S
 
 ## Équipe
 
-| Noms                                                   | Rôle                                   |
-| ------------------------------------------------------ | -------------------------------------- |
-| Mboussa Emmanuelito (elyseeMB)                         | Développeur Fullstack — Repo Admin     |
-| Botoko Steven (Botoko09)                               | Développeur Fullstack — Lead Fullstack |
-| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | Développeur Fullstack                  |
-| Holandais Mbemba Scintillé Grâciel (Holandais)         | Développeur Fullstack                  |
-| Issoko Ulrich (thomas-issoko)                          | Développeur Fullstack                  |
-| Lumeya Kwivangana Exaucée (lums02)                     | Data Scientist — Lead Data             |
-| Ongouya Elie Yann (elieyann-21)                        | Data Scientist — Lead du groupe        |
+| Qui                                                    | Rôle                                                     |
+| ------------------------------------------------------ | -------------------------------------------------------- |
+| Mboussa Emmanuelito (elyseeMB)                         | Développeur Fullstack — Repo Admin                       |
+| Botoko Steven (Botoko09)                               | Développeur Fullstack — Lead Fullstack                   |
+| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | Développeur Fullstack                                    |
+| Holandais Mbemba Scintillé Grâciel (Holandais)         | Développeur Fullstack                                    |
+| Issoko Ulrich (thomas-issoko)                          | Développeur Fullstack                                    |
+| Lumeya Kwivangana Exaucée (lums02)                     | Data Scientist — Lead Data                               |
+| Ongouya Elie Yann (elieyann-21)                        | Data Scientist — Lead du groupe                          |
+| Dieuveil Jaurès (VOUETA)                               | Marketing Digital — Lead Marketing & communication       |
+| Junior Rex (OMBOULA KANGA)                             | Business Analyst — Lead Business Analyst & Product Owner |
 
 ## Répartition des tâches
 
-| Noms                                                   | Dossier & pages                                                                       | Fonctions JS                                                                          |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Mboussa Emmanuelito (elyseeMB)                         | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` + Design system | `validerFormulaireLogin`, `compterJoursActifs`                                        |
-| Botoko Steven (Botoko09)                               | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html`                 | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
-| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | `frontend/livraisons/livraisons.html`                                                 | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
-| Holandais Mbemba Scintillé Grâciel (Holandais)         | `frontend/paiements/paiements.html`                                                   | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
-| Issoko Ulrich (thomas-issoko)                          | `frontend/ventes/ventes.html` **+** `frontend/statistiques/statistiques.html`         | `getBadgeStock`, `formaterMontant`, `trierClassementParVolume`, `formaterDate`        |
-| Lumeya Kwivangana Exaucée (lums02)                     | Design system + Backend A                                                             | —                                                                                     |
-| Ongouya Elie Yann (elieyann-21)                        | Backend B                                                                             | —                                                                                     |
+| Qui                                                    | Dossier & pages                                                                        | Fonctions JS                                                                          |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Mboussa Emmanuelito (elyseeMB)                         | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` + Design system  | `validerFormulaireLogin`, `compterJoursActifs`                                        |
+| Botoko Steven (Botoko09)                               | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html`                  | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
+| Bazoungoula Bonheur Amour Parfait (bonheurbazoungoula) | `frontend/livraisons/livraisons.html`                                                  | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
+| Holandais Mbemba Scintillé Grâciel (Holandais)         | `frontend/paiements/paiements.html`                                                    | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
+| Issoko Ulrich (thomas-issoko)                          | `frontend/ventes/ventes.html` **+** `frontend/statistiques/statistiques.html`          | `getBadgeStock`, `formaterMontant`, `trierClassementParVolume`, `formaterDate`        |
+| Lumeya Kwivangana Exaucée (lums02)                     | Design system + Backend A                                                              | —                                                                                     |
+| Ongouya Elie Yann (elieyann-21)                        | Backend B                                                                              | —                                                                                     |
+| Dieuveil Jaurès (VOUETA)                               | Proposition de valeur, rapport bailleur, AgriCoop_Connect_Presentation_5slides-2       | —                                                                                     |
+| Junior Rex (OMBOULA KANGA)                             | User Stories & Backlog (3 jours), FRD — Fonctionnalités, BPMN, Catalogue des exigences | —                                                                                     |
 
 ![alt text](frontend/public/image.png)
 
