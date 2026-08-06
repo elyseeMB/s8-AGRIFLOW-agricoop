@@ -72,6 +72,31 @@ Ouvrir `frontend/login/login.html` dans un navigateur (ou via l'extension Live S
 
 ## API — endpoints disponibles
 
+Chaque page est dans son propre sous-dossier avec son fichier CSS dédié. L'essentiel de votre note porte sur vos **pages HTML/CSS** (structure sémantique, box model, Flexbox/Grid, responsive mobile/tablette/desktop). Chacun complète aussi 2 à 3 fonctions JS dans `frontend/functions.js`.
+
+| Qui     | Dossier & pages                                                       | Fonctions JS                                                                          |
+| ------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Dev FS1 | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` | `validerFormulaireLogin`, `compterJoursActifs`                                        |
+| Dev FS2 | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html` | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
+| Dev FS3 | `frontend/livraisons/livraisons.html`                                 | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
+| Dev FS4 | `frontend/paiements/paiements.html`                                   | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
+| Dev FS5 | `frontend/ventes/ventes.html`                                         | `getBadgeStock`, `formaterMontant`                                                    |
+| Dev FS6 | `frontend/statistiques/statistiques.html`                             | `trierClassementParVolume`, `formaterDate`                                            |
+
+Chaque page contient des commentaires `<!-- TODO -->` indiquant le travail attendu, avec le layout, les éléments à construire et les classes déjà utilisées par `main.js` pour injecter le contenu dynamique. **Les éléments marqués "NE PAS MODIFIER" (IDs, scripts, formulaires) sont le câblage vers le backend — ne les changez pas, sinon les données ne s'afficheront plus.**
+
+**Nouveauté — page Login (Dev FS1) :** c'est la première page que tout le monde voit. Gardez-la volontairement simple : un formulaire centré, pas de navigation complexe .
+
+**Nouveauté — page Comptes (Dev FS2) :** réservée à la Secrétaire. `main.js` vérifie automatiquement le rôle de la personne connectée (via `/api/verifier-acces`) et affiche un message de refus si ce n'est pas elle — vous n'avez rien à coder pour cette vérification, seulement à styliser les deux états (formulaire visible / message de refus).
+
+**Nouveauté — formulaire Nouveau membre (Dev FS2, sur la page Membres) :** un formulaire à 4 champs (prénom, nom, village, contact) en bas de la page Membres existante.
+
+## Équipe Data Science — workflow
+
+```bash
+cd backend
+pip install -r requirements.txt
+python -m pytest -v        # ROUGE au départ (39 tests)
 ```
 GET  /api/dashboard
 GET  /api/membres
