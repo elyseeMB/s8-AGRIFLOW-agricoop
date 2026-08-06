@@ -35,11 +35,7 @@
  */
 function validerFormulaireLogin(donnees) {
   const { nom_utilisateur, mot_de_passe } = donnees;
-  const isValid = nom_utilisateur.trim() !== "" && mot_de_passe.trim() !== "";
-  if (!isValid) {
-    return;
-  }
-  return isValid;
+  return nom_utilisateur.trim() !== "" && mot_de_passe.trim() !== "";
 }
 
 /* [Dev FS1 — Tableau de bord — niveau S7 : boucle + condition]

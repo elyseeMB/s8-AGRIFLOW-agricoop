@@ -112,22 +112,22 @@ def calculer_indicateurs_globaux(livraisons, ventes, paiements):
         total_livraison += livraison["quantite"]
     for vente in ventes:
         total_vente += vente["quantite"]
-    stock_total = total_livraison - total_vente 
+    stock_total = total_livraison - total_vente
     # 2. Montant du total
     valeur_livraisons = 0  # initialisation
     for livraison in livraisons:
         quantite = livraison["quantite"]
         culture = livraison["culture"]
         if culture in PRIX_ACHAT_KG:
-            prix = PRIX_ACHAT_KG[culture]  
+            prix = PRIX_ACHAT_KG[culture]
         else:
-            prix = 0   
+            prix = 0
         valeur = quantite * prix
         valeur_livraisons += valeur
-    total_paiements = 0 
+    total_paiements = 0
     for paiement in paiements:
         total_paiements += paiement["montant"]
-    montant_du_total = valeur_livraisons - total_paiements 
+    montant_du_total = valeur_livraisons - total_paiements
     # 3. Nombre de membres actifs
     membres_uniques = set()
     for livraison in livraisons:
@@ -137,10 +137,10 @@ def calculer_indicateurs_globaux(livraisons, ventes, paiements):
     nb_livraisons_mois = len(livraisons)
 
     return {
-            "stock_total": stock_total,
-            "montant_du_total": valeur_livraisons - total_paiements,
-            "nb_membres_actifs": len({l["membre_id"] for l in livraisons}),
-            "nb_livraisons_mois": len(livraisons),
+        "stock_total": stock_total,
+        "montant_du_total": valeur_livraisons - total_paiements,
+        "nb_membres_actifs": len({l["membre_id"] for l in livraisons}),
+        "nb_livraisons_mois": len(livraisons),
     }
 
 
@@ -169,7 +169,6 @@ def calculer_livraisons_par_jour_semaine(livraisons):
             resultat[date] = livraison["quantite"]
 
     return resultat
-
 
 
 def classer_membres_par_production(livraisons):
@@ -207,7 +206,7 @@ def classer_membres_par_production(livraisons):
         ]
     """
     totaux = {}
-    #les quantités par membre
+    # les quantités par membre
     for livraison in livraisons:
         membre_id = livraison["membre_id"]
         if membre_id in totaux:
@@ -218,11 +217,10 @@ def classer_membres_par_production(livraisons):
     resultat = []
     for membre_id, volume_total in totaux.items():
         resultat.append({"membre_id": membre_id, "volume_total": volume_total})
-    #  trier 
+    #  trier
     resultat.sort(key=lambda membre: membre["volume_total"], reverse=True)
 
     return resultat
-
 
 
 def calculer_statistiques_globales(livraisons, ventes):
@@ -317,7 +315,7 @@ def generer_indicateurs_rapport_bailleur(livraisons, ventes, paiements):
 
         sortie -> {"volume_total_periode": 150, "montant_ventes_periode": 17600,
                    "taux_regularite_paiements": 50, "nb_membres_actifs": 2}
-    
+
     """
     #  les membres actifs
     membres_actifs = set()
@@ -454,6 +452,7 @@ def calculer_solde_membre(membre_id, livraisons, paiements):
 
     return total_dette - total_paye
 
+
 def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
     """
     Identifie les membres n'ayant fait aucune livraison (version
@@ -480,7 +479,7 @@ def detecter_membres_inactifs(membres, livraisons, jours_seuil=90):
         -> le membre id=2 n'apparaît dans aucune livraison, donc il EST inactif
 
         sortie -> [{"membre_id": 2, "nom": "Sandra Malonga"}]
-    
+
     """
     membre_actif = {livraison["membre_id"] for livraison in livraisons}
     membres_non_actifs = [
@@ -620,7 +619,7 @@ def rechercher_membre_similaire(nom_complet, membres):
 
         rechercher_membre_similaire("Marie Koumba", membres)
         -> None   (aucun membre existant ne porte ce nom)
-    
+
     """
     ancien_membre = " ".join(nom_complet.split()).lower()
     for membre in membres:
@@ -704,9 +703,9 @@ def calculer_stock_disponible(livraisons, ventes):
         Maïs et Arachide : aucune livraison ni vente -> 0
 
         sortie -> {"Manioc": 70, "Maïs": 0, "Arachide": 0}
-    
+
     """
-    # initialiser le stock 
+    # initialiser le stock
     stock = {}
     for culture in PRIX_ACHAT_KG:
         stock[culture] = 0
@@ -754,7 +753,6 @@ def verifier_stock_avant_vente(vente, stock_disponible):
         return vente["quantite"] <= stock_disponible[vente["culture"]]
     else:
         return vente["quantite"] <= 0
-
 
 
 def calculer_marge_vente(vente):
@@ -829,7 +827,6 @@ def verifier_paiement_valide(paiement, solde_du):
     return anomalies
 
 
-
 def calculer_moyenne_prix_vente(ventes, culture):
     """
     NOUVELLE FONCTION — calcule le prix de vente moyen réellement obtenu
@@ -880,7 +877,6 @@ def calculer_moyenne_prix_vente(ventes, culture):
         total_valeur += vente["quantite"] * vente["prix_kg"]
 
     return round(total_valeur / total_quantite)
-
 
 
 # ========================================================================
